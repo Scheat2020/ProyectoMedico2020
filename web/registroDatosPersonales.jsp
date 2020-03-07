@@ -153,7 +153,7 @@ FORMULARIO DE DATOS PERSONALES
                     </div>
                   </div>
                  
-                 <!--botones continuar y cancelar-->
+                 <!--botones: continuar y cancelar-->
                   <div class="field is-grouped">
                     <div class="control">
                       <button class="button is-link">Continuar</button>
