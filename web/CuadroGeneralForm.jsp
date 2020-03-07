@@ -1,6 +1,6 @@
 <%-- 
     Document   : CuadroGeneralForm
-    Created on : Mar 7, 2020, 10:17:35 AM
+    Created on : Mar 7, 2020, 10:20:25 AM
     Author     : Sara Valentina
 --%>
 
