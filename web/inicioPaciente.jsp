@@ -53,7 +53,7 @@
             </a>
             <br><br><br>
             <div>
-                <a href="PacientesDatosPersonales.jsp">¿No tienes un usuario? Regístrate aquí</a> 
+                <a href="DataPersonal.jsp">¿No tienes un usuario? Regístrate aquí</a> 
             </div>
             
                         
