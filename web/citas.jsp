@@ -20,7 +20,7 @@
                 Agendar Citas
             </h1>
             <p class="title-2">
-                Por favor complete la información solicitada
+                Por favor complete la información solicitada a continuación
             </p>
         </div>
         
