@@ -66,7 +66,7 @@
                     <input class="input" type="tel" placeholder="Télefono de contacto">
                   </p>
                 </div>
-              <!--  <p class="help">Do not enter the first zero</p> -->
+             
               </div>
             </div>
           </div>
