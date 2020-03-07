@@ -256,7 +256,7 @@
                 </a>
              </p>
             <p class="control">
-                <a class="button is-light">
+                <a class="button is-light" href="FichaTecnica.jsp">
                     Cancelar
                 </a>
             </p>
