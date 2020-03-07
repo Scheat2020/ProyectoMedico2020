@@ -14,7 +14,7 @@
     <body>
        
         <section class ="section">
-            <!--Nombre-->
+            <!--Nombre -->
             <div class="field">
                 <label class="label">Nombre</label>
                 <div class="control">
