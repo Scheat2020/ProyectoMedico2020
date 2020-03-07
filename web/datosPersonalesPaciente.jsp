@@ -1,3 +1,10 @@
+<%-- 
+    Document   : datosPersonalesPaciente
+    Created on : Mar 7, 2020, 9:47:48 AM
+    Author     : Sara Valentina
+--%>
+
+<%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <!--
 FORMULARIO DE DATOS PERSONALES
@@ -21,7 +28,7 @@ FORMULARIO DE DATOS PERSONALES
                     Datos personales
                 </h1>
                 <p class="title-2">
-                    Complete la informaciÛn requerida
+                    Complete la informaci√≥n requerida
                 </p>
             </div>
            
@@ -33,7 +40,7 @@ FORMULARIO DE DATOS PERSONALES
                     <!--Nombres y apellidos-->
                     <label class="label">Nombres</label>
                     <div class="control">
-                      <input class="input" type="text" placeholder="Ej: Grecia MarÌa">
+                      <input class="input" type="text" placeholder="Ej: Grecia Mar√≠a">
                     </div>
                   </div>
 
@@ -54,7 +61,7 @@ FORMULARIO DE DATOS PERSONALES
                               <i class="fas fa-upload"></i>
                             </span>
                             <span class="file-label">
-                              Seleccione el archivo?
+                              Seleccione el archivo‚Ä¶
                             </span>
                           </span>
                         </label>
@@ -73,8 +80,8 @@ FORMULARIO DE DATOS PERSONALES
                       <input class="input" type="text" placeholder="12345678-1">
                     </div>
                  
-                   <!--DirecciÚn-->
-                    <label class="label">DirecciÛn</label>
+                   <!--Direcci√≤n-->
+                    <label class="label">Direcci√≥n</label>
                     <div class="control">
                       <input class="input" type="text" placeholder="P. Sherman, Calle Wallaby 42, Sydney">
                     </div>
@@ -96,14 +103,14 @@ FORMULARIO DE DATOS PERSONALES
                   </div>
 
                  <!--Celular-->
-                    <label class="label">DirecciÛn</label>
+                    <label class="label">Direcci√≥n</label>
                     <div class="control">
                       <input class="input" type="text" placeholder="78787170">
                     </div>
                    
                  <!--Email-->
                   <div class="field">
-                    <label class="label">Correo electrÛnico</label>
+                    <label class="label">Correo electr√≥nico</label>
                     <div class="control has-icons-left has-icons-right">
                       <input class="input is-danger" type="email" placeholder="Email input" value="ejemplo@gmail.com">
                       <span class="icon is-small is-left">
@@ -113,7 +120,7 @@ FORMULARIO DE DATOS PERSONALES
                         <i class="fas fa-exclamation-triangle"></i>
                       </span>
                     </div>
-                    <p class="help is-danger">El correo electrÛnico no es v·lido</p>
+                    <p class="help is-danger">El correo electr√≥nico no es v√°lido</p>
                   </div>
                  
                  <!--Sexo-->
@@ -135,7 +142,7 @@ FORMULARIO DE DATOS PERSONALES
                     <div class="control">
                       <label class="checkbox">
                         <input type="checkbox">
-                        Acepto los tÈrminos y condiciones
+                        Acepto los t√©rminos y condiciones
                       </label>
                     </div>
                   </div>
@@ -144,7 +151,7 @@ FORMULARIO DE DATOS PERSONALES
                     <div class="control">
                       <label class="radio">
                         <input type="radio" name="question">
-                        SÌ
+                        S√≠
                       </label>
                       <label class="radio">
                         <input type="radio" name="question">
@@ -153,7 +160,7 @@ FORMULARIO DE DATOS PERSONALES
                     </div>
                   </div>
                  
-                 <!--botones: continuar y cancelar-->
+                 <!--botones continuar y cancelar-->
                   <div class="field is-grouped">
                     <div class="control">
                       <button class="button is-link">Continuar</button>
