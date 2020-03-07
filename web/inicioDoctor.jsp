@@ -50,9 +50,7 @@
             </button>
             </p>
             <br><br><br>
-            <div>
-                <a href="DoctoresDatosPersonales.jsp">¿No tienes un usuario? Regístrate aquí</a> 
-            </div>
+
             
                 
                 
