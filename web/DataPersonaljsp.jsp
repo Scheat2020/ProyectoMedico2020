@@ -158,13 +158,18 @@
                   </div>
                  
                  <!--botones continuar y cancelar-->
+                 
                   <div class="field is-grouped">
-                    <div class="control">
-                      <button class="button is-link" href="CuadroGeneralForm.jsp">Continuar</button>
-                    </div>
-                    <div class="control">
-                      <button class="button is-link is-light">Cancelar</button>
-                    </div>
+                    <p class="control">
+                        <a class="button is-primary"  href="cuadroMedico.jsp">
+                            Continuar
+                        </a>
+                     </p>
+                    <p class="control">
+                        <a class="button is-light" href="inicioPaciente.jsp">
+                            Cancelar
+                        </a>
+                    </p>
                   </div>
 
                 
