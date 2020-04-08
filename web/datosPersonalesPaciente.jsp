@@ -11,7 +11,7 @@ FORMULARIO DE DATOS PERSONALES
 -->
 <html>
     <head>
-        <title>TODO supply a title</title>
+        <title>Registro</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
        
@@ -166,7 +166,9 @@ FORMULARIO DE DATOS PERSONALES
                       <button class="button is-link">Continuar</button>
                     </div>
                     <div class="control">
-                      <button class="button is-link is-light">Cancelar</button>
+                        <a href="inicioPaciente.jsp">
+                      <button class="button is-link is-light" >Cancelar</button>
+                        </a>
                     </div>
                   </div>
 
