@@ -2,6 +2,9 @@
     Document   : datosPersonalesPaciente
     Created on : Mar 7, 2020, 9:47:48 AM
     Author     : Sara Valentina
+
+
+        PRUEBA (CREO QUE ESTA SE DEBE BORRAR)
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>

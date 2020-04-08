@@ -100,7 +100,7 @@
                   </div>
 
                  <!--Celular-->
-                    <label class="label">Dirección</label>
+                    <label class="label">Celular</label>
                     <div class="control">
                       <input class="input" type="text" placeholder="78787170">
                     </div>
