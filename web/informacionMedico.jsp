@@ -35,6 +35,7 @@
                     <p>Médico general y cirujano cardiologo<p/>
                     <br>
                     <p>St. Bonaventure Hospital</p>
+                    <p>Telefono: 2265-5865</p>
                 </div>
                 
                 
@@ -42,7 +43,7 @@
                     <div class="message-body">
                      <strong>Paciente más próximo</strong>
                      <br> Sergio David, López Paniagua
-                     <a href="informacionPanciente.jsp">Revisar su registro</a>
+                     <a href="informacionPaciente.jsp">Revisar su registro</a>
                     </div>
                   </article>
                
