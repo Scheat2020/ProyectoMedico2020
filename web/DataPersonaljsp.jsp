@@ -13,12 +13,13 @@
     <script src="Scripts/validate/jquery.validate.js" type="text/javascript"></script>
    
     <script>
+        <%-- 
 	$.validator.setDefaults({
 		submitHandler: function() {
 			alert("submitted!");
 		}
 	});
-
+        --%>
 	$().ready(function() {
 		
 
@@ -29,6 +30,7 @@
 				apellidos: "required",
                                 nacimiento: "required",
                                 dir: "required",
+                                sexo: "required",
                                 dui: {
 					required: true,
 					minlength: 10
@@ -62,33 +64,32 @@
 				firstname: "*Ingrese sus nombres",
 				apellidos: "*Ingrese sus apellidos",
                                 nacimiento: "*Ingrese su fecha de nacimiento",
-                                dir: "*Ingrese su direcciòn",
- 				
+                                dir: "*Ingrese su dirección",
+ 				sexo: "*Seleccione su sexo",
                                 dui: {
-					required: "*Introduzca su nùmero de DUI",
+					required: "*Introduzca su número de DUI",
 					minlength: "*Su DUI debe contener al menos 9 dìgitos y un guión previo al último"
 				},       
                                 
 				username: {
 					required: "*Ingrese su nombre de usuario",
-					minlength: "*Su nombre de usuario debe contener al menos 4 dìgitos"
+					minlength: "*Su nombre de usuario debe contener al menos 4 dígitos"
 				},
 				password: {
 					required: "*Ingrese su contraseña",
-					minlength: "*Su contraseña debe contener al menos 5 dìgitos"
+					minlength: "*Su contraseña debe contener al menos 5 dígitos"
 				},
 				confirm_password: {
 					required: "*Complete el campo requerido",
-					minlength: "*Su contraseña debe contener al menos 5 dìgitos",
+					minlength: "*Su contraseña debe contener al menos 5 dígitos",
 					equalTo: "*Sus contraseñas no coinciden"
 				},
-                                
                                 celular: {
-					required: "*Ingrese su nùmero de celular",
-					minlength: "Su nùmero de celular debe tener al menos 8 dìgitos"
+					required: "*Ingrese su número de celular",
+					minlength: "Su número de celular debe tener al menos 8 dìgitos"
 				},
-				email: "*El correo electrònico no es vàlido",
-				agree: "*Debe aceptar los tèrminos y condiciones de uso",
+				email: "*El correo electrónico no es válido",
+				agree: "*Debe aceptar los términos y condiciones de uso"
 
 			}
 		});
@@ -115,7 +116,7 @@
                 </p>
             </div>
             
-            <form class="cmxform" id="signupForm" action="" method="get">
+            <form class="cmxform" id="signupForm" action="cuadroMedico.jsp" method="get">
                 <fieldset>
                 
                 <!--campos del form-->
@@ -141,7 +142,7 @@
                     <label class="label">Fotos de perfil</label>
                     <br><br>
                     <label class="file-label">
-                        <input class="file-input" type="file" name="foto">
+                        <input class="file-input" type="file" id="foto" name="foto">
                         <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fas fa-upload"></i>
@@ -172,9 +173,9 @@
                 </div> 
                 
                   
-                <!--Direcciòn-->
+                <!--Dirección-->
                 <div class="field">
-                    <label class="label" for="dir">Direcciòn</label>
+                    <label class="label" for="dir">Dirección</label>
                     <div class="control">
                     <input class="input" id="dir" name="dir" type="text" placeholder="P. Sherman, Calle Wallaby 42, Sydney">
                     </div>
@@ -211,7 +212,7 @@
                 <div class="field">
                     <label class="label" for="Celular">Celular</label>
                     <div class="control">
-                    <input class="input" id="Celular" name="Celular" type="text" placeholder="78717873">
+                    <input class="input" id="celular" name="celular" type="text" placeholder="78717873">
                     </div>
                 </div> 
                 
@@ -229,9 +230,9 @@
                     <label class="label">Sexo</label>
                     <div class="control">
                         <div class="select">
-                            <select>
-                                <option>Mujer</option>
-                                <option>Hombre</option>
+                            <select id="sexo" name="sexo">
+                                <option id="mujer" name="mujer" value="mujer">Mujer</option>
+                                <option id="hombre" name="hombre" value="hombre">Hombre</option>
                             </select>
                         </div>
                     </div>
