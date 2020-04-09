@@ -55,8 +55,7 @@
                 <div class="column is-one-quarter">
                     <div class="container">
                         <p class="label"></p>
-                    </div>
-                    
+                    </div> 
                 </div>
                 <div class="column is-half">
                     <div class="container">

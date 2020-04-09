@@ -19,7 +19,7 @@
                     Ficha del paciente
                     
                 </h1>
-            <div/>
+            </div>
             <div class="columns is-vcentered">
                 <div class="column is-one-quarter">
                     <figure class="image is-128x128">

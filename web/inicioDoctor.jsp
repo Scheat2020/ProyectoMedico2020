@@ -44,15 +44,15 @@
             </p>
         </div>
            <div class="field">
-            <p class="control">
-            <button class="button is-success">
-            Login
-            </button>
-            </p>
+            <a href="informacionMedico.jsp">
+                <p class="control">
+                <button class="button is-success">
+                    Login
+                </button>
+                </p>
+                </a>
             <br><br><br>
-
-            
-                
+  
                 
         </div>
         </section>
