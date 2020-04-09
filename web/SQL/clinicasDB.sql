@@ -32,7 +32,7 @@ CREATE TABLE `clinicasdb`.`pacientes` (
   `idPaciente` INT NOT NULL AUTO_INCREMENT,
   `nombres` VARCHAR(145) NOT NULL,
   `apellidos` VARCHAR(145) NOT NULL,
-  `foto` VARCHAR(145) NOT NULL,
+  `foto` LONGBLOB,
   `fechaNacimiento` DATETIME NOT NULL,
   `DUI` VARCHAR(10) NOT NULL,
   `direccion` VARCHAR(200) NOT NULL,
