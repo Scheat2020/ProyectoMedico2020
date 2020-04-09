@@ -51,7 +51,7 @@
                     </div>
                 </div>
 
-                <!--Alergias-->
+                <!--Historial familiar-->
                 <div class="field">
                     <label class="label">Historial familiar</label>
                     <div class="control">
