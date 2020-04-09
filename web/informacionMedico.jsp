@@ -24,7 +24,8 @@
             <div class="columns is-vcentered">
                 <div class="column is-one-quarter">
                     <!--Esta clase la cree en el archivo bulma.css -->
-                    <figure class="image is-190x190">
+                    <!--<figure class="image is-190x190"> -->
+                    <figure class="image is-128x128">
                         <img class="is-rounded" src="https://screenfiction.org/content/image/0/5/184/924b45fd-full.webp" >
                     </figure>
                 </div>

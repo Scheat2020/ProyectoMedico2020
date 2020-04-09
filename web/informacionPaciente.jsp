@@ -81,7 +81,7 @@
                 <article class="message is-primary">
                     <div class="message-body">
                      <strong>Cita programada</strong>
-                     <br> Aqui va la informacion de la cita
+                     <br> Aqui va la informacion de la cita programada
                     </div>
                   </article>
             
