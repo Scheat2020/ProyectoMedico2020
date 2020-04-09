@@ -23,22 +23,22 @@
                 <div class="field">
                     <label class="label">Estatura en metros</label>
                     <div class="control">
-                        <input class="input" type="number" placeholder="Ej. 1.7">
+                        <input class="input" type="number" id="estatura" name="estatura" placeholder="Ej. 1.7">
                     </div>
                 </div>
                 <!--Tipo de sangre-->
                 <div class="control">
                     <label class="label">Tipo de sangre</label>
                     <div class="select">
-                        <select>
-                            <option>A+</option>
-                            <option>B+</option>
-                            <option>AB+</option>
-                            <option>O+</option>
-                            <option>A-</option>
-                            <option>B-</option>
-                            <option>AB-</option>
-                            <option>O-</option>
+                        <select id="tipoSangre" name="tipoSangre">
+                            <option id="A+" name="A+" value="A+">A+</option>
+                            <option id="B+" name="B+" value="B+">B+</option>
+                            <option id="AB+" name="AB+" value="AB+">AB+</option>
+                            <option id="O+" name="O+" value="O+">O+</option>
+                            <option id="A-" name="A-" value="A-">A-</option>
+                            <option id="B-" name="B-" value="B-">B-</option>
+                            <option id="AB-" name="AB-" value="AB-">AB-</option>
+                            <option id="O-" name="O-" value="O-">O-</option>
                         </select>
                     </div>
                 </div>
@@ -47,7 +47,7 @@
                 <div class="field">
                     <label class="label">Alergias</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="Ej. Nueces, polen, picadura de animales, etc.">
+                        <input class="input" type="text" id="alergias" name="alergias" placeholder="Ej. Nueces, polen, picadura de animales, etc.">
                     </div>
                 </div>
 
@@ -55,7 +55,7 @@
                 <div class="field">
                     <label class="label">Historial familiar</label>
                     <div class="control">
-                        <input class="input" type="text" placeholder="Ej. cáncer, diabetes, afecciones cardìacas, etc.">
+                        <input class="input" type="text" id="historial" name="historial" placeholder="Ej. cáncer, diabetes, afecciones cardìacas, etc.">
                     </div>
                 </div>
 

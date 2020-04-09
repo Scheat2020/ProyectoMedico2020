@@ -6,7 +6,7 @@
  <html lang="en">
     <head>
     <meta charset="utf-8">
-    <title>jQuery validation plug-in - main demo</title>
+    <title>Datos Personales</title>
     <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/screen.css">
     <script src="Scripts/validate/jquery-1.8.3.js" type="text/javascript"></script>
@@ -31,7 +31,7 @@
                                 dir: "required",
                                 dui: {
 					required: true,
-					minlength: 9
+					minlength: 10
 				},
                                 
 				username: {
@@ -66,7 +66,7 @@
  				
                                 dui: {
 					required: "*Introduzca su nùmero de DUI",
-					minlength: "*Su DUI debe contener al menos 9 dìgitos"
+					minlength: "*Su DUI debe contener al menos 9 dìgitos y un guión previo al último"
 				},       
                                 
 				username: {
@@ -98,7 +98,7 @@
 	});
 	</script>
 
-</head>
+    </head>
 
   
     <body>
@@ -131,7 +131,7 @@
                 <div class="field">
                     <label class="label" for="apellidos">Apellidos</label>
                     <div class="control">
-                    <input class="input" id="apellidos" name="apellidos" type="text" placeholder="Ej: Parada Ventura">
+                        <input class="input" id="apellidos" name="apellidos" type="text" placeholder="Ej: Parada Ventura">
                     </div>
                 </div>               
                 
@@ -139,15 +139,15 @@
                 <!--foto-->
                 <div class="file">
                     <label class="label">Fotos de perfil</label>
-                    <br>
+                    <br><br>
                     <label class="file-label">
-                        <input class="file-input" type="file" name="resume">
+                        <input class="file-input" type="file" name="foto">
                         <span class="file-cta">
                             <span class="file-icon">
                                 <i class="fas fa-upload"></i>
                             </span>
                             <span class="file-label">
-                                Seleccione el archivo?
+                                Seleccione el archivo
                             </span>
                         </span>
                     </label>
@@ -194,7 +194,7 @@
                 <div class="field">
                     <label class="label" for="password">Contraseña</label>
                     <div class="control">
-                    <input class="input" id="password" name="password" type="text" placeholder="Ingrese su contraseña">
+                    <input class="input" id="password" name="password" type="password" placeholder="Ingrese su contraseña">
                     </div>
                 </div> 
                  
@@ -203,7 +203,7 @@
                 <div class="field">
                     <label class="label" for="confirm_password">Confirme su contraseña</label>
                     <div class="control">
-                    <input class="input" id="confirm_password" name="confirm_password" type="text" placeholder="Confirme su contraseña">
+                    <input class="input" id="confirm_password" name="confirm_password" type="password" placeholder="Confirme su contraseña">
                     </div>
                 </div> 
                  
@@ -252,7 +252,9 @@
                 <!--botones continuar y cancelar-->
                 <div class="field is-grouped">
                     <p class="control">
-                        <input class="submit" type="submit" value="Submit" href="cuadroMedico.jsp">
+                        <a class="button is-primary" href="cuadroMedico.jsp">
+                            Continuar
+                        </a>
                     </p>
                     <p class="control">
                         <a class="button is-light" href="inicioPaciente.jsp">
