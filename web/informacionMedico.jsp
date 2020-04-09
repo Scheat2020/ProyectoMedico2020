@@ -35,7 +35,7 @@
                     <p>Médico general y cirujano cardiologo<p/>
                     <br>
                     <p>St. Bonaventure Hospital</p>
-                    <p>Telefono: 2265-5865</p>
+                    <p>Telefono: 2265-5875</p>
                 </div>
                 
                 
