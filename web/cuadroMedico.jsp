@@ -11,17 +11,53 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <title>Cuadro médico</title>
         <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
+        <link rel="stylesheet" href="css/screen.css">
+        <script src="Scripts/validate/jquery-1.8.3.js" type="text/javascript"></script>
+        <script src="Scripts/validate/jquery.validate.js" type="text/javascript"></script>
          
+        <script>
+	$.validator.setDefaults({
+		submitHandler: function() {
+			alert("submitted!");
+		}
+	});
+
+	$().ready(function() {
+		
+
+		// validate signup form on keyup and submit
+		$("#cuadromedico").validate({
+			rules: {
+				estatura: "required",
+				alergias: "required",
+                                historial: "required",
+                                
+			},          
+                       
+			messages: {
+				estatura: "*Ingrese su estatura en metros",
+				alergias: "*Ingrese alergias o indique que no sufre de estas",
+                                historial: "*Ingrese su historial o indique que no lo conoce",
+ 		
+
+			}
+		});
+
+		
+
+	});
+	</script>
+        
     </head>
     <body>
        
         <section class ="section">
             
-            <form action="" method="get">
+            <form class="cmxform" id="cuadromedico" action="" method="get">
 
                 <!--Estatura-->
                 <div class="field">
-                    <label class="label">Estatura en metros</label>
+                    <label class="label" for="estatura">Estatura en metros</label>
                     <div class="control">
                         <input class="input" type="number" id="estatura" name="estatura" placeholder="Ej. 1.7">
                     </div>
@@ -44,7 +80,7 @@
                 </div>
 
                 <!--Alergias-->
-                <div class="field">
+                <div class="field" for="alergias">
                     <label class="label">Alergias</label>
                     <div class="control">
                         <input class="input" type="text" id="alergias" name="alergias" placeholder="Ej. Nueces, polen, picadura de animales, etc.">
@@ -53,7 +89,7 @@
 
                 <!--Historial familiar-->
                 <div class="field">
-                    <label class="label">Historial familiar</label>
+                    <label class="label" for="historial">Historial familiar</label>
                     <div class="control">
                         <input class="input" type="text" id="historial" name="historial" placeholder="Ej. cáncer, diabetes, afecciones cardìacas, etc.">
                     </div>

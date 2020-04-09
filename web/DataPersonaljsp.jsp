@@ -56,13 +56,13 @@
 					minlength: 8
 				},
 				agree: "required"
-			}             
+			},          
                        
 			messages: {
 				firstname: "*Ingrese sus nombres",
 				apellidos: "*Ingrese sus apellidos",
                                 nacimiento: "*Ingrese su fecha de nacimiento",
-                                dir: "*Ingrese su direcciòn,"
+                                dir: "*Ingrese su direcciòn",
  				
                                 dui: {
 					required: "*Introduzca su nùmero de DUI",
@@ -251,11 +251,10 @@
                  
                 <!--botones continuar y cancelar-->
                 <div class="field is-grouped">
-                    <p class="control">
-                        <a class="button is-primary" href="cuadroMedico.jsp">
-                            Continuar
-                        </a>
+                    <p>
+                    <input class="button is-primary" type="submit" value="Continuar" href="cuadroMedico.jsp">
                     </p>
+                    <br><br>
                     <p class="control">
                         <a class="button is-light" href="inicioPaciente.jsp">
                             Cancelar
