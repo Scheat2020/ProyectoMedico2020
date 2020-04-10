@@ -1,7 +1,7 @@
 <%-- 
     Document   : CuadroGeneralForm
-    Created on : 03-07-2020, 09:01:40 AM
-    Author     : Grecia Parada
+    Created on : Mar 7, 2020, 10:20:25 AM
+    Author     : Sara Valentina
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -14,7 +14,7 @@
     <body>
        
         <section class ="section">
-            <!--Nombre-->
+            <!--Nombre -->
             <div class="field">
                 <label class="label">Nombre</label>
                 <div class="control">
@@ -65,3 +65,4 @@
         </section>
     </body>
 </html>
+

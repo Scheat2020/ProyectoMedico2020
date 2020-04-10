@@ -77,6 +77,6 @@
                 </a>
             </div>
             
-        <section/>
-    <body/>
+        </section>
+    </body>
 </html>

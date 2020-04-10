@@ -10,7 +10,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
-        <title>Información Médico</title>
+        <title>Información de Médico</title>
     </head>
     <body>
         <section class ="section"> 
