@@ -35,7 +35,7 @@
 			},          
                        
 			messages: {
-				estatura: "*Ingrese su estatura en metros",
+				estatura: "*Ingrese su estatura pedo en metros",
 				alergias: "*Ingrese alergias o indique que no sufre de estas",
                                 historial: "*Ingrese su historial o indique que no lo conoce",
  		
