@@ -47,7 +47,7 @@
             <a href="informacionMedico.jsp">
                 <p class="control">
                 <button class="button is-success">
-                    Login
+                    Log in
                 </button>
                 </p>
                 </a>
