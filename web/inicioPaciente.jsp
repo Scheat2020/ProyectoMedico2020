@@ -24,40 +24,38 @@
                 </p>
             </div>
         <br><br>
-        <div class="field">
-            <p class="control has-icons-left has-icons-right">
-                <input class="input" type="email" placeholder="ejemplo@gmail.com">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-envelope"></i>
-                    </span>
-                    <span class="icon is-small is-right">
-                    <i class="fas fa-check"></i>
-                    </span>
-            </p>
-        </div>
-        <div class="field">
-            <p class="control has-icons-left">
-                    <input class="input" type="password" placeholder="Password">
-                    <span class="icon is-small is-left">
-                    <i class="fas fa-lock"></i>
-                    </span>
-            </p>
-        </div>
-        <div class="field">
-               <a href="FichaTecnica.jsp">
-                <p class="control">
-                <button class="button is-success">
-                    Login
-                </button>
+        
+        <form class="cmxform" id="logInPacienteForm" action="LoginRegistroServlet" method="get">
+            <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="email" placeholder="ejemplo@gmail.com">
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-envelope"></i>
+                        </span>
+                        <span class="icon is-small is-right">
+                        <i class="fas fa-check"></i>
+                        </span>
                 </p>
-                </a>
-            <br><br><br>
-            <div>
-                <a href="DataPersonaljsp.jsp">¿No tienes un usuario? Regístrate aquí</a> 
             </div>
-            
-                        
-        </div>
+            <div class="field">
+                <p class="control has-icons-left">
+                        <input class="input" type="password" placeholder="Password">
+                        <span class="icon is-small is-left">
+                        <i class="fas fa-lock"></i>
+                        </span>
+                </p>
+            </div>
+            <div class="field">
+                <p>
+                    <input class="button is-primary" type="submit" value="Log in">
+                    <input type="hidden" name="formid" value="1" />
+                </p>
+                <br><br><br>
+                <div>
+                    <a href="DataPersonaljsp.jsp">¿No tienes un usuario? Regístrate aquí</a> 
+                </div>
+            </div>
+        </form>
         </section>
     </body>
 </html>

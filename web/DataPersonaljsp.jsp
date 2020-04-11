@@ -112,7 +112,7 @@
        
        <section class ="section"> 
             
-            <form class="cmxform" id="signupForm" action="clinicaServlet" method="get">
+            <form class="cmxform" id="signupForm" action="LoginRegistroServlet" method="get">
                 <fieldset>
                     
                     <div class="container">
@@ -310,7 +310,8 @@
                     <!--botones continuar y cancelar-->
                     <div class="field is-grouped">
                         <p>
-                        <input class="button is-primary" type="submit" value="Continuar" href="cuadroMedico.jsp">
+                            <input class="button is-primary" type="submit" value="Continuar">
+                            <input type="hidden" name="formid" value="2" />
                         </p>
                         <br><br>
                         <p class="control">
