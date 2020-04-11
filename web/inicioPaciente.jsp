@@ -28,7 +28,7 @@
         <form class="cmxform" id="logInPacienteForm" action="LoginRegistroServlet" method="get">
             <div class="field">
                 <p class="control has-icons-left has-icons-right">
-                    <input class="input" type="email" placeholder="ejemplo@gmail.com">
+                    <input class="input" id="usuario" name="usuario" type="text" placeholder="User">
                         <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                         </span>
@@ -39,7 +39,7 @@
             </div>
             <div class="field">
                 <p class="control has-icons-left">
-                        <input class="input" type="password" placeholder="Password">
+                        <input class="input" id="password" name="password" type="password" placeholder="Password">
                         <span class="icon is-small is-left">
                         <i class="fas fa-lock"></i>
                         </span>

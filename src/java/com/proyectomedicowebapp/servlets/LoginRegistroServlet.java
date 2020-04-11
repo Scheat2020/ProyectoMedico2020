@@ -1,22 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package com.proyectomedicowebapp.servlets;
 
+import com.proyectomedicowebapp.logic.UserLogic;
+import com.proyectomedicowebapp.objects.UserObj;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-/**
- *
- * @author Sara Valentina
- */
 @WebServlet(name = "LoginRegistroServlet", urlPatterns = {"/LoginRegistroServlet"})
 public class LoginRegistroServlet extends HttpServlet {
 
@@ -30,19 +23,42 @@ public class LoginRegistroServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet LoginRegistroServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet LoginRegistroServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
+            throws ServletException, IOException 
+    {
+        String strFormId = request.getParameter("formid");
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=polb-12casa7&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        
+        UserLogic CLogic = new UserLogic(connString);
+        
+        if(strFormId.equals("1"))
+        {
+            //accion es log in
+            
+ 
+            String strUser = request.getParameter("usuario");
+            String strPassword = request.getParameter("password");
+            
+            //necesito un metodo que me permita saber si el usuario existe o no
+            UserObj CLoginUser = CLogic.getUserInDB(strUser, strPassword);
+            
+            //verificacion como yo la necesito
+            if(CLoginUser!=null)
+            {
+                //log in al usuario eeexitooooo
+                request.getSession().setAttribute("logged_user", CLoginUser);
+                
+                request.getRequestDispatcher("informacionPaciente.jsp")
+                       .forward(request, response);
+            }
+            else
+            {
+                String strMessage = "User or Password are incorrect please try again";
+                request.getSession().setAttribute("message", strMessage);
+                
+                //usuario o password estan equivocados
+                request.getRequestDispatcher("errorMessage.jsp")
+                       .forward(request, response);
+            }
         }
     }
 
