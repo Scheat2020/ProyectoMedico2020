@@ -26,7 +26,7 @@
         <br><br>
         <div class="field">
             <p class="control has-icons-left has-icons-right">
-        <input class="input" id="usuario" name="usuario" type="text" placeholder="User">
+        <input class="input" type="email" placeholder="ejemplo@gmail.com">
              <span class="icon is-small is-left">
             <i class="fas fa-envelope"></i>
                 </span>
@@ -37,7 +37,7 @@
         </div>
         <div class="field">
         <p class="control has-icons-left">
-            <input class="input" type="password" id="password" name="password" placeholder="Password">
+            <input class="input" type="password" placeholder="Password">
                 <span class="icon is-small is-left">
                     <i class="fas fa-lock"></i>
                    </span>
@@ -45,10 +45,10 @@
         </div>
            <div class="field">
             <a href="informacionMedico.jsp">
-                <p>
-                    <input class="button is-primary" type="submit" value="Log in">
-                    <input type="hidden" name="formid" value="3" />
-                    <%--Aquie comienza--%>
+                <p class="control">
+                <button class="button is-success">
+                    Login
+                </button>
                 </p>
                 </a>
             <br><br><br>
