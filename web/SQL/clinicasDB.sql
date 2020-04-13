@@ -36,7 +36,6 @@ CREATE TABLE `clinicasdb`.`pacientes` (
   `fechaNacimiento` DATETIME NOT NULL,
   `DUI` VARCHAR(10) NOT NULL,
   `direccion` VARCHAR(200) NOT NULL,
-  `nombreUsuario` VARCHAR(145) NOT NULL,
   `celular` VARCHAR(9) NOT NULL,
   `correo` VARCHAR(145) NOT NULL,
   `sexo` TINYINT(1) NOT NULL,
