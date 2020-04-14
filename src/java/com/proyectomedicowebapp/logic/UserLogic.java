@@ -26,10 +26,12 @@ public class UserLogic extends Logic
         UserObj CUserDB = null;
         DatabaseX CDatabase = getDatabase();
         String strSQL = "select * "
-                + "from clinicasdb.usuarios "
+                + "from clinicasdb.pacientes "
                 + "where usuario like '"+p_strUser+"' "
                 + "and password like '"+p_strPassword+"';";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        System.out.println(CResult);
         
         if(CResult!=null)
         {
@@ -39,16 +41,14 @@ public class UserLogic extends Logic
                 int iId;
                 String strUser;
                 String strPassword;
-                String strType;
                 
                 while(CResult.next())
                 {
-                    iId = CResult.getInt("idUsuario");
+                    iId = CResult.getInt("idPaciente");
                     strUser = CResult.getString("usuario");
                     strPassword = CResult.getString("password");
-                    strType = CResult.getString("tipo");
                     
-                    CUserDB = new UserObj(iId, strUser, strPassword, strType);
+                    CUserDB = new UserObj(iId, strUser, strPassword);
                     
                 }
             } 
