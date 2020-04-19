@@ -1,4 +1,3 @@
-
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
@@ -97,6 +96,36 @@ public class LoginRegistroServlet extends HttpServlet {
                 request.getRequestDispatcher("errorMessage.jsp")
                        .forward(request, response);
             }
+        }
+        if(strFormId.equals("2"))
+        {
+            String strNombre = request.getParameter("firstname");
+            String strApellidos = request.getParameter("apellidos");
+            String strFoto = request.getParameter("foto");
+            String strNacimiento = request.getParameter("nacimiento");
+            String strDUI = request.getParameter("dui");
+            String strDireccion = request.getParameter("dir");
+            String strUser = request.getParameter("username");
+            String strPassword = request.getParameter("password");
+            String strCelular = request.getParameter("celular");
+            String strEmail = request.getParameter("email");
+            String strSexo = request.getParameter("sexo");
+
+            String strEstatura = request.getParameter("estatura");
+            String strSangre = request.getParameter("tipoSangre");
+            String strAlergias = request.getParameter("alergias");
+            String strHistorial = request.getParameter("historial");
+            
+            if (strFoto.equals("")){
+                strFoto = "NULL";
+            }
+            
+            UserLogic CLogic2 = new UserLogic(connString);
+            boolean hasFailed = 
+                    CLogic2.insertUser(strNombre, strApellidos, strFoto, strNacimiento, strDUI, strDireccion, strUser, strPassword, strCelular, strEmail, strSexo, strEstatura, strSangre, strAlergias, strHistorial);
+            
+            request.getRequestDispatcher("inicioPaciente.jsp")
+                   .forward(request, response);
         }
     }
 //jejeje

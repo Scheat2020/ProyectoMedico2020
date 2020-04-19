@@ -102,4 +102,26 @@ public class UserLogic extends Logic
         return CUserDB;  
     }
      
+    public boolean insertUser(String p_strNombre, 
+            String p_strApellido, String p_strFoto, String p_strFecha,
+            String p_strDUI, String p_strDirección, String p_strUser,
+            String p_strPassword, String p_strCelular, String p_strEmail,
+            String p_strSexo, String p_strEstatura, String p_strSangre,
+            String p_strAlergias, String p_strHistrial)  
+    {
+        boolean hasFailed;
+        DatabaseX database = getDatabase();
+        
+        String strSql = "INSERT INTO clinicasdb.pacientes"
+                + "(usuario, password, nombres, apellidos, foto, fechaNacimiento, DUI, direccion, celular, correo, sexo, estatura, tipoSangre, alergias, historialFamiliar) "
+                + "VALUES('"+p_strUser+"', '"+p_strPassword+"', '"+p_strNombre+"', '"+p_strApellido+"', "+p_strFoto+", '"+p_strFecha+"', '"+p_strDUI+"', "
+                + "'"+p_strDirección+"', '"+p_strCelular+"', '"+p_strEmail+"', '"+p_strSexo+"', '"+p_strEstatura+"', '"+p_strSangre+"', '"+p_strAlergias+"', '"+p_strHistrial+"');";
+        
+        hasFailed = database.executeNonQueryBool(strSql);
+        
+        System.out.println(strSql);
+        
+        return hasFailed;
+    }
+    
 }
