@@ -12,23 +12,26 @@ public class UserObj
     private int m_iId;
     private String m_strUser;
     private String m_strPassword;
+    private String m_strTabla;
 
     //constructor
     public UserObj(int p_iId, String p_strUser, 
-            String p_strPassword) 
+            String p_strPassword, String p_strTabla) 
     {
         setId(p_iId);
         setUser(p_strUser);
         setPassword(p_strPassword);
+        setTabla(p_strTabla);
     }
-    
+        
     //getters and setters
+
     public int getId() {
         return m_iId;
     }
 
     private void setId(int p_iId) {
-        m_iId = p_iId;
+         m_iId = p_iId;
     }
 
     public String getUser() {
@@ -45,5 +48,13 @@ public class UserObj
 
     private void setPassword(String p_strPassword) {
         m_strPassword = p_strPassword;
+    }
+
+    public String getTabla() {
+        return m_strTabla;
+    }
+
+    private void setTabla(String p_strTabla) {
+        m_strTabla = p_strTabla;
     }
 }

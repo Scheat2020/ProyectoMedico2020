@@ -1,4 +1,9 @@
 
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package com.proyectomedicowebapp.servlets;
 
 import com.proyectomedicowebapp.logic.UserLogic;
@@ -26,7 +31,7 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=SanJorge20&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=123456789&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
         UserLogic CLogic = new UserLogic(connString);
         
@@ -34,12 +39,13 @@ public class LoginRegistroServlet extends HttpServlet {
         {
             //accion es log in
             
- 
+            
             String strUser = request.getParameter("usuario");
             String strPassword = request.getParameter("password");
+            String strTabla = "clinicasdb.pacientes";
             
             //necesito un metodo que me permita saber si el usuario existe o no
-            UserObj CLoginUser = CLogic.getUserInDB(strUser, strPassword);
+            UserObj CLoginUser = CLogic.getUserInDB(strUser, strPassword, strTabla);
             
             //verificacion como yo la necesito
             if(CLoginUser!=null)
@@ -47,7 +53,39 @@ public class LoginRegistroServlet extends HttpServlet {
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);
                 
-                request.getRequestDispatcher("informacionPaciente.jsp")
+                request.getRequestDispatcher("FichaTecnica.jsp")
+                       .forward(request, response);
+            }
+            else
+            {
+                String strMessage = "User or Password are incorrect please try again";
+                request.getSession().setAttribute("message", strMessage);
+                
+                //usuario o password estan equivocados
+                request.getRequestDispatcher("errorMessage.jsp")
+                       .forward(request, response);
+            }
+        }
+        
+        if(strFormId.equals("3"))
+        {
+            //accion es log in
+            
+            
+            String strUser = request.getParameter("usuario");
+            String strPassword = request.getParameter("password");
+            String strTabla = "clinicasdb.doctores";
+            
+            //necesito un metodo que me permita saber si el usuario existe o no
+            UserObj CLoginUser = CLogic.getUserInDB(strUser, strPassword, strTabla);
+            
+            //verificacion como yo la necesito
+            if(CLoginUser!=null)
+            {
+                //log in al usuario eeexitooooo
+                request.getSession().setAttribute("logged_user", CLoginUser);
+                
+                request.getRequestDispatcher("informacionMedico.jsp")
                        .forward(request, response);
             }
             else
@@ -61,6 +99,8 @@ public class LoginRegistroServlet extends HttpServlet {
             }
         }
     }
+//jejeje
+
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**
