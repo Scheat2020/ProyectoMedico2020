@@ -5,7 +5,9 @@
  */
 package com.proyectomedicowebapp.servlets;
 
+import com.proyectomedicowebapp.logic.InfoLogic;
 import com.proyectomedicowebapp.logic.UserLogic;
+import com.proyectomedicowebapp.objects.InfoObj;
 import com.proyectomedicowebapp.objects.UserObj;
 import java.io.IOException;
 import javax.servlet.ServletException;
@@ -49,8 +51,11 @@ public class LoginRegistroServlet extends HttpServlet {
             //verificacion como yo la necesito
             if(CLoginUser!=null)
             {
+                InfoLogic CInfoL = new InfoLogic(connString);
+                InfoObj CListInf = CInfoL.getInfoDB(strUser);
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);
+                request.getSession().setAttribute("logged_Inf", CListInf );
                 
                 request.getRequestDispatcher("FichaTecnica.jsp")
                        .forward(request, response);
