@@ -83,7 +83,8 @@
                             </a>
                         </div>
                         <a href="inicioPaciente.jsp">
-                            <button class="button is-danger">Cerrar sesión</button>
+                            <input class="button is-danger" type="submit" value="Cerrar sesión">
+                            <input type="hidden" name="formid" value="4" />
                         </a>
                     </div>
                 </div>

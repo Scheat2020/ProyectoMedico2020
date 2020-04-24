@@ -10,11 +10,14 @@ import com.proyectomedicowebapp.logic.UserLogic;
 import com.proyectomedicowebapp.objects.InfoObj;
 import com.proyectomedicowebapp.objects.UserObj;
 import java.io.IOException;
+import java.io.PrintWriter;
+import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @WebServlet(name = "LoginRegistroServlet", urlPatterns = {"/LoginRegistroServlet"})
 public class LoginRegistroServlet extends HttpServlet {
@@ -32,10 +35,10 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=123456789&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
         UserLogic CLogic = new UserLogic(connString);
-        
+            
         if(strFormId.equals("1"))
         {
             //accion es log in
@@ -62,7 +65,7 @@ public class LoginRegistroServlet extends HttpServlet {
             }
             else
             {
-                String strMessage = "User or Password are incorrect please try again";
+                String strMessage = "Usuario o contraseña incorrecta. Por favor, ingrese de nuevo.";
                 request.getSession().setAttribute("message", strMessage);
                 
                 //usuario o password estan equivocados
@@ -94,7 +97,7 @@ public class LoginRegistroServlet extends HttpServlet {
             }
             else
             {
-                String strMessage = "User or Password are incorrect please try again";
+                String strMessage = "Usuario o contraseña incorrecta. Por favor, ingrese de nuevo.";
                 request.getSession().setAttribute("message", strMessage);
                 
                 //usuario o password estan equivocados
@@ -131,6 +134,16 @@ public class LoginRegistroServlet extends HttpServlet {
             
             request.getRequestDispatcher("inicioPaciente.jsp")
                    .forward(request, response);
+        }
+        
+        //Cerrar sesión
+        if(strFormId.equals("4"))
+        {
+            
+            FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
+            request.getRequestDispatcher("inicioPaciente.jsp")
+                   .forward(request, response);
+            
         }
     }
 //jejeje
