@@ -38,14 +38,14 @@ CREATE TABLE `clinicasdb`.`pacientes` (
   `direccion` VARCHAR(200) NOT NULL,
   `celular` VARCHAR(9) NOT NULL,
   `correo` VARCHAR(200) NOT NULL,
-  `sexo` TINYINT(1) NOT NULL,
+  `sexo` VARCHAR(10) NOT NULL,
   `seguro` TINYINT(1),
   `estatura` VARCHAR(5) NOT NULL,
   `tipoSangre` VARCHAR(3) NOT NULL,
   `alergias` VARCHAR(200) NOT NULL,
   `historialFamiliar` VARCHAR(200) NOT NULL,
   `idDoctor` INT,
-  `Reseta` VARCHAR(200),
+  `receta` VARCHAR(200),
   PRIMARY KEY (`idPaciente`));
 
 
@@ -82,3 +82,13 @@ ADD CONSTRAINT `fk_pacienteD`
   REFERENCES `clinicasdb`.`doctores` (`idDoctor`)
   ON DELETE NO ACTION
   ON UPDATE NO ACTION;
+
+CREATE TABLE `clinicasdb`.`asistente` (
+  `idasistente` INT NOT NULL AUTO_INCREMENT,
+  `usuario` VARCHAR(145) NOT NULL,
+  `password` VARCHAR(45) NOT NULL,
+  `nombres` VARCHAR(145) NOT NULL,
+  `apellidos` VARCHAR(145) NOT NULL,
+  `celular` VARCHAR(9) NOT NULL,
+  `correo` VARCHAR(145) NOT NULL,
+  PRIMARY KEY (`idasistente`));
