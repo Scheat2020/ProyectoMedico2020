@@ -7,6 +7,31 @@
 <%@page import="com.proyectomedicowebapp.objects.InfoObj"%>
 <%@page import="com.proyectomedicowebapp.objects.UserObj"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true" %>
+<%
+
+    response.setHeader("Pragma","no-cache");
+    response.addHeader("Cache-control","must-revalidate");
+    response.addHeader("Cache-control", "no-cache");
+    response.addHeader("Cache-control", "no-store");
+    response.setDateHeader("Expires", 0);
+
+    try{
+        if(session.getAttribute("user")==null){
+
+
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        }
+
+    }catch(Exception e){
+
+
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+
+    }
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -21,6 +46,8 @@
         
         InfoObj CUserInf =
                 (InfoObj)request.getSession().getAttribute("logged_Inf");
+        
+        session.getAttribute("user");
         
     %>
     <body>
@@ -82,9 +109,8 @@
                                 <button class="button is-primary">Agendar cita</button>
                             </a>
                         </div>
-                        <a href="inicioPaciente.jsp">
-                            <input class="button is-danger" type="submit" value="Cerrar sesión">
-                            <input type="hidden" name="formid" value="4" />
+                        <a href="controladorSalir.do">
+                            <button class="button is-danger">Cerrar sesión</button>
                         </a>
                     </div>
                 </div>

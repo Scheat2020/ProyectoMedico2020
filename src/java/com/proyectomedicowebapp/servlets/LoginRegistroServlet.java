@@ -35,10 +35,12 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345678B-&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
         UserLogic CLogic = new UserLogic(connString);
-            
+        
+        
+        //Login Paciente
         if(strFormId.equals("1"))
         {
             //accion es log in
@@ -59,6 +61,7 @@ public class LoginRegistroServlet extends HttpServlet {
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);
                 request.getSession().setAttribute("logged_Inf", CListInf );
+                request.getSession().setAttribute("user", strUser );
                 
                 request.getRequestDispatcher("FichaTecnica.jsp")
                        .forward(request, response);
@@ -74,6 +77,8 @@ public class LoginRegistroServlet extends HttpServlet {
             }
         }
         
+        
+        //Login Doctor
         if(strFormId.equals("3"))
         {
             //accion es log in
@@ -91,6 +96,7 @@ public class LoginRegistroServlet extends HttpServlet {
             {
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);
+                request.getSession().setAttribute("user", strUser );
                 
                 request.getRequestDispatcher("informacionMedico.jsp")
                        .forward(request, response);
@@ -105,6 +111,8 @@ public class LoginRegistroServlet extends HttpServlet {
                        .forward(request, response);
             }
         }
+        
+        //Registro
         if(strFormId.equals("2"))
         {
             String strNombre = request.getParameter("firstname");
@@ -134,16 +142,6 @@ public class LoginRegistroServlet extends HttpServlet {
             
             request.getRequestDispatcher("inicioPaciente.jsp")
                    .forward(request, response);
-        }
-        
-        //Cerrar sesión
-        if(strFormId.equals("4"))
-        {
-            
-            FacesContext.getCurrentInstance().getExternalContext().invalidateSession();
-            request.getRequestDispatcher("inicioPaciente.jsp")
-                   .forward(request, response);
-            
         }
     }
 //jejeje

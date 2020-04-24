@@ -5,6 +5,31 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true" %>
+<%
+
+    response.setHeader("Pragma","no-cache");
+    response.addHeader("Cache-control","must-revalidate");
+    response.addHeader("Cache-control", "no-cache");
+    response.addHeader("Cache-control", "no-store");
+    response.setDateHeader("Expires", 0);
+
+    try{
+        if(session.getAttribute("user")==null){
+
+
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        }
+
+    }catch(Exception e){
+
+
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+
+    }
+
+%>
 <!DOCTYPE html>
 <html>
     <head>
@@ -12,6 +37,9 @@
         <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>Información de Médico</title>
     </head>
+    <% 
+        session.getAttribute("user"); 
+    %>
     <body>
         <section class ="section"> 
             <div class="container">
@@ -141,6 +169,20 @@
                 
                     </div>
             </div>
+            
+            
+            <br><br><br><br:
+            
+            <div class="columns is-vcentered">
+                <div class="column is-one-quarter">
+                    <div class="container">
+                        <a href="controladorSalir.do">
+                            <button class="button is-danger">Cerrar sesión</button>
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
         </section>
     </body>
 </html>
