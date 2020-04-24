@@ -8,6 +8,11 @@
  * Created: 8 abr. 2020
  */
 
+/**
+ * Author:  sergi
+ * Created: 8 abr. 2020
+ */
+
 CREATE SCHEMA `clinicasdb` ;
 
 CREATE TABLE `clinicasdb`.`doctores` (
