@@ -28,25 +28,26 @@ CREATE TABLE `clinicasdb`.`pacientes` (
   `nombres` VARCHAR(145) NOT NULL,
   `apellidos` VARCHAR(145) NOT NULL,
   `foto` LONGBLOB,
-  `fechaNacimiento` DATETIME NOT NULL,
+  `fechaNacimiento` DATE NOT NULL,
   `DUI` VARCHAR(10) NOT NULL,
   `direccion` VARCHAR(200) NOT NULL,
   `celular` VARCHAR(9) NOT NULL,
-  `correo` VARCHAR(145) NOT NULL,
+  `correo` VARCHAR(200) NOT NULL,
   `sexo` TINYINT(1) NOT NULL,
-  `seguro` TINYINT(1) NOT NULL,
-  `estatura` DOUBLE NOT NULL,
+  `seguro` TINYINT(1),
+  `estatura` VARCHAR(5) NOT NULL,
   `tipoSangre` VARCHAR(3) NOT NULL,
   `alergias` VARCHAR(200) NOT NULL,
   `historialFamiliar` VARCHAR(200) NOT NULL,
   `idDoctor` INT,
+  `Reseta` VARCHAR(200),
   PRIMARY KEY (`idPaciente`));
 
 
 CREATE TABLE `clinicasdb`.`citas` (
   `idCita` INT NOT NULL AUTO_INCREMENT,
   `motivo` VARCHAR(145) NOT NULL,
-  `fecha` DATETIME NOT NULL,
+  `fecha` DATE NOT NULL,
   `idPaciente` INT NOT NULL,
   `idDoctor` INT NOT NULL,
   PRIMARY KEY (`idCita`));
