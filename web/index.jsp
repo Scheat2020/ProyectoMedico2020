@@ -55,7 +55,7 @@ and open the template in the editor.
           <a data-scroll href="#section2" id="section" class="navbar-a">Pilares</a>
         </li>
         <li class="navbar-item">
-          <a data-scroll href="#gallery" id="photos" class="navbar-a">Login</a>
+          <a data-scroll href="#contacto" id="photos" class="navbar-a">Login</a>
         </li>
 
       </ul>
