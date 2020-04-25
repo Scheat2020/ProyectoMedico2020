@@ -145,7 +145,7 @@
                             <th id="idPaciente" name="idPaciente"><%= CTemp.geIdPaciente() %></th>
                             <td id="nombres" name="nombres"><%= CTemp.getApellidos() %></td>
                             <td id="apellidos" name="apellidos"><%= CTemp.getNombres() %></td>
-                            <td id="ver" name="ver"><a href="InfoPacienteServlet?idPaciente">Ver</a></td>
+                            <td id="ver" name="ver"><a href="InfoPacienteServlet.do?idPaciente=<?idPaciente>">Ver</a></td>
                             <td id="cita" name="cita"><%= CTemp.getFecha() %></td>
                             <td id="hora" name="hora"><%= CTemp.getHora() %></td>
                           </tr>
