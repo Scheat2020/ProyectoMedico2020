@@ -64,22 +64,22 @@
                             </span>
                         </p>
                     </div>
-                    <div class="field">
-                        
-                        <p class="control">
-                            <a type="submit" value="Log in" class="button is-primary is-radiusless is-shadowless button is-medium is-fullwidth">
-                             Login
-                            </a>
+                    
+                    
+                    <div class="field">    
+                        <p>
+                            <input class="button is-primary is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Log in">
+                            <input type="hidden" name="formid" value="1" />
+                        <%--Aquie comienza--%>
                         </p>
-                        <input type="hidden" name="formid" value="1" />
-                                            
-                        <br>                       
-                        
-                        
+                        <br>
+
                         <div>
                             <a href="DataPersonaljsp.jsp">¿No tienes un usuario? Regístrate aquí</a> 
                         </div>
                     </div>
+                    
+                    
                 </form>
             </section>
         </section>

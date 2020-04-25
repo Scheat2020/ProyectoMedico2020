@@ -68,16 +68,13 @@
                    
                
                 <br><br>
+                
                 <div class="field">
-                    <div class="control">                           
-                        <p class="control">
-                            <a type="submit" value="Login" class="button is-primary is-radiusless is-shadowless button is-medium is-fullwidth">
-                             Login
-                            </a>
-                        </p>
-                        <input type="hidden" name="formid" value="3" />
-                    </div>
-                </div>         
+                    <input class="button is-primary is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Login">
+                    <input type="hidden" name="formid" value="3" />
+                </div>
+                
+                   
             </form>
             </section>
         </section>
