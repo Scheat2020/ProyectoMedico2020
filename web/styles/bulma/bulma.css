@@ -3365,10 +3365,6 @@ fieldset[disabled] .button {
   height: 128px;
   width: 128px;
 }
-.image.is-190x190 {
-  height: 190px;
-  width: 190px;
-}
 
 .notification {
   background-color: whitesmoke;
