@@ -28,7 +28,7 @@ public class UserLogic extends Logic
     {
         List<TablaObj> CL = null;
         DatabaseX CDatabase = getDatabase();
-         String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha from clinicasdb.citas inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente;";
+        String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora from clinicasdb.citas inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente;";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
         if(CResult!=null)
@@ -39,6 +39,7 @@ public class UserLogic extends Logic
                 String strNombres;
                 String strApellidos;
                 String strCita;
+                String strHora;
                 TablaObj CTemp;
                 CL = new ArrayList<>();
                 
@@ -48,8 +49,9 @@ public class UserLogic extends Logic
                     strNombres = CResult.getString("nombres");
                     strApellidos = CResult.getString("apellidos"); 
                     strCita = CResult.getString("fecha"); 
+                    strHora = CResult.getString("hora"); 
                     
-                    CTemp = new TablaObj(strNombres, strApellidos, IdPaciente, strCita);
+                    CTemp = new TablaObj(strNombres, strApellidos, IdPaciente, strCita, strHora);
                     CL.add(CTemp);
                    
                 }
@@ -151,9 +153,9 @@ public class UserLogic extends Logic
     {
          TablaObj CFistUser = null;
         DatabaseX CDatabase = getDatabase();
-         String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha " 
+         String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora " 
                  + "from clinicasdb.citas inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente " 
-                 + "order by citas.fecha Limit 1;";
+                 + "order by citas.fecha and citas.hora Limit 1;";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
         if(CResult!=null)
@@ -164,6 +166,7 @@ public class UserLogic extends Logic
                 String strNombres;
                 String strApellidos;
                 String strCita;
+                String strHora;
                 
                 while(CResult.next())
                 {
@@ -171,8 +174,9 @@ public class UserLogic extends Logic
                     strNombres = CResult.getString("nombres");
                     strApellidos = CResult.getString("apellidos"); 
                     strCita = CResult.getString("fecha"); 
+                    strHora = CResult.getString("hora"); 
                     
-                    CFistUser = new TablaObj(strNombres, strApellidos, IdPaciente, strCita);
+                    CFistUser = new TablaObj(strNombres, strApellidos, IdPaciente, strCita, strHora);
                    
                 }
             } catch (SQLException ex) 
