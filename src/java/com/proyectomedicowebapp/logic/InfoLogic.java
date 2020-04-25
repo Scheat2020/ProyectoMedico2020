@@ -7,6 +7,7 @@ package com.proyectomedicowebapp.logic;
 
 import balcorpfw.database.DatabaseX;
 import balcorpfw.logic.Logic;
+import com.proyectomedicowebapp.objects.InfoDocObj;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.logging.Level;
@@ -96,6 +97,65 @@ public class InfoLogic extends Logic{
         return CInfoDB;  
     }
     
+        
+    public InfoDocObj getInfoDBDoc(String p_usuario ) {
+        
+        InfoDocObj CInfoDB = null;
+        
+        DatabaseX CDatabase = getDatabase();
+        
+        String strSQL = "select * "
+                + "from clinicasdb.doctores "
+                + "where usuario like '"+p_usuario+"'";
+        ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        System.out.println(strSQL);
+        
+
+            
+            if(CResult!=null)
+            {
+                try 
+                {
+                    //varibles locales que capturen esos datos
+                    String strUser;
+                    //declarar variables para informaciòn
+                    String strNombre;
+                    String strApellido;
+                    String strCelular;
+                    String strCorreo;
+                    String strCredencial;
+                    String strDireccion;
+                    String strEspecialidad;
+
+                    while(CResult.next())
+                    {
+                        //Variables para inicio de sesiòn
+                        strUser = CResult.getString("usuario");
+                        
+                        //Variables para ddatos del usuario
+                        strNombre= CResult.getString("nombres");
+                        strApellido = CResult.getString("apellidos");
+                        strCelular = CResult.getString("celular");
+                        strCorreo = CResult.getString("correo");
+                        strCredencial = CResult.getString("credencial");
+                        strDireccion = CResult.getString("direccion");
+                        strEspecialidad = CResult.getString("especialidad");
+
+                        CInfoDB = new InfoDocObj(strNombre, strApellido,  strCelular, strCorreo, strCredencial, strDireccion, strEspecialidad);
+
+                    }
+                } 
+                catch (SQLException ex) 
+                {
+                    Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+            }
+            
+        return CInfoDB;  
+    }
     
 }
   

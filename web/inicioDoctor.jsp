@@ -27,7 +27,7 @@
             <form class="cmxform" id="logInDoctorForm" action="LoginRegistroServlet" method="get">
                 <div class="field">
                     <p class="control has-icons-left has-icons-right">
-                <input class="input" id="usuario" name="usuario" type="text" placeholder="chikitoprexioxo123">
+                <input class="input" id="usuario" name="usuario" type="text" placeholder="usuario">
                      <span class="icon is-small is-left">
                     <i class="fas fa-envelope"></i>
                         </span>

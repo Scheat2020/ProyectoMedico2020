@@ -7,9 +7,12 @@ package com.proyectomedicowebapp.logic;
 
 import balcorpfw.database.DatabaseX;
 import balcorpfw.logic.Logic;
+import com.proyectomedicowebapp.objects.TablaObj;
 import com.proyectomedicowebapp.objects.UserObj;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -20,6 +23,48 @@ public class UserLogic extends Logic
     {
         super(connString);
     }
+    
+    public List<TablaObj> getAllUsers()
+    {
+        List<TablaObj> CL = null;
+        DatabaseX CDatabase = getDatabase();
+         String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha from clinicasdb.citas inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente;";
+        ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        if(CResult!=null)
+        {
+            try 
+            {
+                int IdPaciente;
+                String strNombres;
+                String strApellidos;
+                String strCita;
+                TablaObj CTemp;
+                CL = new ArrayList<>();
+                
+                while(CResult.next())
+                {
+                    IdPaciente = CResult.getInt("idPaciente");
+                    strNombres = CResult.getString("nombres");
+                    strApellidos = CResult.getString("apellidos"); 
+                    strCita = CResult.getString("fecha"); 
+                    
+                    CTemp = new TablaObj(strNombres, strApellidos, IdPaciente, strCita);
+                    CL.add(CTemp);
+                   
+                }
+            } catch (SQLException ex) 
+            {
+                Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return CL;
+    }
+    
+    
+    
+    
     
     public UserObj getUserInDB(String p_strUser, String p_strPassword, String p_strTabla) 
     {

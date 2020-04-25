@@ -25,7 +25,7 @@
             <h1 class="title">Se ha producido un error</h1>
             <p><%= strMessage %></p>
             <br><br>
-            <a href="index.html">
+            <a href="index.jsp">
             <button class="button is-danger">Volver al inicio </button>
             </a>
         </div>

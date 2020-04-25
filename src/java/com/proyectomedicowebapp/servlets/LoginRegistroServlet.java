@@ -7,10 +7,13 @@ package com.proyectomedicowebapp.servlets;
 
 import com.proyectomedicowebapp.logic.InfoLogic;
 import com.proyectomedicowebapp.logic.UserLogic;
+import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
+import com.proyectomedicowebapp.objects.TablaObj;
 import com.proyectomedicowebapp.objects.UserObj;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.faces.context.FacesContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -35,7 +38,7 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=123456789&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
         UserLogic CLogic = new UserLogic(connString);
         
@@ -94,9 +97,19 @@ public class LoginRegistroServlet extends HttpServlet {
             //verificacion como yo la necesito
             if(CLoginUser!=null)
             {
+                InfoLogic CInfoL = new InfoLogic(connString);
+                InfoDocObj CListInfDoc = CInfoL.getInfoDBDoc(strUser);
+                
+               //Obtengo los todos usuarios
+               UserLogic CL = new UserLogic(connString);
+                List<TablaObj> CList = CL.getAllUsers();
+                
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);
+                request.getSession().setAttribute("logged_Inf", CListInfDoc );
                 request.getSession().setAttribute("user", strUser );
+                request.getSession().setAttribute("usuarios", CList );
+                
                 
                 request.getRequestDispatcher("informacionMedico.jsp")
                        .forward(request, response);
