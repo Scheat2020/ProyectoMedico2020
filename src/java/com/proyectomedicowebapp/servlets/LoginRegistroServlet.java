@@ -104,11 +104,16 @@ public class LoginRegistroServlet extends HttpServlet {
                UserLogic CL = new UserLogic(connString);
                 List<TablaObj> CList = CL.getAllUsers();
                 
+                //Obtengo la cita mas proxima
+                UserLogic CFirst = new UserLogic(connString);
+                TablaObj CFistDB = CFirst.getFistUserInDB();
+                
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);
                 request.getSession().setAttribute("logged_Inf", CListInfDoc );
                 request.getSession().setAttribute("user", strUser );
                 request.getSession().setAttribute("usuarios", CList );
+                request.getSession().setAttribute("first_user", CFistDB );
                 
                 
                 request.getRequestDispatcher("informacionMedico.jsp")

@@ -48,6 +48,10 @@
 
          List<TablaObj> CList = 
                 (List<TablaObj>)request.getSession().getAttribute("usuarios");
+         
+         TablaObj CFistDB =
+                 (TablaObj)request.getSession().getAttribute("first_user");
+
     %>
     <body>
         <section class ="section"> 
@@ -81,7 +85,7 @@
                 <article class="message is-primary">
                     <div class="message-body">
                      <strong>Paciente más próximo</strong>
-                     <br> Sergio David, López Paniagua
+                     <br> <%= CFistDB.getApellidos() %>, <%= CFistDB.getNombres() %>
                      <a href="informacionPaciente.jsp">Revisar su registro</a>
                     </div>
                   </article>
@@ -136,7 +140,7 @@
                                     CTemp = ite.next();
                         %>
                           <tr>
-                            <th>1</th>
+                            <th><%= CTemp.geIdPaciente() %></th>
                             <td><%= CTemp.getApellidos() %>
                             </td>
                             <td><%= CTemp.getNombres() %></td>

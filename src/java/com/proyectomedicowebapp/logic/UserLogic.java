@@ -62,9 +62,7 @@ public class UserLogic extends Logic
         return CL;
     }
     
-    
-    
-    
+
     
     public UserObj getUserInDB(String p_strUser, String p_strPassword, String p_strTabla) 
     {
@@ -147,6 +145,48 @@ public class UserLogic extends Logic
         return CUserDB;  
     }
      
+    
+    
+    public TablaObj getFistUserInDB()
+    {
+         TablaObj CFistUser = null;
+        DatabaseX CDatabase = getDatabase();
+         String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha " 
+                 + "from clinicasdb.citas inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente " 
+                 + "order by citas.fecha Limit 1;";
+        ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        if(CResult!=null)
+        {
+            try 
+            {
+                int IdPaciente;
+                String strNombres;
+                String strApellidos;
+                String strCita;
+                
+                while(CResult.next())
+                {
+                    IdPaciente = CResult.getInt("idPaciente");
+                    strNombres = CResult.getString("nombres");
+                    strApellidos = CResult.getString("apellidos"); 
+                    strCita = CResult.getString("fecha"); 
+                    
+                    CFistUser = new TablaObj(strNombres, strApellidos, IdPaciente, strCita);
+                   
+                }
+            } catch (SQLException ex) 
+            {
+                Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return CFistUser;
+    }
+
+    
+    
+    
     public boolean insertUser(String p_strNombre, 
             String p_strApellido, String p_strFoto, String p_strFecha,
             String p_strDUI, String p_strDirección, String p_strUser,
