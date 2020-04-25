@@ -199,7 +199,7 @@ public class UserLogic extends Logic
 
             String strSql = "INSERT INTO clinicasdb.pacientes"
                     + "(usuario, password, nombres, apellidos, foto, fechaNacimiento, DUI, direccion, celular, correo, sexo, estatura, tipoSangre, alergias, historialFamiliar) "
-                    + "VALUES('"+p_strUser+"', '"+p_strPassword+"', '"+p_strNombre+"', '"+p_strApellido+"', "+p_strFoto+", '"+p_strFecha+"', '"+p_strDUI+"', "
+                    + "VALUES('"+p_strUser+"', '"+p_strPassword+"', '"+p_strNombre+"', '"+p_strApellido+"', '"+p_strFoto+"', '"+p_strFecha+"', '"+p_strDUI+"', "
                     + "'"+p_strDirección+"', '"+p_strCelular+"', '"+p_strEmail+"', '"+p_strSexo+"', '"+p_strEstatura+"', '"+p_strSangre+"', '"+p_strAlergias+"', '"+p_strHistrial+"');";
 
             hasFailed = database.executeNonQueryBool(strSql);

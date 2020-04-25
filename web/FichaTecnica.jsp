@@ -58,7 +58,7 @@
             <div class="columns is-vcentered">
                 <div class="column is-one-quarter">
                     <figure class="image is-128x128">
-                        <img class="is-rounded" src="https://i.pinimg.com/236x/4d/b7/b7/4db7b7ecb39c4eebc5b8f5358773e4a2--break-room-stock-photos.jpg">
+                        <img class="is-rounded" src="Images/<%= CUserInf.getFoto()%>">
                     </figure>
                 </div>
                

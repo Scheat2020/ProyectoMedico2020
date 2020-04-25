@@ -11,17 +11,21 @@ import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
 import com.proyectomedicowebapp.objects.TablaObj;
 import com.proyectomedicowebapp.objects.UserObj;
+import java.io.File;
+import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.PrintWriter;
+import java.io.InputStream;
 import java.util.List;
-import javax.faces.context.FacesContext;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import javax.servlet.http.HttpSession;
+import javax.servlet.http.Part;
 
+@MultipartConfig
 @WebServlet(name = "LoginRegistroServlet", urlPatterns = {"/LoginRegistroServlet"})
 public class LoginRegistroServlet extends HttpServlet {
 
@@ -38,7 +42,7 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=123456789&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
         UserLogic CLogic = new UserLogic(connString);
         
@@ -135,7 +139,7 @@ public class LoginRegistroServlet extends HttpServlet {
         {
             String strNombre = request.getParameter("firstname");
             String strApellidos = request.getParameter("apellidos");
-            String strFoto = request.getParameter("foto");
+            Part pFoto = request.getPart("foto");
             String strNacimiento = request.getParameter("nacimiento");
             String strDUI = request.getParameter("dui");
             String strDireccion = request.getParameter("dir");
@@ -150,9 +154,27 @@ public class LoginRegistroServlet extends HttpServlet {
             String strAlergias = request.getParameter("alergias");
             String strHistorial = request.getParameter("historial");
             
-            if (strFoto.equals("")){
-                strFoto = "NULL";
+            String strFoto;
+            //Guarda la imagen en el proyecto
+            if (pFoto.getSubmittedFileName().equals("")){
+                strFoto = "Default.png";
+            } else {
+                ServletContext context = request.getServletContext();
+                String absolutePathToIndexJSP = context.getRealPath("/Images");
+                InputStream is = pFoto.getInputStream();
+                strFoto = pFoto.getSubmittedFileName();
+                File f = new File(absolutePathToIndexJSP+"/"+strFoto);
+                FileOutputStream ous = new FileOutputStream(f);
+                int dato = is.read();
+                while(dato!=-1)
+                {
+                    ous.write(dato);
+                    dato = is.read();
+                }
+                ous.close();
+                is.close();
             }
+            
             
             UserLogic CLogic2 = new UserLogic(connString);
             boolean hasFailed = 
@@ -161,6 +183,9 @@ public class LoginRegistroServlet extends HttpServlet {
             request.getRequestDispatcher("inicioPaciente.jsp")
                    .forward(request, response);
         }
+        
+        
+        
     }
 //jejeje
 

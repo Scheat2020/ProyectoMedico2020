@@ -114,7 +114,7 @@
        
        <section class ="section"> 
             
-            <form class="cmxform" id="signupForm" action="LoginRegistroServlet" method="get">
+           <form class="cmxform" id="signupForm" action="LoginRegistroServlet" method="post" enctype="multipart/form-data">
                 <fieldset>
                     
                     <div class="container">

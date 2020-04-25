@@ -61,6 +61,7 @@ public class InfoLogic extends Logic{
                     String strAlergias;
                     String strHistorialFamiliar;
                     String strReceta;
+                    String strFoto;
 
                     while(CResult.next())
                     {
@@ -81,8 +82,9 @@ public class InfoLogic extends Logic{
                         strAlergias = CResult.getString("alergias");
                         strHistorialFamiliar = CResult.getString("historialFamiliar");
                         strReceta = CResult.getString("receta");
+                        strFoto = CResult.getString("foto");
 
-                        CInfoDB = new InfoObj(strNombre, strApellido, strFechaNacimiento, strDUI, strDireccion, strCelular, strCorreo, strSexo, strEstatura, strTipoSangre,strAlergias, strHistorialFamiliar, strReceta);
+                        CInfoDB = new InfoObj(strNombre, strApellido, strFechaNacimiento, strDUI, strDireccion, strCelular, strCorreo, strSexo, strEstatura, strTipoSangre,strAlergias, strHistorialFamiliar, strReceta, strFoto);
 
                     }
                 } 

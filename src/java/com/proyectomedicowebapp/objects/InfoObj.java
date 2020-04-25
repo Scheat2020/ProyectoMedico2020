@@ -25,8 +25,9 @@ public class InfoObj {
         private String m_alergias;
         private String m_historialFamiliar;
         private String m_receta;
+        private String m_foto;
 
-        public InfoObj( String p_nombres, String p_apellidos, String p_fechaNacimiento, String p_DUI, String p_direccion, String p_celular, String p_correo, String p_sexo, String p_estatura, String p_tipoSangre, String p_alergias, String p_historialFamiliar, String p_receta) {
+        public InfoObj( String p_nombres, String p_apellidos, String p_fechaNacimiento, String p_DUI, String p_direccion, String p_celular, String p_correo, String p_sexo, String p_estatura, String p_tipoSangre, String p_alergias, String p_historialFamiliar, String p_receta, String p_foto) {
 
             setNombres(p_nombres);
             setApellidos(p_apellidos);
@@ -41,6 +42,7 @@ public class InfoObj {
             setAlergias(p_alergias);
             setHistorialFamiliar(p_historialFamiliar);
             setReceta(p_receta);
+            setFoto(p_foto);
         }
         
         
@@ -99,6 +101,10 @@ public class InfoObj {
             return m_receta;
         }
         
+        public String getFoto() {
+            return m_foto;
+        }
+        
         //setters
 
        
@@ -154,6 +160,8 @@ public class InfoObj {
             m_receta = p_receta;
         }
         
-        
+        private void setFoto(String p_foto) {
+            m_foto = p_foto;
+        }
         
  }
