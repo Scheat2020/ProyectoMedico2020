@@ -140,12 +140,12 @@
                                     CTemp = ite.next();
                         %>
                           <tr>
-                            <th><%= CTemp.geIdPaciente() %></th>
-                            <td><%= CTemp.getApellidos() %>
+                            <th id="idPaciente" name="idPaciente"><%= CTemp.geIdPaciente() %></th>
+                            <td id="nombres" name="nombres"><%= CTemp.getApellidos() %>
                             </td>
-                            <td><%= CTemp.getNombres() %></td>
-                            <td><a href="informacionPanciente.jsp">Ir</a></td>
-                            <td><%= CTemp.getFecha() %></td>
+                            <td id="apellidos" name="apellidos"><%= CTemp.getNombres() %></td>
+                            <td id="ver" name="ver"><a href="informacionPanciente.jsp">Ver</a></td>
+                            <td id="cita" name="cita"><%= CTemp.getFecha() %></td>
                           </tr>
                             <%
                                      }
