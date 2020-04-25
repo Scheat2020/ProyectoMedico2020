@@ -15,17 +15,16 @@ public class TablaObj {
         private String m_apellidos;
         private int m_idPaciente;
         private String m_fecha;
+        private String m_hora;
 
-    public TablaObj(String p_nombres, String p_apellidos, int p_idPaciente, String p_fecha ) 
+    public TablaObj(String p_nombres, String p_apellidos, int p_idPaciente, String p_fecha, String p_hora) 
     {
         setNombres(p_nombres);
         setApellidos(p_apellidos);
         setIdPaciente(p_idPaciente);
         setFecha(p_fecha);
-
+        setHora(p_hora);
     }
-
-
         
       //Getters
      public String getNombres() {
@@ -44,6 +43,9 @@ public class TablaObj {
         return m_fecha;
     }
 
+    public String getHora() {
+        return m_hora;
+    }
     
      //Setters
 
@@ -62,5 +64,8 @@ public class TablaObj {
     private void setFecha(String p_fecha) {
         m_fecha = p_fecha;
     }
-
+    
+    private void setHora(String p_hora) {
+        m_hora = p_hora;
+    }
 }

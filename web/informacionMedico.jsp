@@ -115,6 +115,7 @@
                             <th>Nombres</th>
                             <th><abbr title="Detalles">Detalles</abbr></th>
                             <th><abbr title="Date">Fecha Agendada</abbr></th>
+                            <th><abbr title="Time">Hora Agendada</abbr></th>
 
                           </tr>
                         </thead>
@@ -125,6 +126,7 @@
                             <th>Nombres</th>
                             <th><abbr title="Detalles">Detalles</abbr></th>
                             <th><abbr title="Date">Fecha Agendada</abbr></th>
+                            <th><abbr title="Time">Hora Agendada</abbr></th>
                           </tr>
                         </tfoot>
                         <tbody>
@@ -140,12 +142,12 @@
                                     CTemp = ite.next();
                         %>
                           <tr>
-                            <th><%= CTemp.geIdPaciente() %></th>
-                            <td><%= CTemp.getApellidos() %>
-                            </td>
-                            <td><%= CTemp.getNombres() %></td>
-                            <td><a href="informacionPanciente.jsp">Ir</a></td>
-                            <td><%= CTemp.getFecha() %></td>
+                            <th id="idPaciente" name="idPaciente"><%= CTemp.geIdPaciente() %></th>
+                            <td id="nombres" name="nombres"><%= CTemp.getApellidos() %></td>
+                            <td id="apellidos" name="apellidos"><%= CTemp.getNombres() %></td>
+                            <td id="ver" name="ver"><a href="InfoPacienteServlet.do?idPaciente=<?idPaciente>">Ver</a></td>
+                            <td id="cita" name="cita"><%= CTemp.getFecha() %></td>
+                            <td id="hora" name="hora"><%= CTemp.getHora() %></td>
                           </tr>
                             <%
                                      }
