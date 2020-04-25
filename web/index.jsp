@@ -205,13 +205,13 @@ and open the template in the editor.
       </div>
     </div>
   <!-- Footer -->
-  <footer class="my-footer">
-    <div class="hero my-hero" style="--banner: url(../img/footer-banner.jpg); --bg-atachment: none;">
-      <div class="container-hero">
-      </div>
-    </div>
-  </footer>
-</div>
+    <section class="hero is-light">
+        <div class="hero-body">
+            <div class="image is-full-desktop">
+                <img src="img/img-final.jpg" alt="" >   
+            </div>
+        </div>
+    </section>
 
   <script src="js/smooth-scroll.min.js"></script>
   <script src="js/main.js"></script>

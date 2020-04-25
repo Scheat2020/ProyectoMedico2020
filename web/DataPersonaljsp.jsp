@@ -1,16 +1,14 @@
-<%-- 
-    Document   : DataPersonaljsp
-    Created on : 03-07-2020, 09:10:17 AM
-    Author     : Alexia
---%>
+
  <html lang="en">
     <head>
     <meta charset="utf-8">
     <title>Datos Personales</title>
     <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
     <link rel="stylesheet" href="css/screen.css">
+    <script src="https://kit.fontawesome.com/90de824922.js" crossorigin="anonymous"></script>
     <script src="Scripts/validate/jquery-1.8.3.js" type="text/javascript"></script>
     <script src="Scripts/validate/jquery.validate.js" type="text/javascript"></script>
+   
    
     <script>
         <%-- 
@@ -111,21 +109,34 @@
     cambios
 --%>
     <body>
+
+       
        
        <section class ="section"> 
-            
+           
+                       
            <form class="cmxform" id="signupForm" action="LoginRegistroServlet" method="post" enctype="multipart/form-data">
                 <fieldset>
                     
-                    <div class="container">
-                
-                        <h1 class="title">
-                            Datos personales
-                        </h1>
-                        <p class="title-2">
-                            Complete la información requerida
-                        </p>
-                    </div>
+                    <section class="hero is-dark">
+                        <div class="hero-body">
+                          <div class="container">
+                              <a class="title">
+                                <span class="icon">
+                                <i class="fas fa-heartbeat"></i>
+                                </span>
+                                <span class="brand">CLÍNICA MÉDICA</span>
+                              </a>
+                              <br>
+                              <h2 class="subtitle">
+                                Registro de datos personales
+                              </h2>
+                           </div>
+                        </div>
+                    </section>
+                   
+                    <br>
+                  
                 
                     <!--campos del form-->
                     <!--Nombres-->
@@ -246,17 +257,30 @@
                         </div>
                     </div>
                     <br><br>
+
                     
                     <!--Cuadro médico-->
-                    <div class="container">
+                    <section class="hero is-dark">
+                        <div class="hero-body">
+                          <div class="container">
+                              <a class="title">
+                                <span class="icon">
+                                <i class="fas fa-heartbeat"></i>
+                                </span>
+                                <span class="brand">CLÍNICA MÉDICA</span>
+                              </a>
+                              <br>
+                              <h2 class="subtitle">
+                                Registro de datos médico
+                              </h2>
+                           </div>
+                        </div>
+                    </section>
+                    
+                    <br>
                 
-                        <h1 class="title">
-                            Cuadro Médico
-                        </h1>
-                        <p class="title-2">
-                            Complete la información médica requerida
-                        </p>
-                    </div>
+                        
+                 
                     
                     <!--Estatura-->
                     <div class="field">
@@ -310,19 +334,24 @@
                     </div>
                     
                     <!--botones continuar y cancelar-->
-                    <div class="field is-grouped">
+                    <div class="columns is-multiline">
+                    <div class="column is-half">
+                        
                         <p>
-                            <input class="button is-primary" type="submit" value="Continuar">
+                            <input class="button is-primary is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Continuar">
                             <input type="hidden" name="formid" value="2" />
                         </p>
                         <br><br>
+                    </div>
+                    
+                    <div class="column is-half">
                         <p class="control">
-                            <a class="button is-light" href="inicioPaciente.jsp">
+                            <a class="button is-primary is-radiusless is-shadowless button is-medium is-fullwidth" href="inicioPaciente.jsp">
                                 Cancelar
                             </a>
                         </p>
                     </div>
-                    
+                    </div>
                 </fieldset>
             </form>
            
