@@ -24,6 +24,8 @@ CREATE TABLE `clinicasdb`.`doctores` (
   `celular` VARCHAR(9) NOT NULL,
   `correo` VARCHAR(145) NOT NULL,
   `credencial` VARCHAR(145) NOT NULL,
+  `direccion` VARCHAR(300) NOT NULL,
+  `especialidad` VARCHAR(200) NOT NULL,
   PRIMARY KEY (`idDoctor`));
 
 CREATE TABLE `clinicasdb`.`pacientes` (
@@ -32,7 +34,7 @@ CREATE TABLE `clinicasdb`.`pacientes` (
   `password` VARCHAR(45) NOT NULL,
   `nombres` VARCHAR(145) NOT NULL,
   `apellidos` VARCHAR(145) NOT NULL,
-  `foto` LONGBLOB,
+  `foto` VARCHAR(100),
   `fechaNacimiento` DATE NOT NULL,
   `DUI` VARCHAR(10) NOT NULL,
   `direccion` VARCHAR(200) NOT NULL,
@@ -41,7 +43,7 @@ CREATE TABLE `clinicasdb`.`pacientes` (
   `sexo` VARCHAR(10) NOT NULL,
   `seguro` TINYINT(1),
   `estatura` VARCHAR(5) NOT NULL,
-  `tipoSangre` VARCHAR(3) NOT NULL,
+  `tipoSangre` VARCHAR(5) NOT NULL,
   `alergias` VARCHAR(200) NOT NULL,
   `historialFamiliar` VARCHAR(200) NOT NULL,
   `idDoctor` INT,
