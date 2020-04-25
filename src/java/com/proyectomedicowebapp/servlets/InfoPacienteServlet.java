@@ -14,7 +14,7 @@ import javax.servlet.http.HttpServletResponse;
 
 /**
  *
- * @author sergi
+ * @author windows
  */
 public class InfoPacienteServlet extends HttpServlet {
 
@@ -28,10 +28,7 @@ public class InfoPacienteServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException 
-    {
-        response.setContentType("text/html;charset=UTF-8");
-        response.setContentType("text/html;charset=UTF-8");
+            throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
