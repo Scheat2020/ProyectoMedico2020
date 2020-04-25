@@ -61,7 +61,7 @@ and open the template in the editor.
       </ul>
   
   </nav>
-  <!-- Sección del carrusel -->
+  <!-- Sección del carrusel :) -->
 
   <div class="section-body" id="top">
   <div class="slide-contenedor" >
