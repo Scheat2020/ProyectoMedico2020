@@ -62,12 +62,71 @@
                     </div>
                 </div>
             </div>
+            <form class="cmxform" id="signupForm" action="LoginRegistroServlet" method="post" enctype="multipart/form-data">
+                <fieldset>
+                    
+                    <section class="hero is-dark">
+                        <div class="hero-body">
+                          <div class="container">
+                              <a class="title">
+                                <span class="icon">
+                                <i class="fas fa-heartbeat"></i>
+                                </span>
+                                <span class="brand">Agendar Cita</span>
+                                </a>
+                                <br>
+                                <h2 class="subtitle">
+                                Agendar Citas
+                              </h2>
+                           </div>
+                        </div>
+                    </section>
+                   
+                    <br>
             
+                    <!--campos del form-->
+                        <!--idPaciente-->
+                        <div class="field">
+                            <label class="label" for="idPaciente">ID Paciente</label>
+                            <div class="control">
+                            <input class="input" id="idPaciente" name="idPaciente" type="text" placeholder="Ej: 1">
+                            </div>
+                        </div>
+
+                        <!--idDoctor-->
+                        <div class="field">
+                            <label class="label" for="idDoctor">ID Doctor</label>
+                            <div class="control">
+                                <input class="input" id="idDoctor" name="idDoctor" type="text" placeholder="1">
+                            </div>
+                        </div>  
+
+                        <!--Fecha de la cita-->
+                        <div class="field">
+                            <label class="label" for="fechaCita">Fecha de la cita</label>
+                            <div class="control">
+                            <input class="input" id="fechaCita" name="fechaCita" type="date">
+                            </div>
+                        </div> 
+
+                        <div class="field">
+                        <label class="label">Motivo de la cita</label>
+                        <div class="control">
+                            <div class="select">
+                                <select id="" name="motivo">
+                                    <option id="chequeoGeneral" name="chequeoGeneral" value="chequeoGeneral">Chequeo general</option>
+                                    <option id="cardiologia" name="cardiologia" value="cardiologia">Cardiología</option>
+                                    <option id="neurologia" name="neurologia" value="neurologia">Neurología</option>
+                                    <option id="pediatria" name="pediatria" value="pediatria">Pediatría</option>
+                                    <option id="ortopedia" name="ortopedia" value="ortopedia">Ortopedia</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <br><br>  
+               
         </section>
-        
-        
-        
-        
+    </form>
         
     </body>
 </html>
