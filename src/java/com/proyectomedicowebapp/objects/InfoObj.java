@@ -27,8 +27,11 @@ public class InfoObj {
         private String m_receta;
         private String m_foto;
         private String m_idPaciente;
+        private String m_fecha;
+        private String m_hora;
 
-        public InfoObj( String p_nombres, String p_apellidos, String p_fechaNacimiento, String p_DUI, String p_direccion, String p_celular, String p_correo, String p_sexo, String p_estatura, String p_tipoSangre, String p_alergias, String p_historialFamiliar, String p_receta, String p_foto, String p_idPaciente) {
+        public InfoObj( String p_nombres, String p_apellidos, String p_fechaNacimiento, String p_DUI, String p_direccion, String p_celular, String p_correo, String p_sexo, String p_estatura, 
+                        String p_tipoSangre, String p_alergias, String p_historialFamiliar, String p_receta, String p_foto, String p_idPaciente, String p_fecha, String p_hora) {
 
             setNombres(p_nombres);
             setApellidos(p_apellidos);
@@ -45,6 +48,8 @@ public class InfoObj {
             setReceta(p_receta);
             setFoto(p_foto);
             setIdPaciente(p_idPaciente);
+            setFecha(p_fecha);
+            setHora(p_hora);
         }
         
         
@@ -110,6 +115,15 @@ public class InfoObj {
         public String getIdPaciente() {
             return m_idPaciente;
         }
+
+        public String getM_fecha() {
+            return m_fecha;
+        }
+
+        public String getM_Hora() {
+            return m_hora;
+        }
+        
         
         //setters
 
@@ -173,4 +187,13 @@ public class InfoObj {
         private void setIdPaciente(String p_idPaciente) {
             m_idPaciente = p_idPaciente;
         } 
+        
+        private void setFecha(String p_fecha) {
+            m_fecha = p_fecha;
+        } 
+        
+        private void setHora(String p_hora) {
+            m_hora = p_hora;
+        } 
+        
  }

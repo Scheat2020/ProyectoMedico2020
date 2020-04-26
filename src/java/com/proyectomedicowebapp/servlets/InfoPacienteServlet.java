@@ -6,7 +6,6 @@
 package com.proyectomedicowebapp.servlets;
 
 import com.proyectomedicowebapp.logic.InfoLogic;
-import com.proyectomedicowebapp.logic.UserLogic;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
 import com.proyectomedicowebapp.objects.TablaObj;

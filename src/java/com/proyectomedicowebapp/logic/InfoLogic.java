@@ -33,9 +33,9 @@ public class InfoLogic extends Logic{
         
         DatabaseX CDatabase = getDatabase();
         
-        String strSQL = "select * "
-                + "from clinicasdb.pacientes "
-                + "where usuario like '"+p_usuario+"'";
+        String strSQL = "select pacientes.*, citas.fecha, citas.hora "
+                + "from clinicasdb.pacientes left join clinicasdb.citas on pacientes.idPaciente = citas.idPaciente "
+                + "where pacientes.usuario like '"+p_usuario+"'";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
         System.out.println(strSQL);
@@ -64,6 +64,8 @@ public class InfoLogic extends Logic{
                     String strReceta;
                     String strFoto;
                     String strIdPaciente;
+                    String strFecha;
+                    String strHora;
 
                     while(CResult.next())
                     {
@@ -86,8 +88,10 @@ public class InfoLogic extends Logic{
                         strHistorialFamiliar = CResult.getString("historialFamiliar");
                         strReceta = CResult.getString("receta");
                         strFoto = CResult.getString("foto");
+                        strFecha = CResult.getString("fecha");
+                        strHora = CResult.getString("hora");
 
-                        CInfoDB = new InfoObj(strNombre, strApellido, strFechaNacimiento, strDUI, strDireccion, strCelular, strCorreo, strSexo, strEstatura, strTipoSangre,strAlergias, strHistorialFamiliar, strReceta, strFoto, strIdPaciente);
+                        CInfoDB = new InfoObj(strNombre, strApellido, strFechaNacimiento, strDUI, strDireccion, strCelular, strCorreo, strSexo, strEstatura, strTipoSangre,strAlergias, strHistorialFamiliar, strReceta, strFoto, strIdPaciente, strFecha, strHora);
 
                     }
                 } 
@@ -165,15 +169,15 @@ public class InfoLogic extends Logic{
     }
     
     
-    public InfoObj getInfoPaciente(String p_id ) {
+    public InfoObj getInfoPaciente(String p_id) {
         
         InfoObj CInfoDB = null;
         
         DatabaseX CDatabase = getDatabase();
         
-        String strSQL = "select * "
-                + "from clinicasdb.pacientes "
-                + "where idPaciente like '"+p_id+"'";
+        String strSQL = "select pacientes.*, citas.fecha, citas.hora "
+                + "from clinicasdb.pacientes left join clinicasdb.citas on pacientes.idPaciente = citas.idPaciente "
+                + "where pacientes.idPaciente like '"+p_id+"'";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
         System.out.println(strSQL);
@@ -200,6 +204,8 @@ public class InfoLogic extends Logic{
                     String strReceta;
                     String strFoto;
                     String strIdPaciente;
+                    String strFecha;
+                    String strHora;
 
                     while(CResult.next())
                     {
@@ -220,8 +226,10 @@ public class InfoLogic extends Logic{
                         strReceta = CResult.getString("receta");
                         strFoto = CResult.getString("foto");
                         strIdPaciente = CResult.getString("idPaciente");
+                        strFecha = CResult.getString("fecha");
+                        strHora = CResult.getString("hora");
 
-                        CInfoDB = new InfoObj(strNombre, strApellido, strFechaNacimiento, strDUI, strDireccion, strCelular, strCorreo, strSexo, strEstatura, strTipoSangre,strAlergias, strHistorialFamiliar, strReceta, strFoto, strIdPaciente);
+                        CInfoDB = new InfoObj(strNombre, strApellido, strFechaNacimiento, strDUI, strDireccion, strCelular, strCorreo, strSexo, strEstatura, strTipoSangre,strAlergias, strHistorialFamiliar, strReceta, strFoto, strIdPaciente, strFecha, strHora);
 
                     }
                 } 

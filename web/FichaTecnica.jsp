@@ -4,6 +4,7 @@
     Author     : sergi
 --%>
 
+<%@page import="com.proyectomedicowebapp.objects.TablaObj"%>
 <%@page import="com.proyectomedicowebapp.objects.InfoObj"%>
 <%@page import="com.proyectomedicowebapp.objects.UserObj"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
@@ -117,16 +118,24 @@
                 
                 <div class="column is-half">
                     <div class="container">
+                       <article class="message is-primary">
+                            <div class="message-body">
+                             <strong>Receta</strong>
+                             <br> <%= CUserInf.getReceta() %>
+                            </div>
+                        </article>
                     </div>
-                    <article class="message is-primary">
-                        <div class="message-header">
-                            <p>Receta</p>
-                            <button class="delete" aria-label="delete"></button>
-                        </div>
-                        <div class="message-body">
-                            <p><%= CUserInf.getReceta() %></p>
-                        </div>
-                    </article>
+                </div>
+                <div class="column is-quarter">
+                    <div class="container">
+                       <article class="message is-primary">
+                            <div class="message-body">
+                             <strong>Cita programada</strong>
+                             <br> Su cita está programada para: <%= CUserInf.getM_fecha() %>. A las <%= CUserInf.getM_Hora() %>
+                            </div>
+                        </article>
+                    </div>
+                    <p><p/>
                 </div>
             </div>
  
