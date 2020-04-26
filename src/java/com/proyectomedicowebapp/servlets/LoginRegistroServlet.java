@@ -134,7 +134,47 @@ public class LoginRegistroServlet extends HttpServlet {
             }
         }
         
-        //Registro
+        //------------
+         //Login Asistente
+        if(strFormId.equals("4"))
+        {
+            //accion es log in
+            
+            
+            String strUser = request.getParameter("usuario");
+            String strPassword = request.getParameter("password");
+            String strTabla = "clinicasdb.asistente";
+            
+            //necesito un metodo que me permita saber si el usuario existe o no
+            UserObj CLoginUser = CLogic.getUserInDB(strUser, strPassword, strTabla);
+            
+            //verificacion como yo la necesito
+            if(CLoginUser!=null)
+            {
+                InfoLogic CInfoL = new InfoLogic(connString);
+                InfoObj CListInf = CInfoL.getInfoDB(strUser);
+                //log in al usuario eeexitooooo
+                request.getSession().setAttribute("logged_user", CLoginUser);
+                request.getSession().setAttribute("logged_Inf", CListInf );
+                request.getSession().setAttribute("user", strUser );
+                
+                request.getRequestDispatcher("asistenteProfile.jsp")
+                       .forward(request, response);
+            }
+            else
+            {
+                String strMessage = "Usuario o contraseña incorrecta. Por favor, ingrese de nuevo.";
+                request.getSession().setAttribute("message", strMessage);
+                
+                //usuario o password estan equivocados
+                request.getRequestDispatcher("errorMessage.jsp")
+                       .forward(request, response);
+            }
+        }
+        
+        //------------
+        
+        //Registro paciente
         if(strFormId.equals("2"))
         {
             String strNombre = request.getParameter("firstname");

@@ -193,7 +193,7 @@ and open the template in the editor.
                         <div class="control">                           
                              <p class="control">
                                 <a href="inicioDoctor.jsp" class="is-radiusless is-shadowless button is-medium is-fullwidth">
-                                    Doctor
+                                    Doctor/Asistente
                                 </a>
                              </p>
                         </div>

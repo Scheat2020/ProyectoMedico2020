@@ -20,7 +20,7 @@
                   </a>
                   <br>
                   <h2 class="subtitle">
-                    Login Doctores
+                    Login Doctores/Asistentes
                   </h2>
                </div>
             </div>
@@ -34,12 +34,11 @@
             </div>
         </section>
         
-
           
         <section class="hero is-light">
             <div class="container">
                 <p class="title">
-                    Inicia tu sesión
+                    Inicia tu sesión como doctor
                 </p>
             </div>
             <section class ="section">          
@@ -73,10 +72,54 @@
                     <input class="button is-primary is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Login">
                     <input type="hidden" name="formid" value="3" />
                 </div>
-                
+            </form>
+            </section>
+        
+        <br><br>
+            
+
+            <div class="container">
+                <p class="title">
+                    Inicia tu sesión como asistente
+                </p>
+            </div>
+            <section class ="section">          
+            <form class="cmxform" id="logAdminForm" action="LoginRegistroServlet" method="get">
+                <div class="field">
+                    <label class="label">Usuario</label>
+                        <p class="control has-icons-left has-icons-right">
+                        <input class="input" id="usuario" name="usuario" type="text" placeholder="usuario">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-envelope"></i>
+                             </span>
+                            <span class="icon is-small is-right">
+                                <i class="fas fa-check"></i>
+                            </span>
+                          </p>
+                </div>
+                <div class="field">
+                    <label class="label">Contraseña</label>
+                        <p class="control has-icons-left">
+                        <input class="input" id="password" name="password" type="password" placeholder="Password">
+                            <span class="icon is-small is-left">
+                                <i class="fas fa-lock"></i>
+                            </span>
+                        </p>
+                </div>
                    
+               
+                <br><br>
+                
+                <div class="field">
+                    <input class="button is-primary is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Login">
+                    <input type="hidden" name="formid" value="4" />
+                </div>
+                
+                
+                
             </form>
             </section>
         </section>
+        
     </body>
 </html>

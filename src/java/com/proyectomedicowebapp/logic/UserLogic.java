@@ -75,7 +75,7 @@ public class UserLogic extends Logic
                 + "where usuario like '"+p_strUser+"' "
                 + "and password like '"+p_strPassword+"';";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
-        //hOLA CHICOS LOCOS LLENOS DE LOCURA
+       
         System.out.println(strSQL);
         
         
@@ -143,8 +143,36 @@ public class UserLogic extends Logic
             }
         
         
-        }
-        return CUserDB;  
+        }else if(p_strTabla.equals("clinicasdb.asistente")) {
+            
+            if(CResult!=null)
+            {
+                try 
+                {
+                    //varibles locales que capturen esos datos
+                    int iId;
+                    String strUser;
+                    String strPassword;
+
+                    while(CResult.next())
+                    {
+                        iId = CResult.getInt("idasistente");
+                        strUser = CResult.getString("usuario");
+                        strPassword = CResult.getString("password");
+
+
+                        CUserDB = new UserObj(iId, strUser, strPassword, p_strTabla);
+
+                    }
+                } 
+                catch (SQLException ex) 
+                {
+                    Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+            }
+        }return CUserDB;  
     }
      
     
