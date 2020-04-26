@@ -12,10 +12,10 @@ package com.proyectomedicowebapp.objects;
 public class TablaObj {
     
     private String m_nombres;
-        private String m_apellidos;
-        private int m_idPaciente;
-        private String m_fecha;
-        private String m_hora;
+    private String m_apellidos;
+    private int m_idPaciente;
+    private String m_fecha;
+    private String m_hora;
 
     public TablaObj(String p_nombres, String p_apellidos, int p_idPaciente, String p_fecha, String p_hora) 
     {

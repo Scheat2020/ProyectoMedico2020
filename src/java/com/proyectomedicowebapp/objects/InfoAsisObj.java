@@ -12,8 +12,9 @@ public class InfoAsisObj {
         private String m_apellidos;
         private String m_usuario;
         private String m_password;
+        private String m_foto;
 
-    public InfoAsisObj(String p_nombres, String p_apellidos,String p_telefono, String p_correo,String p_usuario, String p_password) {
+    public InfoAsisObj(String p_nombres, String p_apellidos,String p_telefono, String p_correo,String p_usuario, String p_password, String p_foto) {
         setNombres(p_nombres);
         setApellidos(p_apellidos);
         setCorreo(p_correo);
@@ -23,7 +24,7 @@ public class InfoAsisObj {
     }
         
       //Getters
-     public String getNombres() {
+    public String getNombres() {
             return m_nombres;
     }
 
@@ -46,7 +47,13 @@ public class InfoAsisObj {
     public String getPassword() {
         return m_password;
     }
-   
+
+    public String getFoto() {
+        return m_foto;
+    }
+    
+    
+    
      //Setters
 
     private void setNombres(String p_nombres) {
@@ -70,6 +77,11 @@ public class InfoAsisObj {
     private void setPassword(String p_password) {
         m_password = p_password;
     }
-   
+
+    public void setFoto(String p_foto) {
+        m_foto = p_foto;
+    }
+    
+    
 }
 

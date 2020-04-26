@@ -325,6 +325,7 @@ public class InfoLogic extends Logic{
                     String strApellido;
                     String strCelular;
                     String strCorreo;
+                    String strFoto;
 
                     while(CResult.next())
                     {
@@ -337,8 +338,9 @@ public class InfoLogic extends Logic{
                         strApellido = CResult.getString("apellidos");
                         strCelular = CResult.getString("celular");
                         strCorreo = CResult.getString("correo");
+                        strFoto = CResult.getString("foto");
 
-                        CInfoDB = new InfoAsisObj(strNombre, strApellido,  strCelular, strCorreo, strUser, strPassword);
+                        CInfoDB = new InfoAsisObj(strNombre, strApellido,  strCelular, strCorreo, strUser, strPassword, strFoto);
 
                     }
                 } 

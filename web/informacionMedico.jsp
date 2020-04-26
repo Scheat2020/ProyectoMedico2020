@@ -4,6 +4,8 @@
     Author     : windows
 --%>
 
+<%@page import="com.proyectomedicowebapp.objects.UserObj"%>
+<%@page import="com.proyectomedicowebapp.objects.UserObj"%>
 <%@page import="com.proyectomedicowebapp.objects.TablaObj"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.List"%>
@@ -43,7 +45,11 @@
         <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"></script>
     </head>
     <% 
-         InfoDocObj CUserInf =
+        
+        UserObj CUser = 
+                (UserObj)request.getSession().getAttribute("logged_user");
+        
+        InfoDocObj CUserInf =
                 (InfoDocObj)request.getSession().getAttribute("logged_Inf");
         session.getAttribute("user"); 
 

@@ -7,6 +7,7 @@ package com.proyectomedicowebapp.logic;
 
 import balcorpfw.database.DatabaseX;
 import balcorpfw.logic.Logic;
+import com.proyectomedicowebapp.objects.TablaDocObj;
 import com.proyectomedicowebapp.objects.TablaObj;
 import com.proyectomedicowebapp.objects.UserObj;
 import java.sql.ResultSet;
@@ -64,6 +65,44 @@ public class UserLogic extends Logic
         return CL;
     }
     
+    
+    public List<TablaDocObj> getAllDoctors()
+    {
+        List<TablaDocObj> CL = null;
+        DatabaseX CDatabase = getDatabase();
+        String strSQL = "select * from clinicasdb.doctores;";
+        ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        if(CResult!=null)
+        {
+            try 
+            {
+                int IdDoctor;
+                String strNombres;
+                String strApellidos;
+                
+                TablaDocObj CTemp;
+                CL = new ArrayList<>();
+                
+                while(CResult.next())
+                {
+                    IdDoctor = CResult.getInt("idPaciente");
+                    strNombres = CResult.getString("nombres");
+                    strApellidos = CResult.getString("apellidos"); 
+                    
+                    
+                    CTemp = new TablaDocObj(IdDoctor, strNombres, strApellidos);
+                    CL.add(CTemp);
+                   
+                }
+            } catch (SQLException ex) 
+            {
+                Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return CL;
+    }
 
     
     public UserObj getUserInDB(String p_strUser, String p_strPassword, String p_strTabla) 

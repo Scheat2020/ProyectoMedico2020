@@ -10,6 +10,7 @@ import com.proyectomedicowebapp.logic.UserLogic;
 import com.proyectomedicowebapp.objects.InfoAsisObj;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
+import com.proyectomedicowebapp.objects.TablaDocObj;
 import com.proyectomedicowebapp.objects.TablaObj;
 import com.proyectomedicowebapp.objects.UserObj;
 import java.io.File;
@@ -107,7 +108,7 @@ public class LoginRegistroServlet extends HttpServlet {
                 
                //Obtengo los todos usuarios
                UserLogic CL = new UserLogic(connString);
-                List<TablaObj> CList = CL.getAllUsers();
+               List<TablaObj> CList = CL.getAllUsers();
                 
                 //Obtengo la cita mas proxima
                 UserLogic CFirst = new UserLogic(connString);
@@ -135,7 +136,6 @@ public class LoginRegistroServlet extends HttpServlet {
             }
         }
         
-        //------------
          //Login Asistente
         if(strFormId.equals("4"))
         {
@@ -154,9 +154,22 @@ public class LoginRegistroServlet extends HttpServlet {
             {
                 InfoLogic CInfoL = new InfoLogic(connString);
                 InfoAsisObj CListInf = CInfoL.getInfoDBAsis(strUser);
+                
+                //Obtengo a todos los pacientes
+                UserLogic CL = new UserLogic(connString);
+                List<TablaObj> CList = CL.getAllUsers();
+                
+                
+                
+                //Obtengo a todos los doctores
+                UserLogic CLDoc = new UserLogic(connString);
+                List<TablaDocObj> CListDoc = CLDoc.getAllDoctors();
+                
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);
                 request.getSession().setAttribute("logged_Inf", CListInf );
+                request.getSession().setAttribute("usuarios", CList );
+                request.getSession().setAttribute("doctores", CListDoc );
                 request.getSession().setAttribute("user", strUser );
                 
                 request.getRequestDispatcher("asistenteProfile.jsp")
@@ -173,7 +186,6 @@ public class LoginRegistroServlet extends HttpServlet {
             }
         }
         
-        //------------
         
         //Registro paciente
         if(strFormId.equals("2"))
