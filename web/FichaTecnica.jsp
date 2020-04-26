@@ -52,17 +52,34 @@
         
     %>
     <body>
-        <section class ="section"> 
-            <div class="container">
-                <h1 class="title">Bienvenido, <%= CUserInf.getNombres() %> <%= CUserInf.getApellidos() %> </h1>
+    
+    <section class="hero is-dark">
+        <div class="hero-body">
+          <div class="container">
+              <a class="title">
+                <span class="icon">
+                <i class="fas fa-heartbeat"></i>
+                </span>
+                <span class="brand">CLÍNICA MÉDICA</span>
+              </a>
+              <br>
+              <div class="container">
+                <h1 class="subtitle">Bienvenido, <%= CUserInf.getNombres() %> <%= CUserInf.getApellidos() %></h1>
             </div>
-            <div class="columns is-vcentered">
-                <div class="column is-one-quarter">
-                    <figure class="image is-128x128">
-                        <img class="is-rounded" src="Images/<%= CUserInf.getFoto()%>">
-                    </figure>
-                </div>
-               
+           </div>
+        </div>
+     </section> 
+        
+    <section class="hero is-light">
+        <div class="hero-body">
+            <section class ="section">            
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <figure class="image is-190x190 is-center is-centered">
+                            <img class="is-rounded" src="Images/<%= CUserInf.getFoto()%>">
+                        </figure>
+                    </div>
+
                 <div class="column is-half">
                     <div class="container">
                         <br>
@@ -140,5 +157,7 @@
             </div>
  
         </section>
+        </div>
+    </section>                           
     </body>
 </html>
