@@ -8,6 +8,14 @@
         <servlet-name>RecetaServlet</servlet-name>
         <servlet-class>com.proyectomedicowebapp.servlets.RecetaServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>InfoPacientesServlet</servlet-name>
+        <servlet-class>com.proyectomedicowebapp.servlets.InfoPacientesServlet</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>RecetasServlet</servlet-name>
+        <servlet-class>com.proyectomedicowebapp.servlets.RecetasServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InfoPacienteServlet</servlet-name>
         <url-pattern>/InfoPacienteServlet.do</url-pattern>
@@ -15,6 +23,14 @@
     <servlet-mapping>
         <servlet-name>RecetaServlet</servlet-name>
         <url-pattern>/RecetaServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>InfoPacientesServlet</servlet-name>
+        <url-pattern>/InfoPacientesServlet</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RecetasServlet</servlet-name>
+        <url-pattern>/RecetasServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

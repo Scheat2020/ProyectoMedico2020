@@ -19,7 +19,7 @@
         InfoObj CUserInf =
                 (InfoObj)request.getSession().getAttribute("logged_Inf");
         InfoDocObj CDocInf =
-                (InfoDocObj)request.getSession().getAttribute("logged_Doc");
+                (InfoDocObj)request.getSession().getAttribute("logged_user");
         TablaObj CCita =
                  (TablaObj)request.getSession().getAttribute("Cita");
     %>
@@ -115,7 +115,7 @@
                     <p><p/>
                 </div>
                 <div class="column is-one-quarter">
-                    <form class="cmxform" id="signupForm" action="RecetaServlet" method="get">
+                    <form class="cmxform" id="signupForm" action="RecetasServlet" method="get">
                         <input class="input" id="receta" name="receta" type="text" placeholder="Modificar receta">
                         <div class="column is-one-quarter">
                             <div class="container">
