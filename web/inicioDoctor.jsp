@@ -42,7 +42,7 @@
                 </p>
             </div>
             <section class ="section">          
-            <form class="cmxform" id="logInDoctorForm" action="LoginRegistroServlet" method="get">
+            <form class="cmxform" id="logInDoctorForm" action="LoginRegistroServlet" method="post">
                 <div class="field">
                     <label class="label">Usuario</label>
                         <p class="control has-icons-left has-icons-right">
@@ -84,7 +84,7 @@
                 </p>
             </div>
             <section class ="section">          
-            <form class="cmxform" id="logAdminForm" action="LoginRegistroServlet" method="get">
+            <form class="cmxform" id="logAdminForm" action="LoginRegistroServlet" method="post">
                 <div class="field">
                     <label class="label">Usuario</label>
                         <p class="control has-icons-left has-icons-right">
