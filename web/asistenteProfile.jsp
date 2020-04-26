@@ -144,8 +144,8 @@
                             
                             
                             <!--Paciente-->
-                            <div class="field has-addons">
-                                <label class="label" for="paciente">Paciente</label>
+                            <label class="label" for="paciente">Paciente</label>
+                            <div class="field has-addons">                              
                                 <div class="control is-expanded">
                                     <div class="select is-fullwidth">
                                         <select id="paciente" name="paciente">
@@ -172,8 +172,8 @@
                               
 
                             <!--Doctor-->
+                            <label class="label" for="doctor">Doctor</label>
                             <div class="field has-addons">
-                                <label class="label" for="doctor">Doctor</label>
                                 <div class="control is-expanded">
                                     <div class="select is-fullwidth">
                                         <select id="doctor" name="doctor">
@@ -200,8 +200,8 @@
                             </div>
 
                             <!--Fecha de la cita-->
+                            <label class="label" for="fecha">Fecha de la cita</label>                            
                             <div class="field">
-                                <label class="label" for="fecha">Fecha de la cita</label>
                                 <div class="control">
                                 <input class="input" id="fecha" name="fecha" type="date">
                                 </div>
@@ -209,8 +209,8 @@
                             </div> 
 
                             <!--Hora de la cita-->
-                            <div class="field has-addons">
-                                <label class="label" for="hora">Hora</label>
+                            <label class="label" for="hora">Hora</label>
+                            <div class="field has-addons">    
                                 <div class="control is-expanded">
                                     <div class="select is-fullwidth">
                                         <select id="hora" name="hora">

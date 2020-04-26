@@ -1,5 +1,10 @@
+<%-- 
+    Document   : DataPersonaljsp
+    Created on : Apr 26, 2020, 4:34:23 PM
+    Author     : Sara Valentina
+--%>
 
- <html lang="en">
+<html lang="en">
     <head>
     <meta charset="utf-8">
     <title>Datos Personales</title>
@@ -353,4 +358,3 @@
     </body>
 
 </html>
-    
