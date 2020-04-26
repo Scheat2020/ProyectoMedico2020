@@ -40,6 +40,7 @@
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>Información de Médico</title>
+        <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"></script>
     </head>
     <% 
          InfoDocObj CUserInf =
@@ -54,112 +55,132 @@
 
     %>
     <body>
-        <section class ="section"> 
-            <div class="container">
-                <h1 class="title">
-                    Información General
-                </h1>
+        
+    <section class="hero is-dark">
+        <div class="hero-body">
+          <div class="container">
+              <a class="title">
+                <span class="icon">
+                <i class="fas fa-heartbeat"></i>
+                </span>
+                <span class="brand">CLÍNICA MÉDICA</span>
+              </a>
+              <br>
+              <div class="container">
+                <h1 class="subtitle">Bienvenido, Dr. <%= CUserInf.getNombres() %> <%= CUserInf.getApellidos() %></h1>
             </div>
-            <br><br>
-            
-            <div class="columns is-vcentered">
-                <div class="column is-one-quarter">
-                    <!--Esta clase la cree en el archivo bulma.css -->
-                    <!--<figure class="image is-190x190"> -->
-                    <figure class="image is-128x128">
-                        <img class="is-rounded" src="https://screenfiction.org/content/image/0/5/184/924b45fd-full.webp" >
-                    </figure>
+           </div>
+        </div>
+     </section>    
+        
+    <section class="hero is-light">
+        <div class="hero-body">         
+            <section class ="section"> 
+                <div class="container">
+                    <h1 class="title">
+                        Información General
+                    </h1>
                 </div>
-                <div class="column is-half">
-                    <div class="container">
-                        <p class="label">Dr. <%= CUserInf.getNombres() %> <%= CUserInf.getApellidos() %></p>
-                    </div>
-                    <p><%= CUserInf.getEspecialidad() %><p/>
-                    <br>
-                    <p><%= CUserInf.getDireccion() %></p>
-                    <p>Credencial: <%= CUserInf.getCredencial() %></p>
-                    <p>Telefono: <%= CUserInf.getTelefono() %></p>
-                </div>
-                
-                
-                <article class="message is-primary">
-                    <div class="message-body">
-                     <strong>Paciente más próximo</strong>
-                     <br> <%= CFistDB.getApellidos() %>, <%= CFistDB.getNombres() %>
-                     <input type="hidden" id="first" name="first" value="<%= CFistDB.geIdPaciente() %>"  />
-                     <a href="InfoPacienteServlet.do?idPaciente=<%= CFistDB.geIdPaciente() %>&Doc=<%= CUserInf.getUsuario()%>&formid=1">Revisar su registro</a>
-                    </div>
-                  </article>
-               
                 <br>
-            </div>
-            <br><br><br><br>
             
-            <div class="columns is-vcentered">
-                <div class="column is-one-quarter">
-                    <div class="container">
-                        <p class="label"></p>
-                    </div> 
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <!--Esta clase la cree en el archivo bulma.css -->
+                        <!--<figure class="image is-190x190"> -->
+                        <figure class="image is-190x190 is-center is-centered">
+                            <img class="is-rounded" src="https://screenfiction.org/content/image/0/5/184/924b45fd-full.webp" >
+                        </figure>
+                    </div>
+                    <div class="column">
+                        <div class="container">
+                            <p class="label">Dr. <%= CUserInf.getNombres() %> <%= CUserInf.getApellidos() %></p>
+                        </div>
+                        <p><%= CUserInf.getEspecialidad() %><p/>
+                        <br>
+                        <p><%= CUserInf.getDireccion() %></p>
+                        <p>Credencial: <%= CUserInf.getCredencial() %></p>
+                        <p>Telefono: <%= CUserInf.getTelefono() %></p>
+                    </div>
+
+
+                    <article class="message is-primary">
+                        <div class="message-body">
+                         <strong>Paciente más próximo</strong>
+                         <br> <%= CFistDB.getApellidos() %>, <%= CFistDB.getNombres() %>
+                         <input type="hidden" id="first" name="first" value="<%= CFistDB.geIdPaciente() %>"  />
+                         <a href="InfoPacienteServlet.do?idPaciente=<%= CFistDB.geIdPaciente() %>&Doc=<%= CUserInf.getUsuario()%>&formid=1">Revisar su registro</a>
+                        </div>
+                     </article>
+
+                    <br>
                 </div>
-                <div class="column is-half">
-                    <div class="container">
-                        <h1 class="title">
-                            Lista de citas agendadas
-                        </h1>
-                    </div>
-                <br><br>
-                    <table class="table">
-                        <thead>
-                          <tr>
-                            <th><abbr title="ID">ID</abbr></th>
-                            <th>Apellidos</th>
-                            <th>Nombres</th>
-                            <th><abbr title="Detalles">Detalles</abbr></th>
-                            <th><abbr title="Date">Fecha Agendada</abbr></th>
-                            <th><abbr title="Time">Hora Agendada</abbr></th>
+                <br><br><br><br>
 
-                          </tr>
-                        </thead>
-                        <tfoot>
-                          <tr>
-                            <th><abbr title="ID">ID</abbr></th>
-                            <th>Apellidos</th>
-                            <th>Nombres</th>
-                            <th><abbr title="Detalles">Detalles</abbr></th>
-                            <th><abbr title="Date">Fecha Agendada</abbr></th>
-                            <th><abbr title="Time">Hora Agendada</abbr></th>
-                          </tr>
-                        </tfoot>
-                        <tbody>
-                            
-                         
-                        <% 
-                           if(CList!=null)
-                            {
-                                Iterator<TablaObj> ite = CList.iterator();
-                                TablaObj CTemp;
-                                while(ite.hasNext())
+                <div class="columns is-vcentered">
+                    <div class="column is-one-quarter">
+                        <div class="container">
+                            <p class="label"></p>
+                        </div> 
+                    </div>
+                    <div class="column is-half">
+                        <div class="container">
+                            <h1 class="title">
+                                Lista de citas agendadas
+                            </h1>
+                        </div>
+                    <br><br>
+                        <table class="table">
+                            <thead>
+                              <tr>
+                                <th><abbr title="ID">ID</abbr></th>
+                                <th>Apellidos</th>
+                                <th>Nombres</th>
+                                <th><abbr title="Detalles">Detalles</abbr></th>
+                                <th><abbr title="Date">Fecha Agendada</abbr></th>
+                                <th><abbr title="Time">Hora Agendada</abbr></th>
+
+                              </tr>
+                            </thead>
+                            <tfoot>
+                              <tr>
+                                <th><abbr title="ID">ID</abbr></th>
+                                <th>Apellidos</th>
+                                <th>Nombres</th>
+                                <th><abbr title="Detalles">Detalles</abbr></th>
+                                <th><abbr title="Date">Fecha Agendada</abbr></th>
+                                <th><abbr title="Time">Hora Agendada</abbr></th>
+                              </tr>
+                            </tfoot>
+                            <tbody>
+
+
+                            <% 
+                               if(CList!=null)
                                 {
-                                    CTemp = ite.next();
-                        %>
-                          <tr>
-                            <th id="idPaciente" name="idPaciente"><%= CTemp.geIdPaciente() %></th>
-                            <td id="nombres" name="nombres"><%= CTemp.getApellidos() %></td>
-                            <td id="apellidos" name="apellidos"><%= CTemp.getNombres() %></td>
-                            <td id="ver" name="ver"><a href="InfoPacienteServlet.do?idPaciente=<%= CTemp.geIdPaciente() %>&Doc=<%= CUserInf.getUsuario()%>&formid=1">Ver</a></td>
-                            <td id="cita" name="cita"><%= CTemp.getFecha() %></td>
-                            <td id="hora" name="hora"><%= CTemp.getHora() %></td>
-                          </tr>
-                            <%
-                                     }
-                               }
-                           %>                         
-                          
+                                    Iterator<TablaObj> ite = CList.iterator();
+                                    TablaObj CTemp;
+                                    while(ite.hasNext())
+                                    {
+                                        CTemp = ite.next();
+                            %>
+                              <tr>
+                                <th id="idPaciente" name="idPaciente"><%= CTemp.geIdPaciente() %></th>
+                                <td id="nombres" name="nombres"><%= CTemp.getApellidos() %></td>
+                                <td id="apellidos" name="apellidos"><%= CTemp.getNombres() %></td>
+                                <td id="ver" name="ver"><a href="InfoPacienteServlet.do?idPaciente=<%= CTemp.geIdPaciente() %>&Doc=<%= CUserInf.getUsuario()%>&formid=1">Ver</a></td>
+                                <td id="cita" name="cita"><%= CTemp.getFecha() %></td>
+                                <td id="hora" name="hora"><%= CTemp.getHora() %></td>
+                              </tr>
+                                <%
+                                         }
+                                   }
+                               %>                         
 
-                        </tbody>
-                      </table>
-                    </div>
-            </div>
+
+                            </tbody>
+                          </table>
+                        </div>
+                </div>
      
             <br><br><br><br:
             
@@ -173,6 +194,8 @@
                 </div>
             </div>
             
-        </section>
+            </section>                     
+        </div>           
+    </section>
     </body>
 </html>
