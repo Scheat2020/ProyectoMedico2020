@@ -5,21 +5,18 @@
  */
 package com.proyectomedicowebapp.servlets;
 
-import com.proyectomedicowebapp.logic.InfoLogic;
-import com.proyectomedicowebapp.logic.UserLogic;
-import com.proyectomedicowebapp.objects.InfoDocObj;
-import com.proyectomedicowebapp.objects.InfoObj;
-import com.proyectomedicowebapp.objects.TablaObj;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
-import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-@MultipartConfig
-public class InfoPacienteServlet extends HttpServlet {
+/**
+ *
+ * @author windows
+ */
+public class RecetaServlet extends HttpServlet {
 
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
@@ -35,42 +32,15 @@ public class InfoPacienteServlet extends HttpServlet {
         response.setContentType("text/html;charset=UTF-8");
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
-           
-            String strForm = request.getParameter("formid");
-            String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=123456789&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            
-            if(strForm.equals("1"))
-            {
-                String strId = request.getParameter("idPaciente");
-                String strDoc = request.getParameter("Doc");
-                
-                InfoLogic CInfoL = new InfoLogic(connString);
-                InfoObj CListInf = CInfoL.getInfoPaciente(strId);
-                InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
-                TablaObj CCita = CInfoL.getCita(strId);
-
-
-                request.getSession().setAttribute("logged_Inf", CListInf );
-                request.getSession().setAttribute("logged_Doc", CDoc);
-                request.getSession().setAttribute("Cita", CCita);
-
-
-                request.getRequestDispatcher("informacionPaciente.jsp")
-                           .forward(request, response);
-            }
-            if(strForm.equals("2"))
-            {
-                String strReceta = request.getParameter("receta");
-                String strId = request.getParameter("idPaciente");
-                
-                InfoLogic CInfoL = new InfoLogic(connString);
-                boolean CUpdate =  CInfoL.updateReceta(strId, strReceta);
-                
-                request.getSession().setAttribute("Receta", CUpdate);
-                
-                request.getRequestDispatcher("index.jsp")
-                           .forward(request, response);
-            }
+            out.println("<!DOCTYPE html>");
+            out.println("<html>");
+            out.println("<head>");
+            out.println("<title>Servlet RecetaServlet</title>");            
+            out.println("</head>");
+            out.println("<body>");
+            out.println("<h1>Servlet RecetaServlet at " + request.getContextPath() + "</h1>");
+            out.println("</body>");
+            out.println("</html>");
         }
     }
 

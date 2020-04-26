@@ -4,9 +4,17 @@
         <servlet-name>InfoPacienteServlet</servlet-name>
         <servlet-class>com.proyectomedicowebapp.servlets.InfoPacienteServlet</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>RecetaServlet</servlet-name>
+        <servlet-class>com.proyectomedicowebapp.servlets.RecetaServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>InfoPacienteServlet</servlet-name>
         <url-pattern>/InfoPacienteServlet.do</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>RecetaServlet</servlet-name>
+        <url-pattern>/RecetaServlet</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
