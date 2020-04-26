@@ -5,6 +5,9 @@
  */
 package com.proyectomedicowebapp.servlets;
 
+import com.proyectomedicowebapp.logic.InfoLogic;
+import com.proyectomedicowebapp.objects.InfoDocObj;
+import com.proyectomedicowebapp.objects.InfoObj;
 import java.io.IOException;
 import java.io.PrintWriter;
 import javax.servlet.ServletException;
@@ -28,20 +31,25 @@ public class RecetaServlet extends HttpServlet {
      * @throws IOException if an I/O error occurs
      */
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
-            throws ServletException, IOException {
-        response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
-            /* TODO output your page here. You may use following sample code. */
-            out.println("<!DOCTYPE html>");
-            out.println("<html>");
-            out.println("<head>");
-            out.println("<title>Servlet RecetaServlet</title>");            
-            out.println("</head>");
-            out.println("<body>");
-            out.println("<h1>Servlet RecetaServlet at " + request.getContextPath() + "</h1>");
-            out.println("</body>");
-            out.println("</html>");
-        }
+            throws ServletException, IOException 
+    {
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        
+        String strReceta = request.getParameter("receta");
+        String strId = request.getParameter("idPaciente");
+        String strDoc = request.getParameter("userDoc");
+        
+        InfoLogic CInfoL = new InfoLogic(connString);
+        boolean CUpdate =  CInfoL.updateReceta(strId, strReceta);
+        InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
+        InfoObj CListInf = CInfoL.getInfoPaciente(strId);
+        
+        request.getSession().setAttribute("logged_Inf", CListInf );       
+        request.getSession().setAttribute("Receta", CUpdate);
+        request.getSession().setAttribute("logged_Doc", CDoc);
+                
+        request.getRequestDispatcher("informacionPaciente.jsp")
+                    .forward(request, response);
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

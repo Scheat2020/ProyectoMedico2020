@@ -115,15 +115,15 @@
                     <p><p/>
                 </div>
                 <div class="column is-one-quarter">
-                    <form class="cmxform" id="signupForm" action="InfoPacienteServlet" method="get">
+                    <form class="cmxform" id="signupForm" action="RecetaServlet" method="get">
                         <input class="input" id="receta" name="receta" type="text" placeholder="Modificar receta">
                         <div class="column is-one-quarter">
                             <div class="container">
                                 <div class="control">
                                     <p>
                                         <input class="button is-primary" type="submit" value="Actualizar">
-                                        <input type="hidden" name="formid" value="2" />
-                                        <input type="hidden" name="idPaciente" value="<%= CUserInf.getIdPaciente() %>" />
+                                        <input type="hidden" name="idPaciente" id="idPaciente" value="<%= CUserInf.getIdPaciente() %>" />
+                                        <input type="hidden" name="userDoc" id="userDoc" value="<%= CDocInf.getUsuario() %>" />
                                     </p>
                                     </div>
                             </div>

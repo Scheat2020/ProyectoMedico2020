@@ -36,41 +36,27 @@ public class InfoPacienteServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
            
-            String strForm = request.getParameter("formid");
-            String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=123456789&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             
-            if(strForm.equals("1"))
-            {
-                String strId = request.getParameter("idPaciente");
-                String strDoc = request.getParameter("Doc");
+            
+            String strId = request.getParameter("idPaciente");
+            String strDoc = request.getParameter("Doc");
                 
-                InfoLogic CInfoL = new InfoLogic(connString);
-                InfoObj CListInf = CInfoL.getInfoPaciente(strId);
-                InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
-                TablaObj CCita = CInfoL.getCita(strId);
+            InfoLogic CInfoL = new InfoLogic(connString);
+            InfoObj CListInf = CInfoL.getInfoPaciente(strId);
+            InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
+            TablaObj CCita = CInfoL.getCita(strId);
 
 
-                request.getSession().setAttribute("logged_Inf", CListInf );
-                request.getSession().setAttribute("logged_Doc", CDoc);
-                request.getSession().setAttribute("Cita", CCita);
+            request.getSession().setAttribute("logged_Inf", CListInf );
+            request.getSession().setAttribute("logged_Doc", CDoc);
+            request.getSession().setAttribute("Cita", CCita);
 
 
-                request.getRequestDispatcher("informacionPaciente.jsp")
-                           .forward(request, response);
-            }
-            if(strForm.equals("2"))
-            {
-                String strReceta = request.getParameter("receta");
-                String strId = request.getParameter("idPaciente");
-                
-                InfoLogic CInfoL = new InfoLogic(connString);
-                boolean CUpdate =  CInfoL.updateReceta(strId, strReceta);
-                
-                request.getSession().setAttribute("Receta", CUpdate);
-                
-                request.getRequestDispatcher("index.jsp")
-                           .forward(request, response);
-            }
+            request.getRequestDispatcher("informacionPaciente.jsp")
+                    .forward(request, response);
+            
+            
         }
     }
 
