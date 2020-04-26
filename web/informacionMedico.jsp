@@ -86,7 +86,8 @@
                     <div class="message-body">
                      <strong>Paciente más próximo</strong>
                      <br> <%= CFistDB.getApellidos() %>, <%= CFistDB.getNombres() %>
-                     <a href="informacionPaciente.jsp">Revisar su registro</a>
+                     <input type="hidden" id="first" name="first" value="<%= CFistDB.geIdPaciente() %>"  />
+                     <a href="InfoPacienteServlet.do?idPaciente=<%= CFistDB.geIdPaciente() %>&Doc=<%= CUserInf.getUsuario()%>&formid=1">Revisar su registro</a>
                     </div>
                   </article>
                
@@ -145,7 +146,7 @@
                             <th id="idPaciente" name="idPaciente"><%= CTemp.geIdPaciente() %></th>
                             <td id="nombres" name="nombres"><%= CTemp.getApellidos() %></td>
                             <td id="apellidos" name="apellidos"><%= CTemp.getNombres() %></td>
-                            <td id="ver" name="ver"><a href="InfoPacienteServlet.do?idPaciente=<?idPaciente>">Ver</a></td>
+                            <td id="ver" name="ver"><a href="InfoPacienteServlet.do?idPaciente=<%= CTemp.geIdPaciente() %>&Doc=<%= CUserInf.getUsuario()%>&formid=1">Ver</a></td>
                             <td id="cita" name="cita"><%= CTemp.getFecha() %></td>
                             <td id="hora" name="hora"><%= CTemp.getHora() %></td>
                           </tr>

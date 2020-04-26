@@ -4,6 +4,9 @@
     Author     : windows
 --%>
 
+<%@page import="com.proyectomedicowebapp.objects.TablaObj"%>
+<%@page import="com.proyectomedicowebapp.objects.InfoDocObj"%>
+<%@page import="com.proyectomedicowebapp.objects.InfoObj"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <!DOCTYPE html>
 <html>
@@ -12,27 +15,63 @@
         <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>Información del Paciente</title>
     </head>
+     <%
+        InfoObj CUserInf =
+                (InfoObj)request.getSession().getAttribute("logged_Inf");
+        InfoDocObj CDocInf =
+                (InfoDocObj)request.getSession().getAttribute("logged_Doc");
+        TablaObj CCita =
+                 (TablaObj)request.getSession().getAttribute("Cita");
+    %>
+  
     <body>
         <section class ="section"> 
             <div class="container">
                 <h1 class="title">
-                    Ficha del paciente
-                    
+                    Ficha del paciente <%= CUserInf.getNombres() %> <%= CUserInf.getApellidos() %> 
                 </h1>
                 <br>
             </div>
             <div class="columns is-vcentered">
                 <div class="column is-one-quarter">
                     <figure class="image is-128x128">
-                        <img class="is-rounded" src="https://i.pinimg.com/236x/4d/b7/b7/4db7b7ecb39c4eebc5b8f5358773e4a2--break-room-stock-photos.jpg">
+                        <img class="is-rounded" src="Images/<%= CUserInf.getFoto()%>">
                     </figure>
                 </div>
-                <div class="column is-half">
+                <div class="column is-one-quarter">
                     <div class="container">
-                        <p class="label">Cuadro médico</p>
+                        <br>
+                        <h2 class="title">Datos personales </h2>
                     </div>
-                    <p>Aquí va el historial médico del paciente<p/>
+                        <br>
+                        <p class="label">Fecha de nacimiento:<p/>
+                        <p><%= CUserInf.getFechaNacimiento() %></p>
+                        <p class="label">Número de DUI:<p/>
+                        <p><%= CUserInf.getDUI() %></p>
+                        <p class="label">Dirección de residencia<p/>
+                        <p><%= CUserInf.getDireccion() %></p>
+                        <p class="label">Número de telefono<p/>
+                        <p><%= CUserInf.getCelular() %></p>
+                        <p class="label">Correo electrónico<p/>
+                        <p><%= CUserInf.getCorreo() %></p>
                 </div>
+                <div class="column is-one-quarter">
+                    <div class="container">
+                        <h2 class="title">Cuadro médico </h2>
+                        <br>
+                    </div>
+                        <p class="label">Tipo de sangre:<p/>
+                        <p><%= CUserInf.getTipoSangre() %></p>
+                        <p class="label">Estatura en metros:<p/>
+                        <p><%= CUserInf.getEstatura() %></p>
+                        <p class="label">Alegias:<p/>
+                        <p><%= CUserInf.getAlergias() %></p>
+                        <p class="label">Hisotrial familiar:<p/>
+                        <p><%= CUserInf.getHistorialFamiliar() %></p>
+
+                </div>
+               
+                
                 <div class="column is-one-quarter">
                     <div class="container">
                         <article class="message is-primary">
@@ -41,7 +80,7 @@
                             <button class="delete" aria-label="delete"></button>
                         </div>
                         <div class="message-body">
-                            Aquí va la ultima receta que mandó el doctor.
+                            <%= CUserInf.getReceta() %>
                         </div>
                     </article>
                     </div>
@@ -53,38 +92,47 @@
             <br><br><br><br><!--*****ARREGLAR IRGENTEMENTE****-->
             
             <div class="columns is-vcentered">
+                
                 <div class="column is-one-quarter">
                     <div class="container">
-                        <p class="label">Datos personales</p>
+                        <div class="buttons">
+                            <a href="LoginRegistroServlet?usuario=<%= CDocInf.getUsuario()%>&password=<%= CDocInf.getPassword() %>&formid=3">
+                                <button class="button is-primary">Volver</button>
+                            </a>
+                        </div>
                     </div>
-                    <p>Aquí van los datos personales del paciente<p/>
                 </div>
+                
                 <div class="column is-half">
                     <div class="container">
-                        <p class="label">Registro médico</p>
+                       <article class="message is-primary">
+                            <div class="message-body">
+                             <strong>Cita programada</strong>
+                             <br> Su cita está programada para: <%= CCita.getFecha() %>. A las <%= CCita.getHora() %>
+                            </div>
+                        </article>
                     </div>
-                    <p>Aquí va registro médico del paciente<p/>
+                    <p><p/>
                 </div>
                 <div class="column is-one-quarter">
-                   <textarea class="textarea" placeholder="Actualización de receta"></textarea>
-                   <div class="column is-one-quarter">
-                    <div class="container">
-                        <div class="control">
-                            <button class="button is-primary">Actualizar</button>
+                    <form class="cmxform" id="signupForm" action="InfoPacienteServlet" method="post" enctype="multipart/form-data">
+                        <textarea class="textarea" name="receta" id="receta" placeholder="Actualización de receta"></textarea>
+                        <div class="column is-one-quarter">
+                            <div class="container">
+                                <div class="control">
+                                    <p>
+                                        <input class="button is-primary" type="submit" value="Actualizar">
+                                        <input type="hidden" name="formid" value="2" />
+                                        <input type="hidden" name="idPaciente" value="<%= CUserInf.getIdPaciente() %>" />
+                                    </p>
+                                    </div>
                             </div>
-                    </div>
-                </div>      
+                         </div> 
+                    </form>     
             </div>                   
                 </div>
              <br><br><br>
-             
-                <article class="message is-primary">
-                    <div class="message-body">
-                     <strong>Cita programada</strong>
-                     <br> Aqui va la informacion de la cita 
-                    </div>
-                  </article>
-            
+
         <section/>
     <body/>
 </html>
