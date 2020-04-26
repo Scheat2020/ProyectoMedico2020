@@ -37,7 +37,7 @@ public class InfoPacienteServlet extends HttpServlet {
             /* TODO output your page here. You may use following sample code. */
            
             String strForm = request.getParameter("formid");
-            String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=123456789&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             
             if(strForm.equals("1"))
             {
@@ -68,7 +68,7 @@ public class InfoPacienteServlet extends HttpServlet {
                 
                 request.getSession().setAttribute("Receta", CUpdate);
                 
-                request.getRequestDispatcher("informacionPaciente.jsp")
+                request.getRequestDispatcher("index.jsp")
                            .forward(request, response);
             }
         }

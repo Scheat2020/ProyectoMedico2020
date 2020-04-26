@@ -115,8 +115,8 @@
                     <p><p/>
                 </div>
                 <div class="column is-one-quarter">
-                    <form class="cmxform" id="signupForm" action="InfoPacienteServlet" method="post" enctype="multipart/form-data">
-                        <textarea class="textarea" name="receta" id="receta" placeholder="Actualización de receta"></textarea>
+                    <form class="cmxform" id="signupForm" action="InfoPacienteServlet" method="get">
+                        <input class="input" id="receta" name="receta" type="text" placeholder="Modificar receta">
                         <div class="column is-one-quarter">
                             <div class="container">
                                 <div class="control">
