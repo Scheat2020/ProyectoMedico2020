@@ -43,6 +43,27 @@
         <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>Información del Asistente</title>
         <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"></script>
+        <script>
+	$().ready(function() {
+		
+
+		// validate signup form on keyup and submit
+		$("#signupForm").validate({
+			rules: {
+				fecha: "required",
+				motivo: "required",
+			},          
+                       
+			messages: {
+				fecha: "*Ingrese una fecha para la cita",
+				motivo: "*Ingrese el motivo de la cita",
+			}
+		});
+
+		
+
+	});
+	</script>
     </head>
     
     <%
@@ -124,7 +145,7 @@
                             
                             <!--Paciente-->
                             <div class="field has-addons">
-
+                                <label class="label" for="paciente">Paciente</label>
                                 <div class="control is-expanded">
                                     <div class="select is-fullwidth">
                                         <select id="paciente" name="paciente">
@@ -152,7 +173,7 @@
 
                             <!--Doctor-->
                             <div class="field has-addons">
-
+                                <label class="label" for="doctor">Doctor</label>
                                 <div class="control is-expanded">
                                     <div class="select is-fullwidth">
                                         <select id="doctor" name="doctor">
@@ -189,7 +210,7 @@
 
                             <!--Hora de la cita-->
                             <div class="field has-addons">
-
+                                <label class="label" for="hora">Hora</label>
                                 <div class="control is-expanded">
                                     <div class="select is-fullwidth">
                                         <select id="hora" name="hora">
