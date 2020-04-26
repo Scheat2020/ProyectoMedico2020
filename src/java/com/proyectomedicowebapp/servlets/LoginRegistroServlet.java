@@ -7,6 +7,7 @@ package com.proyectomedicowebapp.servlets;
 
 import com.proyectomedicowebapp.logic.InfoLogic;
 import com.proyectomedicowebapp.logic.UserLogic;
+import com.proyectomedicowebapp.objects.InfoAsisObj;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
 import com.proyectomedicowebapp.objects.TablaObj;
@@ -42,7 +43,7 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=polb-12casa7&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
         UserLogic CLogic = new UserLogic(connString);
         
@@ -152,7 +153,7 @@ public class LoginRegistroServlet extends HttpServlet {
             if(CLoginUser!=null)
             {
                 InfoLogic CInfoL = new InfoLogic(connString);
-                InfoObj CListInf = CInfoL.getInfoDB(strUser);
+                InfoAsisObj CListInf = CInfoL.getInfoDBAsis(strUser);
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);
                 request.getSession().setAttribute("logged_Inf", CListInf );

@@ -7,6 +7,7 @@ package com.proyectomedicowebapp.logic;
 
 import balcorpfw.database.DatabaseX;
 import balcorpfw.logic.Logic;
+import com.proyectomedicowebapp.objects.InfoAsisObj;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -298,7 +299,59 @@ public class InfoLogic extends Logic{
             return hasFailed;
         }
     
-    
+ 
+        public InfoAsisObj getInfoDBAsis(String p_usuario ) {
+        
+        InfoAsisObj CInfoDB = null;
+        
+        DatabaseX CDatabase = getDatabase();
+        
+        String strSQL = "select * "
+                + "from clinicasdb.asistente "
+                + "where usuario like '"+p_usuario+"'";
+        ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        System.out.println(strSQL);
+            
+            if(CResult!=null)
+            {
+                try 
+                {
+                    //varibles locales que capturen esos datos
+                    String strUser;
+                    String strPassword;
+                    //declarar variables para informaciòn
+                    String strNombre;
+                    String strApellido;
+                    String strCelular;
+                    String strCorreo;
+
+                    while(CResult.next())
+                    {
+                        //Variables para inicio de sesiòn
+                        strUser = CResult.getString("usuario");
+                        strPassword = CResult.getString("password");
+                        
+                        //Variables para ddatos del usuario
+                        strNombre= CResult.getString("nombres");
+                        strApellido = CResult.getString("apellidos");
+                        strCelular = CResult.getString("celular");
+                        strCorreo = CResult.getString("correo");
+
+                        CInfoDB = new InfoAsisObj(strNombre, strApellido,  strCelular, strCorreo, strUser, strPassword);
+
+                    }
+                } 
+                catch (SQLException ex) 
+                {
+                    Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+                }
+                
+                
+            }
+            
+        return CInfoDB;  
+    }
 }
   
 
