@@ -69,7 +69,7 @@ public class InfoLogic extends Logic{
                     {
                         //Variables para inicio de sesiòn
                         strUser = CResult.getString("usuario");
-                        strIdPaciente = CResult.getString("idPaciete");
+                        strIdPaciente = CResult.getString("idPaciente");
                         
                         //Variables para ddatos del usuario
                         strNombre= CResult.getString("nombres");
