@@ -11,7 +11,7 @@
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
-        <title>Información del Asistemte</title>
+        <title>Información del Asistente</title>
     </head>
     
     <%
@@ -63,8 +63,7 @@
                 </div>
             </div>
             <form class="cmxform" id="signupForm" action="LoginRegistroServlet" method="post" enctype="multipart/form-data">
-                <fieldset>
-                    
+                
                     <section class="hero is-dark">
                         <div class="hero-body">
                           <div class="container">
@@ -83,13 +82,12 @@
                     </section>
                    
                     <br>
-            
                     <!--campos del form-->
                         <!--idPaciente-->
                         <div class="field">
                             <label class="label" for="idPaciente">ID Paciente</label>
                             <div class="control">
-                            <input class="input" id="idPaciente" name="idPaciente" type="text" placeholder="Ej: 1">
+                            <input class="input" id="paciente" name="paciente" type="text" placeholder="Ej: 1">
                             </div>
                         </div>
 
@@ -97,23 +95,45 @@
                         <div class="field">
                             <label class="label" for="idDoctor">ID Doctor</label>
                             <div class="control">
-                                <input class="input" id="idDoctor" name="idDoctor" type="text" placeholder="1">
+                                <input class="input" id="doctor" name="doctor" type="text" placeholder="1">
                             </div>
                         </div>  
 
                         <!--Fecha de la cita-->
                         <div class="field">
-                            <label class="label" for="fechaCita">Fecha de la cita</label>
+                            <label class="label" for="fecha">Fecha de la cita</label>
                             <div class="control">
-                            <input class="input" id="fechaCita" name="fechaCita" type="date">
+                            <input class="input" id="fecha" name="fecha" type="date">
                             </div>
+
                         </div> 
+                        <!--Hora de la cita-->
+                        <div class="field has-addons">
+                        
+                            <div class="control is-expanded">
+                                <div class="select is-fullwidth">
+                                    <select id="hora" name="hora">
+                                         <option value="08:30:00">8:30 a.m - 9:30 a.m.</option>
+                                         <option value="09:30:00">9:30 a.m - 10:30 a.m.</option>
+                                         <option value="10:30:00">10:30 a.m - 11:30 a.m.</option>
+                                         <option value="13:30:00">1:30 p.m - 2:30 p.m.</option>
+                                         <option value="14:30:00">2:30 p.m - 3:30 p.m.</option>
+                                         <option value="15:30:00">3:30 p.m - 4:30 p.m.</option>
+                                         <option value="16:30:00">4:30 p.m - 5:30 p.m.</option>
+                                         
+                                    </select>
+                                </div>
+                            </div>
+                            <div class="control">
+                               <button type="submit" id="hora" class="button is-primary">Choose</button>
+                            </div>
+                        </div>
 
                         <div class="field">
                         <label class="label">Motivo de la cita</label>
                         <div class="control">
                             <div class="select">
-                                <select id="" name="motivo">
+                                <select id="motivo" name="motivo">
                                     <option id="chequeoGeneral" name="chequeoGeneral" value="chequeoGeneral">Chequeo general</option>
                                     <option id="cardiologia" name="cardiologia" value="cardiologia">Cardiología</option>
                                     <option id="neurologia" name="neurologia" value="neurologia">Neurología</option>
@@ -122,11 +142,18 @@
                                 </select>
                             </div>
                         </div>
-                    </div>
-                    <br><br>  
+                        </div>
+                        <br><br>  
                
+                        <div class="column is-half">
+                            <p>
+                                <input class="button is-primary is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Confirmar">
+                                <input type="hidden" name="formid" value="5" />
+                            </p>
+                        <br><br>
+                        </div>
+         </form>             
         </section>
-    </form>
         
     </body>
 </html>

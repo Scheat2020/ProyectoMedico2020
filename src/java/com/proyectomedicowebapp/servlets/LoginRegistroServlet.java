@@ -43,7 +43,7 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345678B-&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=polb-12casa7&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
         UserLogic CLogic = new UserLogic(connString);
         
@@ -225,7 +225,23 @@ public class LoginRegistroServlet extends HttpServlet {
                    .forward(request, response);
         }
         
-        
+        //Registro citas
+        if(strFormId.equals("5"))
+        {
+            String strMotivo = request.getParameter("motivo");
+            String strFecha = request.getParameter("fecha");
+            String strHora = request.getParameter("hora");
+            String strPaciente = request.getParameter("paciente");
+            String strDoctor = request.getParameter("doctor");
+                        
+            
+            UserLogic CLogic3 = new UserLogic(connString);
+            boolean hasFailed = 
+                    CLogic3.insertCita(strMotivo, strFecha, strHora, strPaciente, strDoctor);
+            
+            request.getRequestDispatcher("asistenteProfile.jsp")
+                   .forward(request, response);
+        }
         
     }
 //jejeje

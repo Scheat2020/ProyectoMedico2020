@@ -240,5 +240,27 @@ public class UserLogic extends Logic
 
             return hasFailed;
         }
+ 
+    
+    
+        public boolean insertCita(String p_strMotivo, 
+            String p_strFecha, String p_strHora, String p_strPaciente,
+            String p_strDoctor)  
+        {
+            boolean hasFailed;
+            DatabaseX database = getDatabase();
+
+            String strSql = "INSERT INTO clinicasdb.citas"
+                    + "(motivo, fecha, hora, idPaciente, idDoctor) "
+                    + "VALUES('"+p_strMotivo+"', '"+p_strFecha+"', '"+p_strHora+"', '"+p_strPaciente+"', '"+p_strDoctor+"');";
+
+            hasFailed = database.executeNonQueryBool(strSql);
+
+            System.out.println(strSql);
+
+            return hasFailed;
+        }
+    
+    
     
 }
