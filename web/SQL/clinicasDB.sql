@@ -8,11 +8,6 @@
  * Created: 8 abr. 2020
  */
 
-/**
- * Author:  sergi
- * Created: 8 abr. 2020
- */
-
 CREATE SCHEMA `clinicasdb` ;
 
 CREATE TABLE `clinicasdb`.`doctores` (
@@ -26,6 +21,7 @@ CREATE TABLE `clinicasdb`.`doctores` (
   `credencial` VARCHAR(145) NOT NULL,
   `direccion` VARCHAR(300) NOT NULL,
   `especialidad` VARCHAR(200) NOT NULL,
+  `foto` VARCHAR(200) NULL DEFAULT 'Default.png',
   PRIMARY KEY (`idDoctor`));
 
 CREATE TABLE `clinicasdb`.`pacientes` (
@@ -34,7 +30,7 @@ CREATE TABLE `clinicasdb`.`pacientes` (
   `password` VARCHAR(45) NOT NULL,
   `nombres` VARCHAR(145) NOT NULL,
   `apellidos` VARCHAR(145) NOT NULL,
-  `foto` VARCHAR(100),
+  `foto` VARCHAR(200) NULL DEFAULT 'Default.png',
   `fechaNacimiento` DATE NOT NULL,
   `DUI` VARCHAR(10) NOT NULL,
   `direccion` VARCHAR(200) NOT NULL,
@@ -55,6 +51,7 @@ CREATE TABLE `clinicasdb`.`citas` (
   `idCita` INT NOT NULL AUTO_INCREMENT,
   `motivo` VARCHAR(145) NOT NULL,
   `fecha` DATE NOT NULL,
+  `hora` TIME NOT NULL,
   `idPaciente` INT NOT NULL,
   `idDoctor` INT NOT NULL,
   PRIMARY KEY (`idCita`));
@@ -93,4 +90,5 @@ CREATE TABLE `clinicasdb`.`asistente` (
   `apellidos` VARCHAR(145) NOT NULL,
   `celular` VARCHAR(9) NOT NULL,
   `correo` VARCHAR(145) NOT NULL,
+  `foto` VARCHAR(200) NULL DEFAULT 'Default.png',
   PRIMARY KEY (`idasistente`));
