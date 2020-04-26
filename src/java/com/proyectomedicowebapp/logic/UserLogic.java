@@ -86,12 +86,51 @@ public class UserLogic extends Logic
                 
                 while(CResult.next())
                 {
-                    IdDoctor = CResult.getInt("idPaciente");
+                    IdDoctor = CResult.getInt("idDoctor");
                     strNombres = CResult.getString("nombres");
                     strApellidos = CResult.getString("apellidos"); 
                     
                     
                     CTemp = new TablaDocObj(IdDoctor, strNombres, strApellidos);
+                    CL.add(CTemp);
+                   
+                }
+            } catch (SQLException ex) 
+            {
+                Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return CL;
+    }
+    
+    
+    public List<TablaDocObj> getAllPacientes()
+    {
+        List<TablaDocObj> CL = null;
+        DatabaseX CDatabase = getDatabase();
+        String strSQL = "select * from clinicasdb.pacientes;";
+        ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        if(CResult!=null)
+        {
+            try 
+            {
+                int idPaciente;
+                String strNombres;
+                String strApellidos;
+                
+                TablaDocObj CTemp;
+                CL = new ArrayList<>();
+                
+                while(CResult.next())
+                {
+                    idPaciente = CResult.getInt("idPaciente");
+                    strNombres = CResult.getString("nombres");
+                    strApellidos = CResult.getString("apellidos"); 
+                    
+                    
+                    CTemp = new TablaDocObj(idPaciente, strNombres, strApellidos);
                     CL.add(CTemp);
                    
                 }

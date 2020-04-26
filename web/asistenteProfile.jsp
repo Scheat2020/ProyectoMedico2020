@@ -4,6 +4,7 @@
     Author     : Sara Valentina
 --%>
 
+<%@page import="java.util.Iterator"%>
 <%@page import="com.proyectomedicowebapp.objects.TablaDocObj"%>
 <%@page import="com.proyectomedicowebapp.objects.UserObj"%>
 <%@page import="java.util.List"%>
@@ -51,8 +52,8 @@
         InfoAsisObj CUserInf =
                 (InfoAsisObj)request.getSession().getAttribute("logged_Inf");
         
-        List<TablaObj> CList = 
-                (List<TablaObj>)request.getSession().getAttribute("usuarios");
+        List<TablaDocObj> CList = 
+                (List<TablaDocObj>)request.getSession().getAttribute("usuarios");
         
         List<TablaDocObj> CListDoc = 
                 (List<TablaDocObj>)request.getSession().getAttribute("doctores");
@@ -117,7 +118,9 @@
                 <h1 class="title is-dark is-centered">Agendar cita</h1> 
                     <section class="hero is-info">
                     <div class="hero-body">
-                        <form class="cmxform" id="signupForm" action="LoginRegistroServlet" method="post" enctype="multipart/form-data">
+                        <form class="cmxform" id="signupForm" action="CitasServlet" method="post">
+                            
+                            
                             
                             <!--Paciente-->
                             <div class="field has-addons">
@@ -125,12 +128,27 @@
                                 <div class="control is-expanded">
                                     <div class="select is-fullwidth">
                                         <select id="paciente" name="paciente">
-                                             <option value="Paco">Paco</option>
-                                             <option value="Paola">Paola</option>
+                                            <% 
+                                                if(CList!=null)
+                                                 {
+                                                     Iterator<TablaDocObj> ite = CList.iterator();
+                                                     TablaDocObj CTemp;
+                                                     while(ite.hasNext())
+                                                     {
+                                                         CTemp = ite.next();
+                                            %>
+                                             <option value="<%= CTemp.getIdPaciente()%>"><%= CTemp.getNombres() %> <%= CTemp.getApellidos() %></option>
+                                             
+                                            <%
+                                                    }
+                                                }
+                                            %>    
                                         </select>
                                     </div>
                                 </div>
                             </div>
+                            
+                              
 
                             <!--Doctor-->
                             <div class="field has-addons">
@@ -138,8 +156,23 @@
                                 <div class="control is-expanded">
                                     <div class="select is-fullwidth">
                                         <select id="doctor" name="doctor">
-                                             <option value="Chonfilas">Chonfilas</option>
-                                             <option value="Pancracio">Pancracio</option>
+                                            
+                                            <% 
+                                                if(CList!=null)
+                                                 {
+                                                     Iterator<TablaDocObj> ite = CListDoc.iterator();
+                                                     TablaDocObj CTemp;
+                                                     while(ite.hasNext())
+                                                     {
+                                                        CTemp = ite.next();
+                                            %>
+                                            
+                                            <option value="<%= CTemp.getIdPaciente()%>"><%= CTemp.getNombres()%> <%= CTemp.getApellidos()%></option>
+                                            <%
+                                                    }
+                                                }
+                                            %>    
+                                            
                                         </select>
                                     </div>
                                 </div>
@@ -184,7 +217,7 @@
 
                             <p>
                                 <input class="button is-light is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Confirmar">
-                                <input type="hidden" name="formid" value="5" />
+                                <input type="hidden" name="formid" value="1" />
                             </p>
 
                         </form>
