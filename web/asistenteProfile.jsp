@@ -258,13 +258,26 @@
                 </section>
             </div>
             
+            <div class="columns is-vcentered">
+                <form class="cmxform" id="signupForm" action="CitasServlet" method="post">
+                    <p>
+                        <div class="buttons is-centered">
+                            <input class="button is-primary button is-medium " type="submit" value="Actualizar tabla">
+                            <input type="hidden" name="formid" value="3" />
+                            <input type="hidden" name="asistente" value="<%= CUser.getUser() %>" />
+                            <input type="hidden" name="password" value="<%= CUser.getPassword() %>" />
+                        </div>
+                    </p>
+                </form>
+            </div>
+                                
             <%--Tabla--%>
             <div class="columns is-vcentered">
                 <div class="column is-one-quarter">
                     <div class="container">
                         <p class="label"></p>
                     </div> 
-                    </div>
+                </div>
                 <div class="column is-half">
                     <div class="container">
                         <h1 class="title">
@@ -272,62 +285,62 @@
                         </h1>
                     </div>
                 <br><br>
-                    <table class="table">
-                        <thead>
-                            <tr>
-                                <th>ID Paciente</th>
-                                <th>Paciente</th>
-                                <th>Fecha Agendada</th>
-                                <th>Hora Agendada</th>
-                                <th>ID Doctor</th>
-                                <th>Doctor</th>
-                                <th>Borrar</th>
-                            </tr>
-                        </thead>
-                        <tfoot>
-                            <tr>
-                                <th>ID Paciente</th>
-                                <th>Paciente</th>
-                                <th>Fecha Agendada</th>
-                                <th>Hora Agendada</th>
-                                <th>ID Doctor</th>
-                                <th>Doctor</th>
-                                <th>Borrar</th>
-                            </tr>
-                        </tfoot>
-                        <tbody>
-
-                        
-                        <% 
-                           if(CList!=null)
-                            {
-                                
-                                Iterator<TablaAsisObj> ite = CListTab.iterator();
-                                TablaAsisObj CTemp;
-                                while(ite.hasNext())
-                                {
-                                    CTemp = ite.next();
-                        %>
+                <table class="table">
+                    <thead>
                         <tr>
-                            <td id="idPaciente" name="idPaciente"><%= CTemp.getIdPaciente() %></td>
-                            <td id="Paciente" name="nombres"><%= CTemp.getApellidosPa()%>, <%= CTemp.getNombresPa() %></td>
-                            <td id="cita" name="apellidos"><%= CTemp.getFecha() %></td>
-                            <td id="hora" name="cita"><%= CTemp.getHora() %></td>
-                            <td id="IdDoctor" name="IdDoctor"><%= CTemp.getIdDoctor() %></td>
-                            <td id="Doctor" name="Doctor"><%= CTemp.getApellidosDoc() %>, <%= CTemp.getNombresDoc() %></td>
-                            <td id="borrar" name="borrar"><a href="CitasServlet?paciente=<%= CTemp.getIdPaciente() %>&doctor=<%= CTemp.getIdDoctor() %>&fecha=<%= CTemp.getFecha() %>&hora=<%= CTemp.getHora() %>&asistente=<%= CUser.getUser() %>&password=<%= CUser.getPassword() %>&formid=2">Borrar</a></td>
+                            <th>ID Paciente</th>
+                            <th>Paciente</th>
+                            <th>Fecha Agendada</th>
+                            <th>Hora Agendada</th>
+                            <th>ID Doctor</th>
+                            <th>Doctor</th>
+                            <th>Borrar</th>
                         </tr>
-                        <%
-                                }
-                            }else {
-                        %>                         
-                                
-                        <%
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>ID Paciente</th>
+                            <th>Paciente</th>
+                            <th>Fecha Agendada</th>
+                            <th>Hora Agendada</th>
+                            <th>ID Doctor</th>
+                            <th>Doctor</th>
+                            <th>Borrar</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+
+
+                    <% 
+                       if(CList!=null)
+                        {
+
+                            Iterator<TablaAsisObj> ite = CListTab.iterator();
+                            TablaAsisObj CTemp;
+                            while(ite.hasNext())
+                            {
+                                CTemp = ite.next();
+                    %>
+                    <tr>
+                        <td id="idPaciente" name="idPaciente"><%= CTemp.getIdPaciente() %></td>
+                        <td id="Paciente" name="nombres"><%= CTemp.getApellidosPa()%>, <%= CTemp.getNombresPa() %></td>
+                        <td id="cita" name="apellidos"><%= CTemp.getFecha() %></td>
+                        <td id="hora" name="cita"><%= CTemp.getHora() %></td>
+                        <td id="IdDoctor" name="IdDoctor"><%= CTemp.getIdDoctor() %></td>
+                        <td id="Doctor" name="Doctor"><%= CTemp.getApellidosDoc() %>, <%= CTemp.getNombresDoc() %></td>
+                        <td id="borrar" name="borrar"><a href="CitasServlet?paciente=<%= CTemp.getIdPaciente() %>&doctor=<%= CTemp.getIdDoctor() %>&fecha=<%= CTemp.getFecha() %>&hora=<%= CTemp.getHora() %>&asistente=<%= CUser.getUser() %>&password=<%= CUser.getPassword() %>&formid=2">Borrar</a></td>
+                    </tr>
+                    <%
                             }
-                        %>                 
-                        </tbody>
-                      </table>
-                    </div>
+                        }else {
+                    %>                         
+
+                    <%
+                        }
+                    %>                 
+                    </tbody>
+                  </table>
+                </div>
             </div>
             <br><br><br><br>
 
