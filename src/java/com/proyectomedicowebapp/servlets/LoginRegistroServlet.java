@@ -26,6 +26,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 import javax.servlet.http.Part;
 
 @MultipartConfig
@@ -91,9 +92,16 @@ public class LoginRegistroServlet extends HttpServlet {
         //Login Doctor
         if(strFormId.equals("3"))
         {
+            
+            //Cierra sesión anterior
+            HttpSession cerrarSesion = request.getSession();
+            cerrarSesion.removeAttribute("logged_user");
+            cerrarSesion.removeAttribute("logged_Inf");
+            cerrarSesion.removeAttribute("Cita");
+            cerrarSesion.removeAttribute("user");
+            cerrarSesion.invalidate();
+            
             //accion es log in
-            
-            
             String strUser = request.getParameter("usuario");
             String strPassword = request.getParameter("password");
             String strTabla = "clinicasdb.doctores";

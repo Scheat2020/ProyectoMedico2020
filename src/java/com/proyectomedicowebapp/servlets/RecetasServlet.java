@@ -8,11 +8,13 @@ package com.proyectomedicowebapp.servlets;
 import com.proyectomedicowebapp.logic.InfoLogic;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
+import com.proyectomedicowebapp.objects.TablaObj;
 import java.io.IOException;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 /**
  *
@@ -34,6 +36,14 @@ public class RecetasServlet extends HttpServlet {
     {
         String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
+        //Cierra sesión anterior
+        HttpSession cerrarSesion = request.getSession();
+        cerrarSesion.removeAttribute("logged_Inf");
+        cerrarSesion.removeAttribute("logged_user");
+        cerrarSesion.removeAttribute("Cita");
+        cerrarSesion.removeAttribute("user");
+        cerrarSesion.invalidate();
+        
         String strReceta = request.getParameter("receta");
         String strId = request.getParameter("idPaciente");
         String strDoc = request.getParameter("userDoc");
@@ -42,10 +52,14 @@ public class RecetasServlet extends HttpServlet {
         boolean CUpdate =  CInfoL.updateReceta(strId, strReceta);
         InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
         InfoObj CListInf = CInfoL.getInfoPaciente(strId);
+        TablaObj CCita = CInfoL.getCita(strId);
         
         request.getSession().setAttribute("logged_Inf", CListInf );       
         request.getSession().setAttribute("Receta", CUpdate);
-        request.getSession().setAttribute("logged_Doc", CDoc);
+        request.getSession().setAttribute("logged_user", CDoc);
+        request.getSession().setAttribute("user", strDoc);
+        request.getSession().setAttribute("Cita", CCita);
+        
                 
         request.getRequestDispatcher("informacionPaciente.jsp")
                     .forward(request, response);

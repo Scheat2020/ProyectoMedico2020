@@ -8,6 +8,32 @@
 <%@page import="com.proyectomedicowebapp.objects.InfoDocObj"%>
 <%@page import="com.proyectomedicowebapp.objects.InfoObj"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page session="true" %>
+<%
+
+    response.setHeader("Pragma","no-cache");
+    response.addHeader("Cache-control","must-revalidate");
+    response.addHeader("Cache-control", "no-cache");
+    response.addHeader("Cache-control", "no-store");
+    response.setDateHeader("Expires", 0);
+
+    try{
+        if(session.getAttribute("user")==null){
+
+
+            request.getRequestDispatcher("index.jsp").forward(request, response);
+
+        }
+
+    }catch(Exception e){
+
+
+        request.getRequestDispatcher("index.jsp").forward(request, response);
+
+    }
+
+%>
+
 <!DOCTYPE html>
 <html>
     <head>
@@ -22,6 +48,7 @@
                 (InfoDocObj)request.getSession().getAttribute("logged_user");
         TablaObj CCita =
                  (TablaObj)request.getSession().getAttribute("Cita");
+        session.getAttribute("user"); 
     %>
   
     <body>
@@ -115,7 +142,7 @@
                     <p><p/>
                 </div>
                 <div class="column is-one-quarter">
-                    <form class="cmxform" id="signupForm" action="RecetasServlet" method="get">
+                    <form class="cmxform" id="signupForm" action="RecetasServlet" method="post">
                         <input class="input" id="receta" name="receta" type="text" placeholder="Modificar receta">
                         <div class="column is-one-quarter">
                             <div class="container">

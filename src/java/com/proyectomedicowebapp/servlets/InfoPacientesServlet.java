@@ -16,6 +16,7 @@ import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 @MultipartConfig
 public class InfoPacientesServlet extends HttpServlet {
@@ -37,6 +38,14 @@ public class InfoPacientesServlet extends HttpServlet {
            
             String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             
+            //Cierra sesión anterior
+            HttpSession cerrarSesion = request.getSession();
+            cerrarSesion.removeAttribute("logged_user");
+            cerrarSesion.removeAttribute("logged_Inf");
+            cerrarSesion.removeAttribute("user");
+            cerrarSesion.removeAttribute("usuarios");
+            cerrarSesion.removeAttribute("first_user");
+            cerrarSesion.invalidate();
             
             String strId = request.getParameter("idPaciente");
             String strDoc = request.getParameter("Doc");
@@ -46,7 +55,7 @@ public class InfoPacientesServlet extends HttpServlet {
             InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
             TablaObj CCita = CInfoL.getCita(strId);
 
-
+            request.getSession().setAttribute("user", strDoc );
             request.getSession().setAttribute("logged_Inf", CListInf );
             request.getSession().setAttribute("logged_user", CDoc);
             request.getSession().setAttribute("Cita", CCita);

@@ -53,7 +53,7 @@ public class controladorSalir extends HttpServlet {
         
             HttpSession cerrarSesion = request.getSession();
             cerrarSesion.removeAttribute("logged_user");
-            cerrarSesion.removeAttribute("llogged_Inf");
+            cerrarSesion.removeAttribute("logged_Inf");
             cerrarSesion.removeAttribute("user");
             cerrarSesion.removeAttribute("usuarios");
             cerrarSesion.removeAttribute("first_user");

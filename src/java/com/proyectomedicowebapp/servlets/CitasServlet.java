@@ -53,6 +53,17 @@ public class CitasServlet extends HttpServlet {
             String strUser = request.getParameter("asistente");
             String strPassword = request.getParameter("password");
             
+            //Cierra la sesión anterior 
+            HttpSession cerrarSesion = request.getSession();
+            cerrarSesion.removeAttribute("logged_user");
+            cerrarSesion.removeAttribute("logged_Inf");
+            cerrarSesion.removeAttribute("usuarios");
+            cerrarSesion.removeAttribute("doctores");
+            cerrarSesion.removeAttribute("tabla");
+            cerrarSesion.removeAttribute("user");
+            cerrarSesion.invalidate();
+            
+            //Obtengo info necesaria 
             UserLogic CLogic = new UserLogic(connString);
             String strTabla = "clinicasdb.asistente";
             
@@ -96,15 +107,6 @@ public class CitasServlet extends HttpServlet {
             request.getRequestDispatcher("asistenteProfile.jsp")
                    .forward(request, response);
             
-            //Cierra la sesión anterior 
-            HttpSession cerrarSesion = request.getSession();
-            cerrarSesion.removeAttribute("logged_user");
-            cerrarSesion.removeAttribute("logged_Inf");
-            cerrarSesion.removeAttribute("usuarios");
-            cerrarSesion.removeAttribute("doctores");
-            cerrarSesion.removeAttribute("tabla");
-            cerrarSesion.removeAttribute("user");
-            cerrarSesion.invalidate();
         }
         
         //Borrar cita
@@ -117,6 +119,17 @@ public class CitasServlet extends HttpServlet {
             String strUser = request.getParameter("asistente");
             String strPassword = request.getParameter("password");
             
+            //Cierra la sesión anterior 
+            HttpSession cerrarSesion = request.getSession();
+            cerrarSesion.removeAttribute("logged_user");
+            cerrarSesion.removeAttribute("logged_Inf");
+            cerrarSesion.removeAttribute("usuarios");
+            cerrarSesion.removeAttribute("doctores");
+            cerrarSesion.removeAttribute("tabla");
+            cerrarSesion.removeAttribute("user");
+            cerrarSesion.invalidate();
+            
+            //Obtengo información para iniciar sesión 
             UserLogic CLogic = new UserLogic(connString);
             String strTabla = "clinicasdb.asistente";
             
@@ -157,16 +170,6 @@ public class CitasServlet extends HttpServlet {
             
             request.getRequestDispatcher("asistenteProfile.jsp")
                    .forward(request, response);
-            
-            //Cierra la sesión anterior 
-            HttpSession cerrarSesion = request.getSession();
-            cerrarSesion.removeAttribute("logged_user");
-            cerrarSesion.removeAttribute("logged_Inf");
-            cerrarSesion.removeAttribute("usuarios");
-            cerrarSesion.removeAttribute("doctores");
-            cerrarSesion.removeAttribute("tabla");
-            cerrarSesion.removeAttribute("user");
-            cerrarSesion.invalidate();
             
         }
             
