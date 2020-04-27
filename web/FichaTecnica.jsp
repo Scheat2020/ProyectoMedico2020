@@ -138,7 +138,20 @@
                        <article class="message is-primary">
                             <div class="message-body">
                              <strong>Receta</strong>
+                             <% 
+                                if (CUserInf.getReceta()!=null)
+                                {   
+                             %>
                              <br> <%= CUserInf.getReceta() %>
+                             <% 
+                                } else {
+                             %>
+                             <br> No hay receta dicponible
+                             
+                             <% 
+                                }
+                             %>
+                             
                             </div>
                         </article>
                     </div>
@@ -147,8 +160,20 @@
                     <div class="container">
                        <article class="message is-primary">
                             <div class="message-body">
-                             <strong>Cita programada</strong>
-                             <br> Su cita está programada para: <%= CUserInf.getM_fecha() %>. A las <%= CUserInf.getM_Hora() %>
+                                <strong>Cita programada</strong>
+                                <% 
+                                   if (CUserInf.getM_fecha()!=null)
+                                   {   
+                                %>
+                                <br> Su cita está programada para: <%= CUserInf.getM_fecha() %>. A las <%= CUserInf.getM_Hora() %>
+                                <% 
+                                   } else {
+                                %>
+                                <br> No hay citas programadas
+
+                                <% 
+                                   }
+                                %>
                             </div>
                         </article>
                     </div>
