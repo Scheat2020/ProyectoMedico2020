@@ -92,3 +92,7 @@ CREATE TABLE `clinicasdb`.`asistente` (
   `correo` VARCHAR(145) NOT NULL,
   `foto` VARCHAR(200) NULL DEFAULT 'Default.png',
   PRIMARY KEY (`idasistente`));
+
+/**
+ * Ya está bien la BD
+ */
