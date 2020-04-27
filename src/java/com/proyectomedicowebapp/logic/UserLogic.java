@@ -348,7 +348,7 @@ public class UserLogic extends Logic
     public List<TablaAsisObj> getAllCitasInfo() {
         List<TablaAsisObj> CL = null;
         DatabaseX CDatabase = getDatabase();
-        String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora, doctores.idDoctor, doctores.nombres, doctores.apellidos "
+        String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, pacientes.correo, pacientes.celular, citas.fecha, citas.hora, doctores.idDoctor, doctores.nombres, doctores.apellidos "
                 + "from  clinicasdb.pacientes inner join clinicasdb.citas on citas.idPaciente = pacientes.idPaciente "
                 + "inner join clinicasdb.doctores on citas.idDoctor = doctores.idDoctor "
                 + "where citas.fecha >= current_date() "
@@ -367,6 +367,8 @@ public class UserLogic extends Logic
                 int IdDoctor; 
                 String strNombresDoc;
                 String strApellidosDoc;
+                String strCorreo;
+                String strNumero;
                 TablaAsisObj CTemp;
                 CL = new ArrayList<>();
                 
@@ -380,8 +382,10 @@ public class UserLogic extends Logic
                     IdDoctor = CResult.getInt("idDoctor");
                     strNombresDoc = CResult.getString("doctores.nombres");
                     strApellidosDoc = CResult.getString("doctores.apellidos"); 
+                    strCorreo = CResult.getString("correo"); 
+                    strNumero = CResult.getString("celular"); 
                     
-                    CTemp = new TablaAsisObj(strNombresPa, strApellidosPa, IdPaciente, strCita, strHora, IdDoctor, strNombresDoc, strApellidosDoc);
+                    CTemp = new TablaAsisObj(strNombresPa, strApellidosPa, IdPaciente, strCita, strHora, IdDoctor, strNombresDoc, strApellidosDoc, strCorreo, strNumero);
                     CL.add(CTemp);
                    
                 }

@@ -150,7 +150,6 @@ public class LoginRegistroServlet extends HttpServlet {
         {
             //accion es log in
             
-            
             String strUser = request.getParameter("usuario");
             String strPassword = request.getParameter("password");
             String strTabla = "clinicasdb.asistente";

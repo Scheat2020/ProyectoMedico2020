@@ -18,8 +18,13 @@ public class TablaAsisObj {
     private int m_idDoctor;
     private String m_nombresDoc;
     private String m_apellidosDoc;
+    private String m_correo;
+    private String m_numero;
+    
 
-    public TablaAsisObj(String p_nombresPa, String p_apellidosPa, int p_idPaciente, String p_fecha, String p_hora, int p_idDoctor, String p_nombresDoc, String p_apellidosDoc) {
+    public TablaAsisObj(String p_nombresPa, String p_apellidosPa, int p_idPaciente, String p_fecha, String p_hora, int p_idDoctor, String p_nombresDoc, 
+            String p_apellidosDoc, String p_correo, String p_numero) 
+    {
         setNombresPa(p_nombresPa);
         setApellidosPa(p_apellidosPa);
         setIdPaciente(p_idPaciente);
@@ -28,12 +33,28 @@ public class TablaAsisObj {
         setIdDoctor(p_idDoctor);
         setNombresDoc(p_nombresDoc);
         setApellidosDoc(p_apellidosDoc);
+        setCorreo(p_correo);
+        setNumero(p_numero);
+    }
+
+    public String getCorreo() {
+        return m_correo;
+    }
+    
+    private void setCorreo(String p_correo) {
+        m_correo = p_correo;
+    }
+
+    public String getNumero() {
+        return m_numero;
+    }
+
+    private void setNumero(String p_numero) {
+        m_numero = p_numero;
     }
     
     
-    
-    
-    
+
     public String getNombresPa() {
         return m_nombresPa;
     }

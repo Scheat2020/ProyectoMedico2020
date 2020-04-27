@@ -107,7 +107,16 @@
                             <button class="delete" aria-label="delete"></button>
                         </div>
                         <div class="message-body">
-                            <%= CUserInf.getReceta() %>
+                            <% if(CUserInf.getReceta() == null)
+                                {
+                            %>
+                            No hay receta disponible
+                            <%  }else{
+                            %>
+                                <%= CUserInf.getReceta() %>
+                            <%  
+                                }
+                            %>
                         </div>
                     </article>
                     </div>

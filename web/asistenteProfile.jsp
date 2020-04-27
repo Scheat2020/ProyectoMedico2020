@@ -286,6 +286,8 @@
                         <tr>
                             <th>ID Paciente</th>
                             <th>Paciente</th>
+                            <th>Número</th>
+                            <th>Correo</th>
                             <th>Fecha Agendada</th>
                             <th>Hora Agendada</th>
                             <th>ID Doctor</th>
@@ -297,6 +299,8 @@
                         <tr>
                             <th>ID Paciente</th>
                             <th>Paciente</th>
+                            <th>Número</th>
+                            <th>Correo</th>
                             <th>Fecha Agendada</th>
                             <th>Hora Agendada</th>
                             <th>ID Doctor</th>
@@ -320,6 +324,8 @@
                     <tr>
                         <td id="idPaciente" name="idPaciente"><%= CTemp.getIdPaciente() %></td>
                         <td id="Paciente" name="nombres"><%= CTemp.getApellidosPa()%>, <%= CTemp.getNombresPa() %></td>
+                        <td id="numero" name="numero"><%= CTemp.getNumero() %></td>
+                        <td id="correo" name="correo"><%= CTemp.getCorreo() %></td>
                         <td id="cita" name="apellidos"><%= CTemp.getFecha() %></td>
                         <td id="hora" name="cita"><%= CTemp.getHora() %></td>
                         <td id="IdDoctor" name="IdDoctor"><%= CTemp.getIdDoctor() %></td>
