@@ -136,7 +136,7 @@
                     </div>
                     <div class="column is-one-quarter">
                         <div class="container">
-                            <a href="controladorSalir.do">
+                            <a href="controladorSalir.do?formid=3">
                                 <button class="button is-danger">Cerrar sesión</button>
                             </a>
                         </div>

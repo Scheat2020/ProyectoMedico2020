@@ -33,13 +33,48 @@ public class controladorSalir extends HttpServlet {
             throws ServletException, IOException 
     {
         //Cerrar sesión
-        HttpSession cerrarSesion = request.getSession();
-        cerrarSesion.removeAttribute("logged_user");
-        cerrarSesion.removeAttribute("logged_Inf");
-        cerrarSesion.removeAttribute("user");
-        cerrarSesion.invalidate();
-        request.getRequestDispatcher("index.jsp")
-                .forward(request, response);
+        
+        String strFormId = request.getParameter("formid");
+        //Paciente
+        if(strFormId.equals("1"))
+        {
+        
+            HttpSession cerrarSesion = request.getSession();
+            cerrarSesion.removeAttribute("logged_user");
+            cerrarSesion.removeAttribute("logged_Inf");
+            cerrarSesion.removeAttribute("user");
+            cerrarSesion.invalidate();
+            request.getRequestDispatcher("index.jsp")
+                    .forward(request, response);
+        }
+        
+        if(strFormId.equals("2"))
+        {
+        
+            HttpSession cerrarSesion = request.getSession();
+            cerrarSesion.removeAttribute("logged_user");
+            cerrarSesion.removeAttribute("llogged_Inf");
+            cerrarSesion.removeAttribute("user");
+            cerrarSesion.removeAttribute("usuarios");
+            cerrarSesion.removeAttribute("first_user");
+            cerrarSesion.invalidate();
+            request.getRequestDispatcher("index.jsp")
+                    .forward(request, response);
+        }
+        if(strFormId.equals("3"))
+        {
+            
+            HttpSession cerrarSesion = request.getSession();
+            cerrarSesion.removeAttribute("logged_user");
+            cerrarSesion.removeAttribute("logged_Inf");
+            cerrarSesion.removeAttribute("usuarios");
+            cerrarSesion.removeAttribute("doctores");
+            cerrarSesion.removeAttribute("tabla");
+            cerrarSesion.removeAttribute("user");
+            cerrarSesion.invalidate();
+            request.getRequestDispatcher("index.jsp")
+                    .forward(request, response);
+        }
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">

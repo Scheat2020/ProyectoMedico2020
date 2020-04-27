@@ -51,6 +51,7 @@
         
         InfoDocObj CUserInf =
                 (InfoDocObj)request.getSession().getAttribute("logged_Inf");
+        
         session.getAttribute("user"); 
 
         List<TablaObj> CList = 
@@ -209,7 +210,7 @@
             <div class="columns is-vcentered">
                 <div class="column is-one-quarter">
                     <div class="container">
-                        <a href="controladorSalir.do">
+                        <a href="controladorSalir.do?formid=2">
                             <button class="button is-danger">Cerrar sesión</button>
                         </a>
                     </div>

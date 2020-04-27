@@ -127,7 +127,7 @@
                                 <button class="button is-primary">Agendar cita</button>
                             </a>
                         </div>
-                        <a href="controladorSalir.do">
+                        <a href="controladorSalir.do?formid=1">
                             <button class="button is-danger">Cerrar sesión</button>
                         </a>
                     </div>
