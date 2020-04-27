@@ -4,6 +4,8 @@
     Author     : Sara Valentina
 --%>
 
+
+
 <%@page import="com.proyectomedicowebapp.objects.TablaAsisObj"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.proyectomedicowebapp.objects.TablaDocObj"%>
@@ -38,12 +40,15 @@
 
 %>
 <!DOCTYPE html>
+
 <html>
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
         <title>Información del Asistente</title>
         <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"></script>
+        <script src="Scripts/validate/jquery-1.8.3.js" type="text/javascript"></script>
+        <script src="Scripts/validate/jquery.validate.js" type="text/javascript"></script>
         <script>
 	$().ready(function() {
 		
@@ -60,9 +65,9 @@
 				motivo: "*Ingrese el motivo de la cita"
 			}
 		});
-
-		
-
+                
+                
+                
 	});
 	</script>
     </head>
