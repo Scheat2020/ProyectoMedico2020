@@ -258,17 +258,13 @@
                 </section>
             </div>
             
-            <div class="columns is-vcentered">
-                <form class="cmxform" id="signupForm" action="CitasServlet" method="post">
-                    <p>
-                        <div class="buttons is-centered">
-                            <input class="button is-primary button is-medium " type="submit" value="Actualizar tabla">
-                            <input type="hidden" name="formid" value="3" />
-                            <input type="hidden" name="asistente" value="<%= CUser.getUser() %>" />
-                            <input type="hidden" name="password" value="<%= CUser.getPassword() %>" />
-                        </div>
-                    </p>
-                </form>
+            <div class="column is-one-quarter">
+                    <div class="container">
+                        <form class="cmxform" id="logAdminForm" action="LoginRegistroServlet?usuario=<%= CUser.getUser() %>&password=<%= CUser.getPassword() %>&formid=4" method="post">
+                            <input class="button is-light is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Actualizar tabla">
+                        </form>
+                    </div>
+                </div>
             </div>
                                 
             <%--Tabla--%>
