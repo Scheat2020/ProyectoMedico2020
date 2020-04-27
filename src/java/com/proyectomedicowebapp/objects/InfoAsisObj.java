@@ -21,6 +21,7 @@ public class InfoAsisObj {
         setTelefono(p_telefono);
         setUsuario(p_usuario);
         setPassword(p_password);
+        setFoto(p_foto);
     }
         
       //Getters
@@ -78,7 +79,7 @@ public class InfoAsisObj {
         m_password = p_password;
     }
 
-    public void setFoto(String p_foto) {
+    private void setFoto(String p_foto) {
         m_foto = p_foto;
     }
     

@@ -138,6 +138,7 @@ public class InfoLogic extends Logic{
                     String strCredencial;
                     String strDireccion;
                     String strEspecialidad;
+                    String strFoto;
 
                     while(CResult.next())
                     {
@@ -153,8 +154,9 @@ public class InfoLogic extends Logic{
                         strCredencial = CResult.getString("credencial");
                         strDireccion = CResult.getString("direccion");
                         strEspecialidad = CResult.getString("especialidad");
+                        strFoto = CResult.getString("foto");
 
-                        CInfoDB = new InfoDocObj(strNombre, strApellido,  strCelular, strCorreo, strCredencial, strDireccion, strEspecialidad, strUser, strPassword);
+                        CInfoDB = new InfoDocObj(strNombre, strApellido,  strCelular, strCorreo, strCredencial, strDireccion, strEspecialidad, strUser, strPassword, strFoto);
 
                     }
                 } 

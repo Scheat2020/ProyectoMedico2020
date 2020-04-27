@@ -94,7 +94,7 @@
                         <!--Esta clase la cree en el archivo bulma.css -->
                         <!--<figure class="image is-190x190"> -->
                         <figure class="image is-190x190 is-center is-centered">
-                            <img class="is-rounded" src="https://screenfiction.org/content/image/0/5/184/924b45fd-full.webp" >
+                            <img class="is-rounded" src="Images/<%= CUserInf.getFoto()%>">
                         </figure>
                     </div>
                     <div class="column">

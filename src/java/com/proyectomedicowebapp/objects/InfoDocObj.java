@@ -19,8 +19,11 @@ public class InfoDocObj {
         private String m_especialidad;
         private String m_usuario;
         private String m_password;
+        private String m_foto;
 
-    public InfoDocObj(String p_nombres, String p_apellidos,String p_telefono, String p_correo, String p_credencial,String p_direccion, String p_especialidad, String p_usuario, String p_password) {
+    public InfoDocObj(String p_nombres, String p_apellidos,String p_telefono, String p_correo, String p_credencial,String p_direccion, String p_especialidad, 
+            String p_usuario, String p_password, String m_foto) 
+    {
         setNombres(p_nombres);
         setApellidos(p_apellidos);
         setCorreo(p_correo);
@@ -30,6 +33,7 @@ public class InfoDocObj {
         setEspecialidad(p_especialidad);
         setUsuario(p_usuario);
         setPassword(p_password);
+        setFoto(m_foto);
     }
 
 
@@ -68,6 +72,11 @@ public class InfoDocObj {
     public String getPassword() {
         return m_password;
     }   
+
+    public String getFoto() {
+        return m_foto;
+    }
+    
      //Setters
 
     private void setNombres(String p_nombres) {
@@ -103,5 +112,11 @@ public class InfoDocObj {
     private void setPassword(String p_password) {
         m_password = p_password;
     }
+
+    private void setFoto(String p_foto) {
+        m_foto = p_foto;
+    }
+    
+    
    
 }

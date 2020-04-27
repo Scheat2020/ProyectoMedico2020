@@ -118,7 +118,7 @@
                         <!--Esta clase la cree en el archivo bulma.css -->
                         <!--<figure class="image is-190x190"> -->
                         <figure class="image is-150x150">
-                            <img class="is-rounded" src="https://www.fontaneroylimpiezasvalencia.com/wp-content/uploads/2019/07/trabajo-toronto-secretaria.jpg" >
+                            <img class="is-rounded" src="Images/<%= CUserInf.getFoto()%>">
                         </figure>
                     </div>
                     <div class="column is-half">

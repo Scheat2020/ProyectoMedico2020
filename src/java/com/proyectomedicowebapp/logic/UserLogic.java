@@ -26,13 +26,13 @@ public class UserLogic extends Logic
         super(connString);
     }
     
-    public List<TablaObj> getAllUsers()
+    public List<TablaObj> getAllUsers(String strUser)
     {
         List<TablaObj> CL = null;
         DatabaseX CDatabase = getDatabase();
-        String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora from clinicasdb.citas "
-                + "inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente "
-                + "where citas.fecha >= current_date() "
+        String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora from clinicasdb.pacientes "
+                + "inner join clinicasdb.citas on citas.idPaciente = pacientes.idPaciente inner join clinicasdb.doctores on citas.idDoctor = doctores.idDoctor "
+                + "where citas.fecha >= current_date() and doctores.usuario = '"+strUser+"' "
                 + "Order by citas.fecha;";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         

@@ -109,7 +109,7 @@ public class LoginRegistroServlet extends HttpServlet {
                 
                 //Obtengo los todos usuarios
                 UserLogic CL = new UserLogic(connString);
-                List<TablaObj> CList = CL.getAllUsers();
+                List<TablaObj> CList = CL.getAllUsers(strUser);
                 
                 //Obtengo la cita mas proxima
                 UserLogic CFirst = new UserLogic(connString);
