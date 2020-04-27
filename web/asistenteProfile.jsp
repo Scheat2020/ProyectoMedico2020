@@ -52,12 +52,12 @@
 		$("#signupForm").validate({
 			rules: {
 				fecha: "required",
-				motivo: "required",
+				motivo: "required"
 			},          
                        
 			messages: {
 				fecha: "*Ingrese una fecha para la cita",
-				motivo: "*Ingrese el motivo de la cita",
+				motivo: "*Ingrese el motivo de la cita"
 			}
 		});
 
