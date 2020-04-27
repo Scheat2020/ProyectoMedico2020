@@ -99,8 +99,54 @@ public class CitasServlet extends HttpServlet {
         //Borrar cita
         if(strFormId.equals("2"))
         {
-            request.getRequestDispatcher("index.jsp")
-                .forward(request, response);
+            String strFecha = request.getParameter("fecha");
+            String strHora = request.getParameter("hora");
+            String strPaciente = request.getParameter("paciente");
+            String strDoctor = request.getParameter("doctor");
+            String strUser = request.getParameter("asistente");
+            String strPassword = request.getParameter("password");
+            
+            UserLogic CLogic = new UserLogic(connString);
+            String strTabla = "clinicasdb.asistente";
+            
+            //necesito un metodo que me permita saber si el usuario existe o no
+            UserObj CLoginUser = CLogic.getUserInDB(strUser, strPassword, strTabla);
+            
+            //Actualiza la tabla
+            InfoLogic CInfoL = new InfoLogic(connString);
+            InfoAsisObj CListInf = CInfoL.getInfoDBAsis(strUser);
+
+            //Obtengo a todos los pacientes
+            UserLogic CL = new UserLogic(connString);
+            List<TablaDocObj> CList = CL.getAllPacientes();
+
+
+
+            //Obtengo a todos los doctores
+            UserLogic CLDoc = new UserLogic(connString);
+            List<TablaDocObj> CListDoc = CLDoc.getAllDoctors();
+
+            //Obtengo las citas creadas
+            List<TablaAsisObj> CListTab = CL.getAllCitasInfo();
+
+
+            //log in al usuario eeexitooooo
+            request.getSession().setAttribute("logged_user", CLoginUser);
+            request.getSession().setAttribute("logged_Inf", CListInf );
+            request.getSession().setAttribute("usuarios", CList );
+            request.getSession().setAttribute("doctores", CListDoc );
+            request.getSession().setAttribute("tabla", CListTab );
+            request.getSession().setAttribute("user", strUser );
+                        
+            //Delete de los registros deseados
+            
+            UserLogic CLogic2 = new UserLogic(connString);
+            boolean hasFailed = 
+                    CLogic2.deleteCita(strFecha, strHora, strPaciente, strDoctor);
+            
+            request.getRequestDispatcher("asistenteProfile.jsp")
+                   .forward(request, response);
+            
         }
             
     }

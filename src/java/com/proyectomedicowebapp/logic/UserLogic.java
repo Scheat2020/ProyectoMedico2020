@@ -393,5 +393,21 @@ public class UserLogic extends Logic
         
         return CL;
     }
+
+    public boolean deleteCita(String strFecha, String strHora, String strPaciente, String strDoctor) 
+    {
+            
+        boolean hasFailed;
+        DatabaseX database = getDatabase();
+
+        String strSql = "DELETE FROM clinicasdb.citas WHERE idPaciente="+strPaciente+" and idDoctor = "+strDoctor+" and fecha = '"+strFecha+"' and hora = '"+strHora+"';";
+
+        hasFailed = database.executeNonQueryBool(strSql);
+
+        System.out.println(strSql);
+
+        return hasFailed;
+        
+    }
     
 }

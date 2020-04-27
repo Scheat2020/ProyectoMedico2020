@@ -141,12 +141,12 @@
                 <br><br>
 
                 <h1 class="title is-dark is-centered">Agendar cita</h1> 
-                    <section class="hero is-info">
+                <section class="hero is-info">
                     <div class="hero-body">
                         <form class="cmxform" id="signupForm" action="CitasServlet" method="get">
-                            
-                            
-                            
+
+
+
                             <!--Paciente-->
                             <label class="label" for="paciente">Paciente</label>
                             <div class="field has-addons">                              
@@ -163,7 +163,7 @@
                                                          CTemp = ite.next();
                                             %>
                                              <option value="<%= CTemp.getIdPaciente()%>"><%= CTemp.getApellidos() %>, <%= CTemp.getNombres() %></option>
-                                             
+
                                             <%
                                                     }
                                                 }
@@ -172,8 +172,8 @@
                                     </div>
                                 </div>
                             </div>
-                            
-                              
+
+
 
                             <!--Doctor-->
                             <label class="label" for="doctor">Doctor</label>
@@ -181,7 +181,7 @@
                                 <div class="control is-expanded">
                                     <div class="select is-fullwidth">
                                         <select id="doctor" name="doctor">
-                                            
+
                                             <% 
                                                 if(CList!=null)
                                                  {
@@ -191,13 +191,13 @@
                                                      {
                                                         CTemp = ite.next();
                                             %>
-                                            
+
                                             <option value="<%= CTemp.getIdPaciente()%>"><%= CTemp.getApellidos()%>, <%= CTemp.getNombres()%></option>
                                             <%
                                                     }
                                                 }
                                             %>    
-                                            
+
                                         </select>
                                     </div>
                                 </div>
@@ -245,7 +245,7 @@
                                 <input type="hidden" name="formid" value="1" />
                                 <input type="hidden" name="asistente" value="<%= CUser.getUser() %>" />
                                 <input type="hidden" name="password" value="<%= CUser.getPassword() %>" />
-                                
+
                             </p>
 
                         </form>
@@ -308,9 +308,9 @@
                             <td id="Paciente" name="nombres"><%= CTemp.getApellidosPa()%>, <%= CTemp.getNombresPa() %></td>
                             <td id="cita" name="apellidos"><%= CTemp.getFecha() %></td>
                             <td id="hora" name="cita"><%= CTemp.getHora() %></td>
-                            <td id="IdDoctor" name="hora"><%= CTemp.getIdDoctor() %></td>
-                            <td id="Doctor" name="hora"><%= CTemp.getApellidosDoc() %>, <%= CTemp.getNombresDoc() %></td>
-                            <td id="borrar" name="borrar"><a href="CitasServlet?idPaciente=<%= CTemp.getIdPaciente() %>&idDoctor=<%= CTemp.getIdDoctor() %>&fecha=<%= CTemp.getFecha() %>&Hora=<%= CTemp.getHora() %>&formid=2">Borrar</a></td>
+                            <td id="IdDoctor" name="IdDoctor"><%= CTemp.getIdDoctor() %></td>
+                            <td id="Doctor" name="Doctor"><%= CTemp.getApellidosDoc() %>, <%= CTemp.getNombresDoc() %></td>
+                            <td id="borrar" name="borrar"><a href="CitasServlet?paciente=<%= CTemp.getIdPaciente() %>&doctor=<%= CTemp.getIdDoctor() %>&fecha=<%= CTemp.getFecha() %>&hora=<%= CTemp.getHora() %>&asistente=<%= CUser.getUser() %>&password=<%= CUser.getPassword() %>&formid=2">Borrar</a></td>
                         </tr>
                         <%
                                 }
