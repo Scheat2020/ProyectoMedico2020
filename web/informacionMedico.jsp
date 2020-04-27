@@ -111,10 +111,22 @@
 
                     <article class="message is-primary">
                         <div class="message-body">
-                         <strong>Paciente más próximo</strong>
-                         <br> <%= CFistDB.getApellidos() %>, <%= CFistDB.getNombres() %>
-                         <input type="hidden" id="first" name="first" value="<%= CFistDB.geIdPaciente() %>"  />
-                         <a href="InfoPacientesServlet?idPaciente=<%= CFistDB.geIdPaciente() %>&Doc=<%= CUserInf.getUsuario()%>&formid=1">Revisar su registro</a> <%-- Holaaaaa --%>
+                            <strong>Paciente más próximo</strong>
+                            <%
+                                if (CFistDB!=null){
+                            %>
+                            <br> <%= CFistDB.getApellidos() %>, <%= CFistDB.getNombres() %>
+                            <input type="hidden" id="first" name="first" value="<%= CFistDB.geIdPaciente() %>"  />
+                            <a href="InfoPacientesServlet?idPaciente=<%= CFistDB.geIdPaciente() %>&Doc=<%= CUserInf.getUsuario()%>&formid=1">Revisar su registro</a> <%-- Holaaaaa --%>
+                            <%
+                                } else {
+                            %>
+                            
+                            <br> No hay citas próximas
+                            
+                            <%
+                                }
+                            %>
                         </div>
                      </article>
 
@@ -148,41 +160,45 @@
                               </tr>
                             </thead>
                             <tfoot>
-                              <tr>
-                                <th><abbr title="ID">ID</abbr></th>
-                                <th>Apellidos</th>
-                                <th>Nombres</th>
-                                <th><abbr title="Detalles">Detalles</abbr></th>
-                                <th><abbr title="Date">Fecha Agendada</abbr></th>
-                                <th><abbr title="Time">Hora Agendada</abbr></th>
-                              </tr>
+                                <tr>
+                                    <th><abbr title="ID">ID</abbr></th>
+                                    <th>Apellidos</th>
+                                    <th>Nombres</th>
+                                    <th><abbr title="Detalles">Detalles</abbr></th>
+                                    <th><abbr title="Date">Fecha Agendada</abbr></th>
+                                    <th><abbr title="Time">Hora Agendada</abbr></th>
+                                </tr>
                             </tfoot>
                             <tbody>
-
+                            
+                            
 
                             <% 
-                               if(CList!=null)
+                                if(CList!=null)
                                 {
                                     Iterator<TablaObj> ite = CList.iterator();
                                     TablaObj CTemp;
-                                    while(ite.hasNext())
+                                    while(ite.hasNext()) 
                                     {
+                                    
                                         CTemp = ite.next();
                             %>
-                              <tr>
-                                <th id="idPaciente" name="idPaciente"><%= CTemp.geIdPaciente() %></th>
-                                <td id="nombres" name="nombres"><%= CTemp.getApellidos() %></td>
-                                <td id="apellidos" name="apellidos"><%= CTemp.getNombres() %></td>
-                                <td id="ver" name="ver"><a href="InfoPacientesServlet?idPaciente=<%= CTemp.geIdPaciente() %>&Doc=<%= CUserInf.getUsuario()%>&formid=1">Ver</a></td>
-                                <td id="cita" name="cita"><%= CTemp.getFecha() %></td>
-                                <td id="hora" name="hora"><%= CTemp.getHora() %></td>
-                              </tr>
-                                <%
-                                         }
-                                   }
-                               %>                         
-
-
+                                <tr>
+                                    <th id="idPaciente" name="idPaciente"><%= CTemp.geIdPaciente() %></th>
+                                    <td id="nombres" name="nombres"><%= CTemp.getApellidos() %></td>
+                                    <td id="apellidos" name="apellidos"><%= CTemp.getNombres() %></td>
+                                    <td id="ver" name="ver"><a href="InfoPacientesServlet?idPaciente=<%= CTemp.geIdPaciente() %>&Doc=<%= CUserInf.getUsuario()%>&formid=1">Ver</a></td>
+                                    <td id="cita" name="cita"><%= CTemp.getFecha() %></td>
+                                    <td id="hora" name="hora"><%= CTemp.getHora() %></td>
+                                </tr>
+                            <%
+                                    }
+                                } else {
+                            %>                         
+                                
+                            <%
+                                }
+                            %> 
                             </tbody>
                           </table>
                         </div>

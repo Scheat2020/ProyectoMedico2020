@@ -113,7 +113,7 @@ public class LoginRegistroServlet extends HttpServlet {
                 
                 //Obtengo la cita mas proxima
                 UserLogic CFirst = new UserLogic(connString);
-                TablaObj CFistDB = CFirst.getFistUserInDB();
+                TablaObj CFistDB = CFirst.getFistUserInDB(strUser);
                 
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);

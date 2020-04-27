@@ -259,12 +259,14 @@ public class UserLogic extends Logic
      
     
     
-    public TablaObj getFistUserInDB()
+    public TablaObj getFistUserInDB(String strUser)
     {
          TablaObj CFistUser = null;
         DatabaseX CDatabase = getDatabase();
          String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora " 
-                 + "from clinicasdb.citas inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente " 
+                 + "from clinicasdb.pacientes inner join clinicasdb.citas on citas.idPaciente = pacientes.idPaciente "
+                 + "inner join clinicasdb.doctores on citas.idDoctor = doctores.idDoctor "
+                 + "where citas.fecha >= current_date() and doctores.usuario = '"+strUser+"' " 
                  + "order by citas.fecha and citas.hora Limit 1;";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
