@@ -84,7 +84,7 @@
                 </p>
             </div>
             <section class ="section">          
-            <form class="cmxform" id="logAdminForm" action="LoginRegistroServlet" method="post">
+            <form class="cmxform" id="logAdminForm" action="LoginRegistroServlet" method="get">
                 <div class="field">
                     <label class="label">Usuario</label>
                         <p class="control has-icons-left has-icons-right">
