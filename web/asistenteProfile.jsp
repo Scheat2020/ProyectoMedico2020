@@ -4,6 +4,7 @@
     Author     : Sara Valentina
 --%>
 
+<%@page import="com.proyectomedicowebapp.objects.TablaAsisObj"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="com.proyectomedicowebapp.objects.TablaDocObj"%>
 <%@page import="com.proyectomedicowebapp.objects.UserObj"%>
@@ -79,6 +80,9 @@
         List<TablaDocObj> CListDoc = 
                 (List<TablaDocObj>)request.getSession().getAttribute("doctores");
         
+        List<TablaAsisObj> CListTab = 
+                (List<TablaAsisObj>)request.getSession().getAttribute("tabla");
+        
         session.getAttribute("user");
     %>
     <body>
@@ -139,7 +143,7 @@
                 <h1 class="title is-dark is-centered">Agendar cita</h1> 
                     <section class="hero is-info">
                     <div class="hero-body">
-                        <form class="cmxform" id="signupForm" action="CitasServlet" method="post">
+                        <form class="cmxform" id="signupForm" action="CitasServlet" method="get">
                             
                             
                             
@@ -158,7 +162,7 @@
                                                      {
                                                          CTemp = ite.next();
                                             %>
-                                             <option value="<%= CTemp.getIdPaciente()%>"><%= CTemp.getNombres() %> <%= CTemp.getApellidos() %></option>
+                                             <option value="<%= CTemp.getIdPaciente()%>"><%= CTemp.getApellidos() %>, <%= CTemp.getNombres() %></option>
                                              
                                             <%
                                                     }
@@ -188,7 +192,7 @@
                                                         CTemp = ite.next();
                                             %>
                                             
-                                            <option value="<%= CTemp.getIdPaciente()%>"><%= CTemp.getNombres()%> <%= CTemp.getApellidos()%></option>
+                                            <option value="<%= CTemp.getIdPaciente()%>"><%= CTemp.getApellidos()%>, <%= CTemp.getNombres()%></option>
                                             <%
                                                     }
                                                 }
@@ -239,14 +243,86 @@
                             <p>
                                 <input class="button is-light is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Confirmar">
                                 <input type="hidden" name="formid" value="1" />
+                                <input type="hidden" name="asistente" value="<%= CUser.getUser() %>" />
+                                <input type="hidden" name="password" value="<%= CUser.getPassword() %>" />
+                                
                             </p>
 
                         </form>
                     </div>
                 </section>
             </div>
+            
+            <%--Tabla--%>
+            <div class="columns is-vcentered">
+                <div class="column is-one-quarter">
+                    <div class="container">
+                        <p class="label"></p>
+                    </div> 
+                    </div>
+                <div class="column is-half">
+                    <div class="container">
+                        <h1 class="title">
+                            Lista de citas agendadas
+                        </h1>
+                    </div>
+                <br><br>
+                    <table class="table">
+                        <thead>
+                            <tr>
+                                <th>ID Paciente</th>
+                                <th>Paciente</th>
+                                <th>Fecha Agendada</th>
+                                <th>Hora Agendada</th>
+                                <th>ID Doctor</th>
+                                <th>Doctor</th>
+                                <th>Borrar</th>
+                            </tr>
+                        </thead>
+                        <tfoot>
+                            <tr>
+                                <th>ID Paciente</th>
+                                <th>Paciente</th>
+                                <th>Fecha Agendada</th>
+                                <th>Hora Agendada</th>
+                                <th>ID Doctor</th>
+                                <th>Doctor</th>
+                                <th>Borrar</th>
+                            </tr>
+                        </tfoot>
+                        <tbody>
 
+                        
+                        <% 
+                           if(CList!=null)
+                            {
+                                
+                                Iterator<TablaAsisObj> ite = CListTab.iterator();
+                                TablaAsisObj CTemp;
+                                while(ite.hasNext())
+                                {
+                                    CTemp = ite.next();
+                        %>
+                        <tr>
+                            <td id="idPaciente" name="idPaciente"><%= CTemp.getIdPaciente() %></td>
+                            <td id="Paciente" name="nombres"><%= CTemp.getApellidosPa()%>, <%= CTemp.getNombresPa() %></td>
+                            <td id="cita" name="apellidos"><%= CTemp.getFecha() %></td>
+                            <td id="hora" name="cita"><%= CTemp.getHora() %></td>
+                            <td id="IdDoctor" name="hora"><%= CTemp.getIdDoctor() %></td>
+                            <td id="Doctor" name="hora"><%= CTemp.getApellidosDoc() %>, <%= CTemp.getNombresDoc() %></td>
+                            <td id="borrar" name="borrar"><a href="CitasServlet?idPaciente=<%= CTemp.getIdPaciente() %>&idDoctor=<%= CTemp.getIdDoctor() %>&fecha=<%= CTemp.getFecha() %>&Hora=<%= CTemp.getHora() %>&formid=2">Borrar</a></td>
+                        </tr>
+                        <%
+                                }
+                            }
+                        %>                         
 
+                        
+                        </tbody>
+                      </table>
+                    </div>
+            </div>
+            <br><br><br><br>
 
         </section>
         

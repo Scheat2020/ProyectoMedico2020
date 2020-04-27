@@ -7,6 +7,7 @@ package com.proyectomedicowebapp.logic;
 
 import balcorpfw.database.DatabaseX;
 import balcorpfw.logic.Logic;
+import com.proyectomedicowebapp.objects.TablaAsisObj;
 import com.proyectomedicowebapp.objects.TablaDocObj;
 import com.proyectomedicowebapp.objects.TablaObj;
 import com.proyectomedicowebapp.objects.UserObj;
@@ -29,7 +30,10 @@ public class UserLogic extends Logic
     {
         List<TablaObj> CL = null;
         DatabaseX CDatabase = getDatabase();
-        String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora from clinicasdb.citas inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente;";
+        String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora from clinicasdb.citas "
+                + "inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente "
+                + "where citas.fecha >= current_date() "
+                + "Order by citas.fecha;";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
         if(CResult!=null)
@@ -70,7 +74,7 @@ public class UserLogic extends Logic
     {
         List<TablaDocObj> CL = null;
         DatabaseX CDatabase = getDatabase();
-        String strSQL = "select * from clinicasdb.doctores;";
+        String strSQL = "select * from clinicasdb.doctores order by doctores.apellidos;";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
         if(CResult!=null)
@@ -109,7 +113,7 @@ public class UserLogic extends Logic
     {
         List<TablaDocObj> CL = null;
         DatabaseX CDatabase = getDatabase();
-        String strSQL = "select * from clinicasdb.pacientes;";
+        String strSQL = "select * from clinicasdb.pacientes order by pacientes.apellidos;";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
         if(CResult!=null)
@@ -338,7 +342,54 @@ public class UserLogic extends Logic
 
             return hasFailed;
         }
-    
-    
+
+    public List<TablaAsisObj> getAllCitasInfo() {
+        List<TablaAsisObj> CL = null;
+        DatabaseX CDatabase = getDatabase();
+        String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora, doctores.idDoctor, doctores.nombres, doctores.apellidos "
+                + "from  clinicasdb.pacientes inner join clinicasdb.citas on citas.idPaciente = pacientes.idPaciente "
+                + "inner join clinicasdb.doctores on citas.idDoctor = doctores.idDoctor "
+                + "where citas.fecha >= current_date() "
+                + "Order by citas.fecha;";
+        ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        if(CResult!=null)
+        {
+            try 
+            {
+                int IdPaciente;
+                String strNombresPa;
+                String strApellidosPa;
+                String strCita;
+                String strHora;
+                int IdDoctor; 
+                String strNombresDoc;
+                String strApellidosDoc;
+                TablaAsisObj CTemp;
+                CL = new ArrayList<>();
+                
+                while(CResult.next())
+                {
+                    IdPaciente = CResult.getInt("idPaciente");
+                    strNombresPa = CResult.getString("pacientes.nombres");
+                    strApellidosPa = CResult.getString("pacientes.apellidos"); 
+                    strCita = CResult.getString("fecha"); 
+                    strHora = CResult.getString("hora");
+                    IdDoctor = CResult.getInt("idDoctor");
+                    strNombresDoc = CResult.getString("doctores.nombres");
+                    strApellidosDoc = CResult.getString("doctores.apellidos"); 
+                    
+                    CTemp = new TablaAsisObj(strNombresPa, strApellidosPa, IdPaciente, strCita, strHora, IdDoctor, strNombresDoc, strApellidosDoc);
+                    CL.add(CTemp);
+                   
+                }
+            } catch (SQLException ex) 
+            {
+                Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return CL;
+    }
     
 }

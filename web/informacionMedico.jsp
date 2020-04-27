@@ -53,7 +53,7 @@
                 (InfoDocObj)request.getSession().getAttribute("logged_Inf");
         session.getAttribute("user"); 
 
-         List<TablaObj> CList = 
+        List<TablaObj> CList = 
                 (List<TablaObj>)request.getSession().getAttribute("usuarios");
          
          TablaObj CFistDB =

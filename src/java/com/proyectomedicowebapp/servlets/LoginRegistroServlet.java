@@ -10,6 +10,7 @@ import com.proyectomedicowebapp.logic.UserLogic;
 import com.proyectomedicowebapp.objects.InfoAsisObj;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
+import com.proyectomedicowebapp.objects.TablaAsisObj;
 import com.proyectomedicowebapp.objects.TablaDocObj;
 import com.proyectomedicowebapp.objects.TablaObj;
 import com.proyectomedicowebapp.objects.UserObj;
@@ -44,7 +45,7 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=SanJorge20&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
         UserLogic CLogic = new UserLogic(connString);
         
@@ -106,9 +107,9 @@ public class LoginRegistroServlet extends HttpServlet {
                 InfoLogic CInfoL = new InfoLogic(connString);
                 InfoDocObj CListInfDoc = CInfoL.getInfoDBDoc(strUser);
                 
-               //Obtengo los todos usuarios
-               UserLogic CL = new UserLogic(connString);
-               List<TablaObj> CList = CL.getAllUsers();
+                //Obtengo los todos usuarios
+                UserLogic CL = new UserLogic(connString);
+                List<TablaObj> CList = CL.getAllUsers();
                 
                 //Obtengo la cita mas proxima
                 UserLogic CFirst = new UserLogic(connString);
@@ -165,11 +166,16 @@ public class LoginRegistroServlet extends HttpServlet {
                 UserLogic CLDoc = new UserLogic(connString);
                 List<TablaDocObj> CListDoc = CLDoc.getAllDoctors();
                 
+                //Obtengo las citas creadas
+                List<TablaAsisObj> CListTab = CL.getAllCitasInfo();
+                
+                
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);
                 request.getSession().setAttribute("logged_Inf", CListInf );
                 request.getSession().setAttribute("usuarios", CList );
                 request.getSession().setAttribute("doctores", CListDoc );
+                request.getSession().setAttribute("tabla", CListTab );
                 request.getSession().setAttribute("user", strUser );
                 
                 request.getRequestDispatcher("asistenteProfile.jsp")
