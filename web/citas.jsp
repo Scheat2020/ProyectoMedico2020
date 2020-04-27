@@ -91,7 +91,7 @@
                         <div class="control">                           
                              <p class="control">
                                 <a href="FichaTecnica.jsp" class="is-light is-radiusless is-shadowless button is-medium">
-                                    Cancelar
+                                    Volver
                                 </a>
                              </p>
                         </div>
