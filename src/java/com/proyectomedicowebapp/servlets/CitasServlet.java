@@ -12,7 +12,6 @@ import com.proyectomedicowebapp.objects.TablaAsisObj;
 import com.proyectomedicowebapp.objects.TablaDocObj;
 import com.proyectomedicowebapp.objects.UserObj;
 import java.io.IOException;
-import java.io.PrintWriter;
 import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -54,7 +53,7 @@ public class CitasServlet extends HttpServlet {
             String strPassword = request.getParameter("password");
             
             //Cierra la sesión anterior 
-            HttpSession cerrarSesion = request.getSession();
+            HttpSession cerrarSesion = request.getSession(true);
             cerrarSesion.removeAttribute("logged_user");
             cerrarSesion.removeAttribute("logged_Inf");
             cerrarSesion.removeAttribute("usuarios");
@@ -120,7 +119,7 @@ public class CitasServlet extends HttpServlet {
             String strPassword = request.getParameter("password");
             
             //Cierra la sesión anterior 
-            HttpSession cerrarSesion = request.getSession();
+            HttpSession cerrarSesion = request.getSession(true);
             cerrarSesion.removeAttribute("logged_user");
             cerrarSesion.removeAttribute("logged_Inf");
             cerrarSesion.removeAttribute("usuarios");

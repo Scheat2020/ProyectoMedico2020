@@ -39,7 +39,7 @@ public class InfoPacientesServlet extends HttpServlet {
             String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             
             //Cierra sesión anterior
-            HttpSession cerrarSesion = request.getSession();
+            HttpSession cerrarSesion = request.getSession(true);
             cerrarSesion.removeAttribute("logged_user");
             cerrarSesion.removeAttribute("logged_Inf");
             cerrarSesion.removeAttribute("user");

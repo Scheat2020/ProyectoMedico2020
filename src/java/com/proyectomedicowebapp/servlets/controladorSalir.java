@@ -39,7 +39,7 @@ public class controladorSalir extends HttpServlet {
         if(strFormId.equals("1"))
         {
         
-            HttpSession cerrarSesion = request.getSession();
+            HttpSession cerrarSesion = request.getSession(true);
             cerrarSesion.removeAttribute("logged_user");
             cerrarSesion.removeAttribute("logged_Inf");
             cerrarSesion.removeAttribute("user");
@@ -51,7 +51,7 @@ public class controladorSalir extends HttpServlet {
         if(strFormId.equals("2"))
         {
         
-            HttpSession cerrarSesion = request.getSession();
+            HttpSession cerrarSesion = request.getSession(true);
             cerrarSesion.removeAttribute("logged_user");
             cerrarSesion.removeAttribute("logged_Inf");
             cerrarSesion.removeAttribute("user");
@@ -64,7 +64,7 @@ public class controladorSalir extends HttpServlet {
         if(strFormId.equals("3"))
         {
             
-            HttpSession cerrarSesion = request.getSession();
+            HttpSession cerrarSesion = request.getSession(true);
             cerrarSesion.removeAttribute("logged_user");
             cerrarSesion.removeAttribute("logged_Inf");
             cerrarSesion.removeAttribute("usuarios");

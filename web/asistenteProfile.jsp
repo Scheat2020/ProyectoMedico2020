@@ -148,7 +148,7 @@
                 <h1 class="title is-dark is-centered">Agendar cita</h1> 
                 <section class="hero is-info">
                     <div class="hero-body">
-                        <form class="cmxform" id="signupForm" action="CitasServlet" method="get">
+                        <form class="cmxform" id="signupForm" action="CitasServlet" method="post">
 
 
 

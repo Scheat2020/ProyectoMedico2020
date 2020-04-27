@@ -94,7 +94,7 @@ public class LoginRegistroServlet extends HttpServlet {
         {
             
             //Cierra sesión anterior
-            HttpSession cerrarSesion = request.getSession();
+            HttpSession cerrarSesion = request.getSession(true);
             cerrarSesion.removeAttribute("logged_user");
             cerrarSesion.removeAttribute("logged_Inf");
             cerrarSesion.removeAttribute("Cita");
