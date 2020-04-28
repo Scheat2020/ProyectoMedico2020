@@ -18,7 +18,7 @@
     response.setDateHeader("Expires", 0);
 
     try{
-        if(session.getAttribute("user")==null){
+        if(session.getAttribute("user2")==null){
 
 
             request.getRequestDispatcher("index.jsp").forward(request, response);
@@ -43,12 +43,12 @@
     </head>
      <%
         InfoObj CUserInf =
-                (InfoObj)request.getSession().getAttribute("logged_Inf");
+                (InfoObj)request.getSession().getAttribute("logged_Inf2");
         InfoDocObj CDocInf =
-                (InfoDocObj)request.getSession().getAttribute("logged_user");
+                (InfoDocObj)request.getSession().getAttribute("logged_user2");
         TablaObj CCita =
                  (TablaObj)request.getSession().getAttribute("Cita");
-        session.getAttribute("user"); 
+        session.getAttribute("user2"); 
     %>
   
     <body>
@@ -132,7 +132,7 @@
                 <div class="column is-one-quarter">
                     <div class="container">
                         <div class="buttons">
-                            <a href="LoginRegistroServlet?usuario=<%= CDocInf.getUsuario()%>&password=<%= CDocInf.getPassword() %>&formid=3">
+                            <a href="RecetasServlet?usuario=<%= CDocInf.getUsuario()%>&password=<%= CDocInf.getPassword() %>&formid=2">
                                 <button class="button is-primary">Volver</button>
                             </a>
                         </div>
@@ -160,6 +160,7 @@
                                         <input class="button is-primary" type="submit" value="Actualizar">
                                         <input type="hidden" name="idPaciente" id="idPaciente" value="<%= CUserInf.getIdPaciente() %>" />
                                         <input type="hidden" name="userDoc" id="userDoc" value="<%= CDocInf.getUsuario() %>" />
+                                        <input type="hidden" name="formid" id="formid" value="1" />
                                     </p>
                                     </div>
                             </div>

@@ -21,7 +21,8 @@ import com.proyectomedicowebapp.objects.TablaObj;
  *
  * @author Alexia
  */
-public class InfoLogic extends Logic{
+public class InfoLogic extends Logic
+{
     
     public InfoLogic(String connString) 
     {
@@ -357,5 +358,3 @@ public class InfoLogic extends Logic{
         return CInfoDB;  
     }
 }
-  
-

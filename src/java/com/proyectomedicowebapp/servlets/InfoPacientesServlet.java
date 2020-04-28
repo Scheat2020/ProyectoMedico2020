@@ -36,9 +36,10 @@ public class InfoPacientesServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
            
-            String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=SanJorge20&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             
             //Cierra sesión anterior
+            /*
             HttpSession cerrarSesion = request.getSession(true);
             cerrarSesion.removeAttribute("logged_user");
             cerrarSesion.removeAttribute("logged_Inf");
@@ -46,23 +47,24 @@ public class InfoPacientesServlet extends HttpServlet {
             cerrarSesion.removeAttribute("usuarios");
             cerrarSesion.removeAttribute("first_user");
             cerrarSesion.invalidate();
-            
+            */
             String strId = request.getParameter("idPaciente");
             String strDoc = request.getParameter("Doc");
-                
+
             InfoLogic CInfoL = new InfoLogic(connString);
             InfoObj CListInf = CInfoL.getInfoPaciente(strId);
             InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
             TablaObj CCita = CInfoL.getCita(strId);
 
-            request.getSession().setAttribute("user", strDoc );
-            request.getSession().setAttribute("logged_Inf", CListInf );
-            request.getSession().setAttribute("logged_user", CDoc);
+            request.getSession().setAttribute("user2", strDoc );
+            request.getSession().setAttribute("logged_Inf2", CListInf );
+            request.getSession().setAttribute("logged_user2", CDoc);
             request.getSession().setAttribute("Cita", CCita);
 
 
             request.getRequestDispatcher("informacionPaciente.jsp")
                     .forward(request, response);
+            
             
             
         }

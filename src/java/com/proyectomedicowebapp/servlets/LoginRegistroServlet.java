@@ -46,7 +46,7 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=SanJorge20&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
         UserLogic CLogic = new UserLogic(connString);
         
@@ -92,14 +92,6 @@ public class LoginRegistroServlet extends HttpServlet {
         //Login Doctor
         if(strFormId.equals("3"))
         {
-            
-            //Cierra sesión anterior
-            HttpSession cerrarSesion = request.getSession(true);
-            cerrarSesion.removeAttribute("logged_Inf");
-            cerrarSesion.removeAttribute("logged_user");
-            cerrarSesion.removeAttribute("Cita");
-            cerrarSesion.removeAttribute("user");
-            cerrarSesion.invalidate();
             
             //accion es log in
             String strUser = request.getParameter("usuario");
