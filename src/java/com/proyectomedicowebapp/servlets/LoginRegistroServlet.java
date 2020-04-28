@@ -10,6 +10,7 @@ import com.proyectomedicowebapp.logic.UserLogic;
 import com.proyectomedicowebapp.objects.InfoAsisObj;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
+import com.proyectomedicowebapp.objects.RecetaObj;
 import com.proyectomedicowebapp.objects.TablaAsisObj;
 import com.proyectomedicowebapp.objects.TablaDocObj;
 import com.proyectomedicowebapp.objects.TablaObj;
@@ -46,7 +47,7 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=SanJorge20&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
         
         UserLogic CLogic = new UserLogic(connString);
         
@@ -69,10 +70,13 @@ public class LoginRegistroServlet extends HttpServlet {
             {
                 InfoLogic CInfoL = new InfoLogic(connString);
                 InfoObj CListInf = CInfoL.getInfoDB(strUser);
+                RecetaObj CReceta = CInfoL.getUltRec(strUser);
                 //log in al usuario eeexitooooo
                 request.getSession().setAttribute("logged_user", CLoginUser);
                 request.getSession().setAttribute("logged_Inf", CListInf );
                 request.getSession().setAttribute("user", strUser );
+                request.getSession().setAttribute("receta", CReceta );
+                
                 
                 request.getRequestDispatcher("FichaTecnica.jsp")
                        .forward(request, response);
@@ -245,8 +249,6 @@ public class LoginRegistroServlet extends HttpServlet {
         
         
     }
-//jejeje
-
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
     /**

@@ -7,6 +7,7 @@ package com.proyectomedicowebapp.logic;
 
 import balcorpfw.database.DatabaseX;
 import balcorpfw.logic.Logic;
+import com.proyectomedicowebapp.objects.RecetaObj;
 import com.proyectomedicowebapp.objects.TablaAsisObj;
 import com.proyectomedicowebapp.objects.TablaDocObj;
 import com.proyectomedicowebapp.objects.TablaObj;
@@ -26,6 +27,7 @@ public class UserLogic extends Logic
         super(connString);
     }
     
+
     public List<TablaObj> getAllUsers(String strUser)
     {
         List<TablaObj> CL = null;
@@ -267,7 +269,7 @@ public class UserLogic extends Logic
                  + "from clinicasdb.pacientes inner join clinicasdb.citas on citas.idPaciente = pacientes.idPaciente "
                  + "inner join clinicasdb.doctores on citas.idDoctor = doctores.idDoctor "
                  + "where citas.fecha >= current_date() and doctores.usuario = '"+strUser+"' " 
-                 + "order by citas.fecha and citas.hora Limit 1;";
+                 + "order by citas.fecha Limit 1;";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
         if(CResult!=null)
@@ -412,6 +414,51 @@ public class UserLogic extends Logic
 
         return hasFailed;
         
+    }
+    
+    
+    
+     public List<RecetaObj> getAllRecetas(String strUser)
+    {
+        List<RecetaObj> CL = null;
+        DatabaseX CDatabase = getDatabase();
+        String strSQL = "select recetas.* from clinicasdb.pacientes inner join clinicasdb.recetas on pacientes.idPaciente = recetas.idPaciente " 
+                        + "where pacientes.idPaciente = "+strUser+" "  
+                        + "Order by recetas.fecha desc;";
+                
+        ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        if(CResult!=null)
+        {
+            try 
+            {
+                String StrIdPaciente;
+                String strReceta;
+                String strIdReceta;
+                String strFecha;
+
+                RecetaObj CTemp;
+                CL = new ArrayList<>();
+                
+                while(CResult.next())
+                {
+                    StrIdPaciente = CResult.getString("idPaciente");
+                    strReceta = CResult.getString("receta");
+                    strIdReceta = CResult.getString("idReceta"); 
+                    strFecha = CResult.getString("fecha"); 
+
+                    
+                    CTemp = new RecetaObj(StrIdPaciente, strReceta, strFecha, strIdReceta);
+                    CL.add(CTemp);
+                   
+                }
+            } catch (SQLException ex) 
+            {
+                Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return CL;
     }
     
 }
