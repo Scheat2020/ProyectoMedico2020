@@ -92,7 +92,7 @@ CREATE TABLE `clinicasdb`.`asistente` (
   `foto` VARCHAR(200) NULL DEFAULT 'Default.png',
   PRIMARY KEY (`idasistente`));
 
-CREATE TABLE `clinicasdb`.`receta` (
+CREATE TABLE `clinicasdb`.`recetas` (
   `idReceta` INT NOT NULL AUTO_INCREMENT,
   `receta` VARCHAR(200) NOT NULL,
   `fecha` DATE NOT NULL,
@@ -105,7 +105,9 @@ CREATE TABLE `clinicasdb`.`receta` (
     ON DELETE NO ACTION
     ON UPDATE NO ACTION);
 
+INSERT INTO `clinicasdb`.`asistente` (`usuario`, `password`, `nombres`, `apellidos`, `celular`, `correo`) VALUES ('asis1', 'a123', 'Rebeca', 'Canales', '781263741', 'rebecana@gmail.com');
+INSERT INTO `clinicasdb`.`doctores` (`usuario`, `password`, `nombres`, `apellidos`, `celular`, `correo`, `credencial`, `direccion`, `especialidad`) VALUES ('doc1', 'd123', 'Armando', 'Linares', '781663741', 'armandolinares1@gmial.com','20203245','Armando Clinica','Cirujano Cardiotoraxico');
 
 /**
- * Ya está bien la BD
+ * Ya está bien la BD!!!!!
  */
