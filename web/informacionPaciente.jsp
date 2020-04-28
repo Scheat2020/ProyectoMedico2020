@@ -114,6 +114,8 @@
                 (InfoDocObj)request.getSession().getAttribute("logged_user2");
         TablaObj CCita =
                  (TablaObj)request.getSession().getAttribute("Cita");
+        TablaObj CCitaProx =
+                 (TablaObj)request.getSession().getAttribute("citaProx");
         session.getAttribute("user2"); 
         
         List<RecetaObj> CListReceta =
@@ -180,8 +182,8 @@
                                 <span class="center-align">Cita</span>
                                 <p class="center-align">
                                 <br>Su cita está programada para: 
-                                <%= CCita.getFecha() %>. 
-                                A las <%= CCita.getHora() %>
+                                <%= CCitaProx.getFecha() %>. 
+                                A las <%= CCitaProx.getHora() %>
                                 </p> 
                             </div>
                                 <a class="tile-link waves-effect waves-light"></a>

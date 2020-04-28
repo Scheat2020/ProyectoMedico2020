@@ -63,13 +63,14 @@ public class InfoPacientesServlet extends HttpServlet {
             InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
             TablaObj CCita = CInfoL.getCita(strId);
             List<RecetaObj> CRecetas = CUserL.getAllRecetas(strId);
-            
+            TablaObj CCitaProx = CInfoL.getProxCita(strId);
 
             request.getSession().setAttribute("user2", strDoc );
             request.getSession().setAttribute("logged_Inf2", CListInf );
             request.getSession().setAttribute("logged_user2", CDoc);
             request.getSession().setAttribute("Cita", CCita);
             request.getSession().setAttribute("Receta", CRecetas);
+            request.getSession().setAttribute("citaProx", CCitaProx);
             
 
 

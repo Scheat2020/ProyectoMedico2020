@@ -67,12 +67,14 @@ public class RecetasServlet extends HttpServlet {
             TablaObj CCita = CInfoL.getCita(strId);
             UserLogic CUserL = new UserLogic (connString);
             List<RecetaObj> CRecetas = CUserL.getAllRecetas(strId);
+            TablaObj CCitaProx = CInfoL.getProxCita(strId);
 
             request.getSession().setAttribute("logged_Inf2", CListInf );       
             request.getSession().setAttribute("logged_user2", CDoc);
             request.getSession().setAttribute("user2", strDoc);
             request.getSession().setAttribute("Cita", CCita);
             request.getSession().setAttribute("Receta", CRecetas);
+            request.getSession().setAttribute("citaProx", CCitaProx);
 
 
             request.getRequestDispatcher("informacionPaciente.jsp")
@@ -109,6 +111,8 @@ public class RecetasServlet extends HttpServlet {
             //Obtengo la cita mas proxima
             UserLogic CFirst = new UserLogic(connString);
             TablaObj CFistDB = CFirst.getFistUserInDB(strUser);
+            
+            
 
             //log in al usuario eeexitooooo
             

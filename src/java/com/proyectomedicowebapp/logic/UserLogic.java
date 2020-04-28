@@ -34,7 +34,7 @@ public class UserLogic extends Logic
         DatabaseX CDatabase = getDatabase();
         String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora from clinicasdb.pacientes "
                 + "inner join clinicasdb.citas on citas.idPaciente = pacientes.idPaciente inner join clinicasdb.doctores on citas.idDoctor = doctores.idDoctor "
-                + "where citas.fecha >= current_date() and doctores.usuario = '"+strUser+"' "
+                + "where citas.fecha >= current_date()-2 and doctores.usuario = '"+strUser+"' "
                 + "Order by citas.fecha;";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
@@ -353,7 +353,7 @@ public class UserLogic extends Logic
         String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, pacientes.correo, pacientes.celular, citas.fecha, citas.hora, doctores.idDoctor, doctores.nombres, doctores.apellidos "
                 + "from  clinicasdb.pacientes inner join clinicasdb.citas on citas.idPaciente = pacientes.idPaciente "
                 + "inner join clinicasdb.doctores on citas.idDoctor = doctores.idDoctor "
-                + "where citas.fecha >= current_date() "
+                + "where citas.fecha >= current_date()-2 "
                 + "Order by citas.fecha;";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
