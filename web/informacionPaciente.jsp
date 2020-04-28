@@ -1,7 +1,7 @@
 <%-- 
     Document   : informacionPaciente
     Created on : Apr 8, 2020, 5:11:51 PM
-    Author     : windows
+    Author     : Sergio 
 --%>
 
 <%@page import="java.util.Iterator"%>

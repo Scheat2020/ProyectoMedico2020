@@ -54,6 +54,7 @@ public class InfoPacientesServlet extends HttpServlet {
             String strId = request.getParameter("idPaciente");
             String strDoc = request.getParameter("Doc");
 
+            //Variables necesarias
             InfoLogic CInfoL = new InfoLogic(connString);
             UserLogic CUserL = new UserLogic (connString);
             InfoObj CListInf = CInfoL.getInfoPaciente(strId);
