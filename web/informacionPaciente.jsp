@@ -4,6 +4,9 @@
     Author     : windows
 --%>
 
+<%@page import="java.util.Iterator"%>
+<%@page import="com.proyectomedicowebapp.objects.RecetaObj"%>
+<%@page import="java.util.List"%>
 <%@page import="com.proyectomedicowebapp.objects.TablaObj"%>
 <%@page import="com.proyectomedicowebapp.objects.InfoDocObj"%>
 <%@page import="com.proyectomedicowebapp.objects.InfoObj"%>
@@ -49,6 +52,9 @@
         TablaObj CCita =
                  (TablaObj)request.getSession().getAttribute("Cita");
         session.getAttribute("user2"); 
+        
+        List<RecetaObj> CListReceta =
+                    (List<RecetaObj>)request.getSession().getAttribute("Receta");
     %>
   
     <body>
@@ -100,25 +106,48 @@
                
                 
                 <div class="column is-one-quarter">
+                    <h2 class="title">Registro de recetas </h2>
                     <div class="container">
-                        <article class="message is-primary">
-                        <div class="message-header">
-                            <p>Receta Actual</p>
-                            <button class="delete" aria-label="delete"></button>
-                        </div>
-                        <div class="message-body">
-                            <% if(CUserInf.getReceta() == null)
+                         <table class="table">
+                            <thead>
+                              <tr>
+                                <th><abbr title="Receta">Receta</abbr></th>
+                                <th><abbr title="Fecha">Fecha de emisión</abbr></th>
+
+                              </tr>
+                            </thead>
+                            <tfoot>
+                                <tr>
+                                    <th><abbr title="Receta">Receta</abbr></th>
+                                    <th><abbr title="Fecha">Fecha de emisión</abbr></th>
+                                </tr>
+                            </tfoot>
+                            <tbody>
+                            
+                            <% 
+                                if(CListReceta!=null)
                                 {
+                                    Iterator<RecetaObj> ite = CListReceta.iterator();
+                                    RecetaObj CTemp;
+                                    while(ite.hasNext()) 
+                                    {
+                                    
+                                        CTemp = ite.next();
                             %>
-                            No hay receta disponible
-                            <%  }else{
-                            %>
-                                <%= CUserInf.getReceta() %>
-                            <%  
+                                <tr>
+                                    <td id="receta" name="receta"><%= CTemp.getReceta() %></td>
+                                    <td id="fecha" name="fecha"><%= CTemp.getFecha() %></td>
+                                </tr>
+                            <%
+                                    }
+                                } else {
+                            %>                         
+                                
+                            <%
                                 }
-                            %>
-                        </div>
-                    </article>
+                            %> 
+                            </tbody>
+                          </table>
                     </div>
                    
                 </div>

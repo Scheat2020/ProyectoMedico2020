@@ -4,6 +4,7 @@
     Author     : sergi
 --%>
 
+<%@page import="com.proyectomedicowebapp.objects.RecetaObj"%>
 <%@page import="com.proyectomedicowebapp.objects.TablaObj"%>
 <%@page import="com.proyectomedicowebapp.objects.InfoObj"%>
 <%@page import="com.proyectomedicowebapp.objects.UserObj"%>
@@ -92,6 +93,9 @@
         InfoObj CUserInf =
                 (InfoObj)request.getSession().getAttribute("logged_Inf");
         
+        RecetaObj CReceta =
+                (RecetaObj)request.getSession().getAttribute("receta");
+        
         session.getAttribute("user");
         
     %>
@@ -163,11 +167,12 @@
                                 <div class="tile-caption">
                                     <span class="center-align">Receta</span>
                                     <p class="center-align">                     
-                                    <% 
-                                        if (CUserInf.getReceta()!=null)
+                                        
+                                       <% 
+                                        if (CReceta.getReceta()!=null)
                                         {   
                                      %>
-                                     <br> <%= CUserInf.getReceta() %> 
+                                     <br> <%= CReceta.getReceta() %> 
                                      <% 
                                         } else {
                                      %>

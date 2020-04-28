@@ -14,6 +14,7 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import com.proyectomedicowebapp.objects.InfoObj;
+import com.proyectomedicowebapp.objects.RecetaObj;
 import com.proyectomedicowebapp.objects.TablaObj;
 
 
@@ -37,7 +38,7 @@ public class InfoLogic extends Logic
         
         String strSQL = "select pacientes.*, citas.fecha, citas.hora "
                 + "from clinicasdb.pacientes left join clinicasdb.citas on pacientes.idPaciente = citas.idPaciente "
-                + "where pacientes.usuario like '"+p_usuario+"'";
+                + "where pacientes.usuario = '"+p_usuario+"'";
         ResultSet CResult = CDatabase.executeQuery(strSQL);
         
         System.out.println(strSQL);
@@ -63,7 +64,6 @@ public class InfoLogic extends Logic
                     String strTipoSangre;
                     String strAlergias;
                     String strHistorialFamiliar;
-                    String strReceta;
                     String strFoto;
                     String strIdPaciente;
                     String strFecha;
@@ -88,12 +88,11 @@ public class InfoLogic extends Logic
                         strTipoSangre = CResult.getString("tipoSangre");
                         strAlergias = CResult.getString("alergias");
                         strHistorialFamiliar = CResult.getString("historialFamiliar");
-                        strReceta = CResult.getString("receta");
                         strFoto = CResult.getString("foto");
                         strFecha = CResult.getString("fecha");
                         strHora = CResult.getString("hora");
 
-                        CInfoDB = new InfoObj(strNombre, strApellido, strFechaNacimiento, strDUI, strDireccion, strCelular, strCorreo, strSexo, strEstatura, strTipoSangre,strAlergias, strHistorialFamiliar, strReceta, strFoto, strIdPaciente, strFecha, strHora);
+                        CInfoDB = new InfoObj(strNombre, strApellido, strFechaNacimiento, strDUI, strDireccion, strCelular, strCorreo, strSexo, strEstatura, strTipoSangre,strAlergias, strHistorialFamiliar, strFoto, strIdPaciente, strFecha, strHora);
 
                     }
                 } 
@@ -205,7 +204,6 @@ public class InfoLogic extends Logic
                     String strTipoSangre;
                     String strAlergias;
                     String strHistorialFamiliar;
-                    String strReceta;
                     String strFoto;
                     String strIdPaciente;
                     String strFecha;
@@ -227,13 +225,12 @@ public class InfoLogic extends Logic
                         strTipoSangre = CResult.getString("tipoSangre");
                         strAlergias = CResult.getString("alergias");
                         strHistorialFamiliar = CResult.getString("historialFamiliar");
-                        strReceta = CResult.getString("receta");
                         strFoto = CResult.getString("foto");
                         strIdPaciente = CResult.getString("idPaciente");
                         strFecha = CResult.getString("fecha");
                         strHora = CResult.getString("hora");
 
-                        CInfoDB = new InfoObj(strNombre, strApellido, strFechaNacimiento, strDUI, strDireccion, strCelular, strCorreo, strSexo, strEstatura, strTipoSangre,strAlergias, strHistorialFamiliar, strReceta, strFoto, strIdPaciente, strFecha, strHora);
+                        CInfoDB = new InfoObj(strNombre, strApellido, strFechaNacimiento, strDUI, strDireccion, strCelular, strCorreo, strSexo, strEstatura, strTipoSangre,strAlergias, strHistorialFamiliar, strFoto, strIdPaciente, strFecha, strHora);
 
                     }
                 } 
@@ -251,7 +248,7 @@ public class InfoLogic extends Logic
     
     public TablaObj getCita(String p_idPaciente)
     {
-         TablaObj CFistUser = null;
+        TablaObj CFistUser = null;
         DatabaseX CDatabase = getDatabase();
          String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora " 
                  + "from clinicasdb.citas inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente " 
@@ -356,5 +353,43 @@ public class InfoLogic extends Logic
             }
             
         return CInfoDB;  
+    }
+        
+    public RecetaObj getUltRec(String p_UserPaciente){
+        RecetaObj CFistUser = null;
+        DatabaseX CDatabase = getDatabase();
+         String strSQL ="SELECT * FROM clinicasdb.recetas inner join clinicasdb.pacientes on recetas.idPaciente = pacientes.idPaciente "
+                 + "where pacientes.usuario = '"+p_UserPaciente+"' order by recetas.fecha desc LIMIT 1;";
+                 
+
+        ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        if(CResult!=null)
+        {
+            try 
+            {
+                
+                String stridReceta;
+                String strPaciente;
+                String strReceta;
+                String strFecha;
+                
+                while(CResult.next())
+                {
+                    stridReceta = CResult.getString("idReceta");
+                    strPaciente = CResult.getString("idPaciente");
+                    strReceta = CResult.getString("receta"); 
+                    strFecha = CResult.getString("fecha"); 
+                    
+                    CFistUser = new RecetaObj(strPaciente, strReceta, strFecha, stridReceta);
+                   
+                }
+            } catch (SQLException ex) 
+            {
+                Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return CFistUser;
     }
 }

@@ -24,14 +24,13 @@ public class InfoObj {
         private String m_tipoSangre;
         private String m_alergias;
         private String m_historialFamiliar;
-        private String m_receta;
         private String m_foto;
         private String m_idPaciente;
         private String m_fecha;
         private String m_hora;
 
         public InfoObj( String p_nombres, String p_apellidos, String p_fechaNacimiento, String p_DUI, String p_direccion, String p_celular, String p_correo, String p_sexo, String p_estatura, 
-                        String p_tipoSangre, String p_alergias, String p_historialFamiliar, String p_receta, String p_foto, String p_idPaciente, String p_fecha, String p_hora) {
+                        String p_tipoSangre, String p_alergias, String p_historialFamiliar, String p_foto, String p_idPaciente, String p_fecha, String p_hora) {
 
             setNombres(p_nombres);
             setApellidos(p_apellidos);
@@ -45,7 +44,6 @@ public class InfoObj {
             setTipoSangre(p_tipoSangre);
             setAlergias(p_alergias);
             setHistorialFamiliar(p_historialFamiliar);
-            setReceta(p_receta);
             setFoto(p_foto);
             setIdPaciente(p_idPaciente);
             setFecha(p_fecha);
@@ -104,9 +102,6 @@ public class InfoObj {
             return m_historialFamiliar;
         }
 
-        public String getReceta() {
-            return m_receta;
-        }
         
         public String getFoto() {
             return m_foto;
@@ -174,10 +169,6 @@ public class InfoObj {
 
         private void setHistorialFamiliar(String p_historialFamiliar) {
             m_historialFamiliar = p_historialFamiliar;
-        }
-
-        private void setReceta(String p_receta) {
-            m_receta = p_receta;
         }
         
         private void setFoto(String p_foto) {
