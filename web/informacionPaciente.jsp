@@ -56,6 +56,28 @@
 
 <!-- MaterialDark JS -->
 <script src="js/main.js"></script>
+
+<script src="Scripts/validate/jquery.validate.js" type="text/javascript"></script>
+<script>
+    $().ready(function() {
+		
+
+		// validate signup form on keyup and submit
+		$("#signupForm").validate({
+			rules: {
+				receta: "required"
+			},          
+                       
+			messages: {
+				receta: "*Ingrese una fecha para la cita"
+			}
+		});
+                
+                
+                
+	});
+    
+</script>
     
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
@@ -84,6 +106,7 @@
 	<link rel="stylesheet" href="styles/css/style.css">
         
     </head>
+    
      <%
         InfoObj CUserInf =
                 (InfoObj)request.getSession().getAttribute("logged_Inf2");
@@ -114,7 +137,7 @@
                 
                 <ul class="full-width">
                     <li>
-                        <a href="informacionMedico.jsp" class="waves-effect waves-light"><i class="fas fa-tv"></i> Página principal</a>
+                        <a href="RecetasServlet?usuario=<%= CDocInf.getUsuario()%>&password=<%= CDocInf.getPassword() %>&formid=2" class="waves-effect waves-light"><i class="fas fa-tv"></i> Página principal</a>
                     </li>
                     <li class="NavLateralDivider"></li>
                     <li class="NavLateralDivider"></li>
