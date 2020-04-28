@@ -95,7 +95,7 @@ CREATE TABLE `clinicasdb`.`asistente` (
 CREATE TABLE `clinicasdb`.`recetas` (
   `idReceta` INT NOT NULL AUTO_INCREMENT,
   `receta` VARCHAR(200) NOT NULL,
-  `fecha` DATE NOT NULL,
+  `fecha` DATETIME NOT NULL,
   `idPaciente` INT NOT NULL,
   PRIMARY KEY (`idReceta`),
   INDEX `fk_pacienteR_idx` (`idPaciente` ASC) VISIBLE,
@@ -106,7 +106,10 @@ CREATE TABLE `clinicasdb`.`recetas` (
     ON UPDATE NO ACTION);
 
 INSERT INTO `clinicasdb`.`asistente` (`usuario`, `password`, `nombres`, `apellidos`, `celular`, `correo`) VALUES ('asis1', 'a123', 'Rebeca', 'Canales', '781263741', 'rebecana@gmail.com');
+INSERT INTO `clinicasdb`.`asistente` (`usuario`, `password`, `nombres`, `apellidos`, `celular`, `correo`, `foto`) VALUES ('asis2', 'a123', 'Jorge', 'Fuentes', '75439028', 'fuentesjorge25@gmail.com','Asistente.png');
+
 INSERT INTO `clinicasdb`.`doctores` (`usuario`, `password`, `nombres`, `apellidos`, `celular`, `correo`, `credencial`, `direccion`, `especialidad`) VALUES ('doc1', 'd123', 'Armando', 'Linares', '781663741', 'armandolinares1@gmial.com','20203245','Armando Clinica','Cirujano Cardiotoraxico');
+INSERT INTO `clinicasdb`.`doctores` (`usuario`, `password`, `nombres`, `apellidos`, `celular`, `correo`, `credencial`, `direccion`, `especialidad`,`foto`) VALUES ('doc2', 'd123', 'María', 'Contreras', '75890412', 'contreasmaria2@gmial.com','2022428','Maria Clinica','Pediatra','Doctora.png');
 
 /**
  * Ya está bien la BD!!!!!
