@@ -288,8 +288,6 @@
                     </div>            
                 </div>
                 
-                                    
-                 
                 <%--TABLA--%>
                 <br><br><br>
                 <DIR><DIR><h4>Citas agendadas:</h4></DIR></DIR>
