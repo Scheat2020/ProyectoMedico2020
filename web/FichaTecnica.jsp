@@ -168,15 +168,15 @@
                                     <span class="center-align">Receta</span>
                                     <p class="center-align">                     
                                         
-                                       <% 
-                                        if (CReceta.getReceta()!=null)
+                                     <% 
+                                        if (CReceta.getReceta()==null)
                                         {   
                                      %>
-                                     <br> <%= CReceta.getReceta() %> 
+                                     <br>  No hay receta disponible
                                      <% 
                                         } else {
                                      %>
-                                     <br> No hay receta disponible
+                                     <br> <%= CReceta.getReceta() %>
 
                                      <% 
                                         }

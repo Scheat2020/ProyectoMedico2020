@@ -285,12 +285,52 @@ public class InfoLogic extends Logic
         return CFistUser;
     }
     
+    public TablaObj getProxCita(String p_idPaciente)
+    {
+        TablaObj CFistUser = null;
+        DatabaseX CDatabase = getDatabase();
+         String strSQL = "select pacientes.idPaciente, pacientes.nombres, pacientes.apellidos, citas.fecha, citas.hora " 
+                 + "from clinicasdb.citas inner join clinicasdb.pacientes on citas.idPaciente = pacientes.idPaciente " 
+                 + "where pacientes.idPaciente = "+p_idPaciente+" and citas.fecha >= current_date() "
+                 +"order by citas.fecha limit 1;";
+        ResultSet CResult = CDatabase.executeQuery(strSQL);
+        
+        if(CResult!=null)
+        {
+            try 
+            {
+                int IdPaciente;
+                String strNombres;
+                String strApellidos;
+                String strCita;
+                String strHora;
+                
+                while(CResult.next())
+                {
+                    IdPaciente = CResult.getInt("idPaciente");
+                    strNombres = CResult.getString("nombres");
+                    strApellidos = CResult.getString("apellidos"); 
+                    strCita = CResult.getString("fecha"); 
+                    strHora = CResult.getString("hora"); 
+                    
+                    CFistUser = new TablaObj(strNombres, strApellidos, IdPaciente, strCita, strHora);
+                   
+                }
+            } catch (SQLException ex) 
+            {
+                Logger.getLogger(UserLogic.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        
+        return CFistUser;
+    }
+    
     public boolean agregarReceta(String p_idPaciente, String p_receta)  
         {
             boolean hasFailed;
             DatabaseX database = getDatabase();
 
-            String strSql = "INSERT INTO `clinicasdb`.`recetas` (`receta`, `fecha`, `idPaciente`) VALUES ('"+p_receta+"', CURDATE(), "+p_idPaciente+");";
+            String strSql = "INSERT INTO `clinicasdb`.`recetas` (`receta`, `fecha`, `idPaciente`) VALUES ('"+p_receta+"', NOW(), "+p_idPaciente+");";
 
             hasFailed = database.executeNonQueryBool(strSql);
 
@@ -358,7 +398,7 @@ public class InfoLogic extends Logic
     public RecetaObj getUltRec(String p_UserPaciente){
         RecetaObj CFistUser = null;
         DatabaseX CDatabase = getDatabase();
-         String strSQL ="SELECT * FROM clinicasdb.recetas inner join clinicasdb.pacientes on recetas.idPaciente = pacientes.idPaciente "
+         String strSQL ="SELECT * FROM clinicasdb.pacientes left join clinicasdb.recetas on recetas.idPaciente = pacientes.idPaciente "
                  + "where pacientes.usuario = '"+p_UserPaciente+"' order by recetas.fecha desc LIMIT 1;";
                  
 

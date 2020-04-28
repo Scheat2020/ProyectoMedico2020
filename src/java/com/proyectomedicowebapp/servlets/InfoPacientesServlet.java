@@ -7,6 +7,7 @@ package com.proyectomedicowebapp.servlets;
 
 import com.proyectomedicowebapp.logic.InfoLogic;
 import com.proyectomedicowebapp.logic.UserLogic;
+import com.proyectomedicowebapp.objects.ConnObj;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
 import com.proyectomedicowebapp.objects.RecetaObj;
@@ -36,11 +37,12 @@ public class InfoPacientesServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         response.setContentType("text/html;charset=UTF-8");
-        try (PrintWriter out = response.getWriter()) {
+        try (PrintWriter out = response.getWriter()) 
+        {
             /* TODO output your page here. You may use following sample code. */
            
-            String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=SanJorge20&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-            
+            ConnObj conn = new ConnObj();
+            String connString=conn.getConn();
             //Cierra sesión anterior
             /*
             HttpSession cerrarSesion = request.getSession(true);
@@ -61,13 +63,14 @@ public class InfoPacientesServlet extends HttpServlet {
             InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
             TablaObj CCita = CInfoL.getCita(strId);
             List<RecetaObj> CRecetas = CUserL.getAllRecetas(strId);
-            
+            TablaObj CCitaProx = CInfoL.getProxCita(strId);
 
             request.getSession().setAttribute("user2", strDoc );
             request.getSession().setAttribute("logged_Inf2", CListInf );
             request.getSession().setAttribute("logged_user2", CDoc);
             request.getSession().setAttribute("Cita", CCita);
             request.getSession().setAttribute("Receta", CRecetas);
+            request.getSession().setAttribute("citaProx", CCitaProx);
             
 
 
