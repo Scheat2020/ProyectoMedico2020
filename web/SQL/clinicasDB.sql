@@ -43,7 +43,6 @@ CREATE TABLE `clinicasdb`.`pacientes` (
   `alergias` VARCHAR(200) NOT NULL,
   `historialFamiliar` VARCHAR(200) NOT NULL,
   `idDoctor` INT,
-  `receta` VARCHAR(200),
   PRIMARY KEY (`idPaciente`));
 
 
@@ -92,6 +91,20 @@ CREATE TABLE `clinicasdb`.`asistente` (
   `correo` VARCHAR(145) NOT NULL,
   `foto` VARCHAR(200) NULL DEFAULT 'Default.png',
   PRIMARY KEY (`idasistente`));
+
+CREATE TABLE `clinicasdb`.`receta` (
+  `idReceta` INT NOT NULL,
+  `receta` VARCHAR(200) NOT NULL,
+  `fecha` DATE NOT NULL,
+  `idPaciente` INT NOT NULL,
+  PRIMARY KEY (`idReceta`),
+  INDEX `fk_pacienteR_idx` (`idPaciente` ASC) VISIBLE,
+  CONSTRAINT `fk_pacienteR`
+    FOREIGN KEY (`idPaciente`)
+    REFERENCES `clinicasdb`.`pacientes` (`idPaciente`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION);
+
 
 /**
  * Ya está bien la BD
