@@ -5,104 +5,154 @@
 --%>
 
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@page import="com.proyectomedicowebapp.objects.TablaObj"%>
+<%@page import="com.proyectomedicowebapp.objects.InfoObj"%>
+<%@page import="com.proyectomedicowebapp.objects.UserObj"%>
+<%@page session="true" %>
+
 <!DOCTYPE html>
-<html>
+
+<html lang="es">
+<script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"></script>
+<!-- Sweet Alert JS -->
+<script src="js/sweetalert.min.js"></script>
     
+<!-- jQuery -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+<script>window.jQuery || document.write('<script src="js/jquery-2.2.0.min.js"><\/script>')</script>
+
+<!-- Materialize JS -->
+<script src="js/materialize.min.js"></script>
+
+<!-- Malihu jQuery custom content scroller JS -->
+<script src="js/jquery.mCustomScrollbar.concat.min.js"></script>
+
+<!-- MaterialDark JS -->
+<script src="js/main.js"></script>
+
+
     <head>
-        <title>Agendar Citas</title>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
         <link href="styles/bulma/bulma.css" rel="stylesheet" type="text/css"/>
-        <script src="https://kit.fontawesome.com/90de824922.js" crossorigin="anonymous"></script>
+        <script defer src="https://use.fontawesome.com/releases/v5.12.1/js/all.js"></script>
+        
+        
+        <meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>Inicio Paciente</title>
+    
+        <!-- Normalize CSS -->
+	<link rel="stylesheet" href="styles/css/normalize.css">
+    
+        <!-- Materialize CSS -->
+	<link rel="stylesheet" href="styles/css/materialize.min.css">
+    
+        <!-- Material Design Iconic Font CSS -->
+	<link rel="stylesheet" href="styles/css/material-design-iconic-font.min.css">
+    
+        <!-- Malihu jQuery custom content scroller CSS -->
+	<link rel="stylesheet" href="styles/css/jquery.mCustomScrollbar.css">
+    
+        <!-- Sweet Alert CSS -->
+        <link rel="stylesheet" href="styles/css/sweetalert.css">
+    
+        <!-- MaterialDark CSS -->
+	<link rel="stylesheet" href="styles/css/style.css">
+        
     </head>
+    
+    <!--CODIGO JAVA-->
+    <%
+        UserObj CUser = 
+                (UserObj)request.getSession().getAttribute("logged_user");
+        
+        InfoObj CUserInf =
+                (InfoObj)request.getSession().getAttribute("logged_Inf");
+        
+        session.getAttribute("user");
+        
+    %>
+    
     <body>
         
-    <section class="hero is-dark">
-        <div class="hero-body">
-          <div class="container">
-              <a class="title">
-                <span class="icon">
-                <i class="fas fa-heartbeat"></i>
-                </span>
-                <span class="brand">CLÍNICA MÉDICA</span>
-              </a>
-              <br>
-              <h2 class="subtitle">
-                Agendar Citas
-              </h2>
-           </div>
-        </div>
-     </section>
-        
-    <br>
- 
-    <section class="hero is-primary">
-        <section class="section">
-            
-            <br>
-            <div class="columns is-mobile is-centered">
-                <div class="column">
-                    <p class="title">Horarios   </p>
-                </div>
-                <div class="column">
-                  <p class="title">Contactos</p>
-                </div>
-                <div class="column">
-                  <p class="title">Dirección</p>
-                </div>
-            </div>
-            <div class="tile is-ancestor">
-                <div class="tile is-parent">
-                  <article class="tile is-child box"> 
-                    <p>De lunes a viernes</p>
-                    <p>8:30 a.m a 12:30 p.m</p>
-                    <p>2:00 p.m a 5:30 p.m</p>
-                  </article>
-                </div>
+    <!--BARRA LATERAL-->
+    <section class="NavLateral full-width">
+        <div class="NavLateral-FontMenu full-width ShowHideMenu"></div>
+        <div class="NavLateral-content full-width">
+            <header class="NavLateral-title full-width center-align">
+                Paciente <i class="zmdi zmdi-close NavLateral-title-btn ShowHideMenu"></i>
+            </header>
+            <figure class="full-width NavLateral-logo">
+                <img src="Images/<%= CUserInf.getFoto()%>" alt="material-logo" class="responsive-img center-box">
+                <figcaption class="center-align"><%= CUserInf.getNombres() %> <%= CUserInf.getApellidos() %></figcaption>
+            </figure> 
+            <div class="NavLateral-Nav">
                 
-                <div class="tile is-parent">                   
-                    <article class="tile is-child box">
-                    <p>Correo electrónico: clinicamedica@gmail.com</p>
-                    <p>Teléfono: 2221-3263</p>
-                    </article>
-                </div>
+                <ul class="full-width">
+                    <li>
+                        <a href="FichaTecnica.jsp" class="waves-effect waves-light"><i class="fas fa-tv"></i> Página principal</a>
+                    </li>
+                    <li class="NavLateralDivider"></li>
+                    <li class="NavLateralDivider"></li>
+                    <li>
+                        <a href="citas.jsp" class="waves-effect waves-light"><i class="far fa-address-card"></i> Citas</a>
+                    </li>
+                    <li class="NavLateralDivider"></li>
+                    <li class="NavLateralDivider"></li>
+   
+                </ul>
                 
-                <div class="tile is-parent">
-                    <article class="tile is-child box">
-                    <p>Diagonal Dr. Luís Edmundo Vásquez, Colonia Médica. San Salvador, El Salvador</p>
-                    </article>
-                </div>
-            
-            </div>
-            
-            <br>
-            
-            </section>   
-        </section>
+                
+            </div>  
+        </div>  
+    </section>
+    
+    <!-- CONTENIDO-->        
+        <section class="ContentPage full-width">
 
+            <!-- BARRA SUPERIOR-->
+            <div class="ContentPage-Nav full-width">
+                <ul class="full-width">
+                    <li class="btn-MobileMenu ShowHideMenu"><a href="#" class="tooltipped waves-effect waves-light" data-position="bottom" data-delay="50" data-tooltip="Menu"><i class="zmdi zmdi-more-vert"></i></a></li>
+                    <li><span class="icon"><i class="fas fa-heartbeat fas fas fa-lg"></i></span></li>
+                    <li style="padding:0 5px;">CLÍNICA MÉDICA</li>          
+                </ul>   
+            </div>
+
+            <!-- Titulillo -->
+        <br>
+        <h4 class="center-align">Información sobre citas</h4>
         
-    <br>
-    <section class="hero is-dark">
-        <div class="hero-body">
-          <div class="container">
-            <div class='column'>
-                <div class="columns is-half">
-                    <div class="field">
-                        <div class="control">                           
-                             <p class="control">
-                                <a href="FichaTecnica.jsp" class="is-light is-radiusless is-shadowless button is-medium">
-                                    Volver
-                                </a>
-                             </p>
-                        </div>
-                    </div>  
+        <!-- Footer -->
+        <footer class="footer-MaterialDark">
+            <div class="container">
+                <div class="row">
+                    <div class="col l6 s12"><br>
+                        <h5 class="white-text">Horarios de atención</h5>
+                        <p class="grey-text text-lighten-4">
+                            <br>
+                            <p>-De lunes a viernes</p>
+                            <p>8:30 a.m a 12:30 p.m</p>
+                            <p>2:00 p.m a 5:30 p.m</p>
+                            <p>-Sábados</p>
+                            <p>8:30 a.m a 12:30 p.m</p>
+                    </div>
+                    <div class="col l6 s12"><br>
+                        <h5 class="white-text">Contáctanos</h5>
+                        <p class="grey-text text-lighten-4">
+                            <br>
+                            <p>Correo electrónico: clinicamedica@gmail.com</p>
+                            <p>Teléfono: 2221-3263</p>
+                            <p>Dirección: Diagonal Dr. Luís Edmundo Vásquez, Colonia Médica.</p>
                 </div>
             </div>
-               </div>
+            <div class="NavLateralDivider"></div>
+            <div class="footer-copyright">
+                <div class="container center-align">
+                    © 2020 CLÍNICA MÉDICA
+                </div>
             </div>
-        </section>
-
-                
-            
+        </footer>
+        </section>                     
     </body>
 </html>
