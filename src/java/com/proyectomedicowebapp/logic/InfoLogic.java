@@ -358,7 +358,7 @@ public class InfoLogic extends Logic
     public RecetaObj getUltRec(String p_UserPaciente){
         RecetaObj CFistUser = null;
         DatabaseX CDatabase = getDatabase();
-         String strSQL ="SELECT * FROM clinicasdb.recetas inner join clinicasdb.pacientes on recetas.idPaciente = pacientes.idPaciente "
+         String strSQL ="SELECT * FROM clinicasdb.pacientes left join clinicasdb.recetas on recetas.idPaciente = pacientes.idPaciente "
                  + "where pacientes.usuario = '"+p_UserPaciente+"' order by recetas.fecha desc LIMIT 1;";
                  
 
