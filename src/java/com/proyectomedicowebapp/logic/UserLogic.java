@@ -422,7 +422,7 @@ public class UserLogic extends Logic
     {
         List<RecetaObj> CL = null;
         DatabaseX CDatabase = getDatabase();
-        String strSQL = "select recetas.receta, recetas.fecha from clinicasdb.pacientes inner join clinicasdb.recetas on pacientes.idPaciente = recetas.idPaciente " 
+        String strSQL = "select recetas.* from clinicasdb.pacientes inner join clinicasdb.recetas on pacientes.idPaciente = recetas.idPaciente " 
                         + "where pacientes.idPaciente = "+strUser+" "  
                         + "Order by recetas.fecha desc;";
                 

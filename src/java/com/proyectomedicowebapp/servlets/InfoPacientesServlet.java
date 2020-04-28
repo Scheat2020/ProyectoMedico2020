@@ -6,11 +6,14 @@
 package com.proyectomedicowebapp.servlets;
 
 import com.proyectomedicowebapp.logic.InfoLogic;
+import com.proyectomedicowebapp.logic.UserLogic;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
+import com.proyectomedicowebapp.objects.RecetaObj;
 import com.proyectomedicowebapp.objects.TablaObj;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.List;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.HttpServlet;
@@ -36,7 +39,7 @@ public class InfoPacientesServlet extends HttpServlet {
         try (PrintWriter out = response.getWriter()) {
             /* TODO output your page here. You may use following sample code. */
            
-            String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=123456789&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+            String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=12345&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             
             //Cierra sesión anterior
             /*
@@ -52,14 +55,19 @@ public class InfoPacientesServlet extends HttpServlet {
             String strDoc = request.getParameter("Doc");
 
             InfoLogic CInfoL = new InfoLogic(connString);
+            UserLogic CUserL = new UserLogic (connString);
             InfoObj CListInf = CInfoL.getInfoPaciente(strId);
             InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
             TablaObj CCita = CInfoL.getCita(strId);
+            List<RecetaObj> CRecetas = CUserL.getAllRecetas(strId);
+            
 
             request.getSession().setAttribute("user2", strDoc );
             request.getSession().setAttribute("logged_Inf2", CListInf );
             request.getSession().setAttribute("logged_user2", CDoc);
             request.getSession().setAttribute("Cita", CCita);
+            request.getSession().setAttribute("Receta", CRecetas);
+            
 
 
             request.getRequestDispatcher("informacionPaciente.jsp")
