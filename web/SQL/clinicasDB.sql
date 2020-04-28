@@ -93,7 +93,7 @@ CREATE TABLE `clinicasdb`.`asistente` (
   PRIMARY KEY (`idasistente`));
 
 CREATE TABLE `clinicasdb`.`receta` (
-  `idReceta` INT NOT NULL,
+  `idReceta` INT NOT NULL AUTO_INCREMENT,
   `receta` VARCHAR(200) NOT NULL,
   `fecha` DATE NOT NULL,
   `idPaciente` INT NOT NULL,
