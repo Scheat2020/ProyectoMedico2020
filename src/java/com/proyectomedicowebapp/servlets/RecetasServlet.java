@@ -55,7 +55,6 @@ public class RecetasServlet extends HttpServlet {
         TablaObj CCita = CInfoL.getCita(strId);
         
         request.getSession().setAttribute("logged_Inf", CListInf );       
-        request.getSession().setAttribute("Receta", CUpdate);
         request.getSession().setAttribute("logged_user", CDoc);
         request.getSession().setAttribute("user", strDoc);
         request.getSession().setAttribute("Cita", CCita);
