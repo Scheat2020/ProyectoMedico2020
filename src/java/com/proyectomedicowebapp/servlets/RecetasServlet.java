@@ -7,6 +7,7 @@ package com.proyectomedicowebapp.servlets;
 
 import com.proyectomedicowebapp.logic.InfoLogic;
 import com.proyectomedicowebapp.logic.UserLogic;
+import com.proyectomedicowebapp.objects.ConnObj;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
 import com.proyectomedicowebapp.objects.RecetaObj;
@@ -38,7 +39,8 @@ public class RecetasServlet extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException 
     {
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=SanJorge20&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+        ConnObj conn = new ConnObj();
+        String connString=conn.getConn();
         
         String strFormId = request.getParameter("formid");
             

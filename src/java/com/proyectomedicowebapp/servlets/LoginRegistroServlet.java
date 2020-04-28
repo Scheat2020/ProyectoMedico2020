@@ -7,6 +7,7 @@ package com.proyectomedicowebapp.servlets;
 
 import com.proyectomedicowebapp.logic.InfoLogic;
 import com.proyectomedicowebapp.logic.UserLogic;
+import com.proyectomedicowebapp.objects.ConnObj;
 import com.proyectomedicowebapp.objects.InfoAsisObj;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
@@ -47,8 +48,8 @@ public class LoginRegistroServlet extends HttpServlet {
             throws ServletException, IOException 
     {
         String strFormId = request.getParameter("formid");
-        String connString="jdbc:mysql://localhost/clinicasdb?user=root&password=SanJorge20&autoReconnect=true&useSSL=false&useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
-        
+        ConnObj conn = new ConnObj();
+        String connString=conn.getConn();
         UserLogic CLogic = new UserLogic(connString);
         
         
