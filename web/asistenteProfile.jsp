@@ -275,27 +275,19 @@
                                             <input class="input" id="motivo" name="motivo" type="text" placeholder="Dolores en el pecho">
                                         </div>
                                     </div>
-                                
-                                    <br>
-                                </form>                      
+                                    <br>  
+                                    <p>
+                                        <input class="button is-light is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Confirmar">
+                                        <input type="hidden" name="formid" value="1" />
+                                        <input type="hidden" name="asistente" value="<%= CUser.getUser() %>" />
+                                        <input type="hidden" name="password" value="<%= CUser.getPassword() %>" />
+                                    </p>
+                                </form>
                             </div>
                         </div>                        
                     </div>            
                 </div>
                 
-                <%--Boton registrar cita--%>
-                <div class="column is-one-quarter">
-                    <div class="container">
-                            <p>      
-                                <input class="button is-light is-radiusless is-shadowless button is-medium is-fullwidth" type="submit" value="Confirmar">
-                                <input type="hidden" name="formid" value="1" />
-                                <input type="hidden" name="asistente" value="<%= CUser.getUser() %>" />
-                                <input type="hidden" name="password" value="<%= CUser.getPassword() %>" />
-                            </p>
-                    </div>
-                </div>
-                                    
-                 
                 <%--TABLA--%>
                 <br><br><br>
                 <DIR><DIR><h4>Citas agendadas:</h4></DIR></DIR>
