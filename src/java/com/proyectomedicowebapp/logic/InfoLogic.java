@@ -285,12 +285,12 @@ public class InfoLogic extends Logic
         return CFistUser;
     }
     
-    public boolean updateReceta(String p_idPaciente, String p_receta)  
+    public boolean agregarReceta(String p_idPaciente, String p_receta)  
         {
             boolean hasFailed;
             DatabaseX database = getDatabase();
 
-            String strSql = "UPDATE clinicasdb.pacientes SET pacientes.receta='"+p_receta+"' where pacientes.idPaciente = "+p_idPaciente+";";
+            String strSql = "INSERT INTO `clinicasdb`.`recetas` (`receta`, `fecha`, `idPaciente`) VALUES ('"+p_receta+"', CURDATE(), '"+p_idPaciente+"');";
 
             hasFailed = database.executeNonQueryBool(strSql);
 

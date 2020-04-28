@@ -9,6 +9,7 @@ import com.proyectomedicowebapp.logic.InfoLogic;
 import com.proyectomedicowebapp.logic.UserLogic;
 import com.proyectomedicowebapp.objects.InfoDocObj;
 import com.proyectomedicowebapp.objects.InfoObj;
+import com.proyectomedicowebapp.objects.RecetaObj;
 import com.proyectomedicowebapp.objects.TablaObj;
 import com.proyectomedicowebapp.objects.UserObj;
 import java.io.IOException;
@@ -58,15 +59,18 @@ public class RecetasServlet extends HttpServlet {
             String strDoc = request.getParameter("userDoc");
 
             InfoLogic CInfoL = new InfoLogic(connString);
-            boolean CUpdate =  CInfoL.updateReceta(strId, strReceta);
+            boolean CUpdate =  CInfoL.agregarReceta(strId, strReceta);
             InfoDocObj CDoc = CInfoL.getInfoDBDoc(strDoc);
             InfoObj CListInf = CInfoL.getInfoPaciente(strId);
             TablaObj CCita = CInfoL.getCita(strId);
+            UserLogic CUserL = new UserLogic (connString);
+            List<RecetaObj> CRecetas = CUserL.getAllRecetas(strId);
 
             request.getSession().setAttribute("logged_Inf2", CListInf );       
             request.getSession().setAttribute("logged_user2", CDoc);
             request.getSession().setAttribute("user2", strDoc);
             request.getSession().setAttribute("Cita", CCita);
+            request.getSession().setAttribute("Receta", CRecetas);
 
 
             request.getRequestDispatcher("informacionPaciente.jsp")
