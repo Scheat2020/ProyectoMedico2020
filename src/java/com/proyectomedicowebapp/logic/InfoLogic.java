@@ -290,7 +290,7 @@ public class InfoLogic extends Logic
             boolean hasFailed;
             DatabaseX database = getDatabase();
 
-            String strSql = "INSERT INTO `clinicasdb`.`recetas` (`receta`, `fecha`, `idPaciente`) VALUES ('"+p_receta+"', CURDATE(), '"+p_idPaciente+"');";
+            String strSql = "INSERT INTO `clinicasdb`.`recetas` (`receta`, `fecha`, `idPaciente`) VALUES ('"+p_receta+"', CURDATE(), "+p_idPaciente+");";
 
             hasFailed = database.executeNonQueryBool(strSql);
 
