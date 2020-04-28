@@ -14,7 +14,6 @@
     <script src="Scripts/validate/jquery-1.8.3.js" type="text/javascript"></script>
     <script src="Scripts/validate/jquery.validate.js" type="text/javascript"></script>
    
-   
     <script>
 	$().ready(function() {
 		
