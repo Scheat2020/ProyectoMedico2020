@@ -95,7 +95,7 @@
                     <li class="NavLateralDivider"></li>
                     <li class="NavLateralDivider"></li>
                     <li>
-                        <a href="citas.jsp" class="waves-effect waves-light"><i class="far fa-address-card"></i> Citas</a>
+                        <a href="citas.jsp" class="waves-effect waves-light"><i class="far fa-address-card"></i> Información sobre citas</a>
                     </li>
                     <li class="NavLateralDivider"></li>
                     <li class="NavLateralDivider"></li>
